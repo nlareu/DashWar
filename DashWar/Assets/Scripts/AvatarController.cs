@@ -17,25 +17,30 @@ public class AvatarController : MonoBehaviour
         }
         set
         {
-            this.state = value;
-
-            //Set variables depending new state.
-            switch (this.state)
+            if (this.state != value)
             {
-                #region Hipervelocity
-                case AvatarStates.Hipervelocity:
-                    {
-                        this.rigidBody.gravityScale = 0;
-                        break;
-                    }
-                #endregion
-                #region Normal
-                case AvatarStates.Normal:
-                    {
-                        this.rigidBody.gravityScale = 1f;
-                        break;
-                    }
+                this.state = value;
+
+                //Set variables depending new state.
+                switch (this.state)
+                {
+                    #region Hipervelocity
+                    case AvatarStates.Hipervelocity:
+                        {
+                            this.rigidBody.gravityScale = 0;
+                            //To disable gravity effects, also settings is velicity to zero.
+                            this.rigidBody.velocity = Vector2.zero;
+                            break;
+                        }
                     #endregion
+                    #region Normal
+                    case AvatarStates.Normal:
+                        {
+                            this.rigidBody.gravityScale = 1f;
+                            break;
+                        }
+                        #endregion
+                }
             }
         }
     }
