@@ -4,9 +4,41 @@ using UnityEngine;
 
 public class AvatarController : MonoBehaviour
 {
+    public float HipervelocitySpeed = 12.0f;
     public float HitForce = 250.0F;
     public float JumpHeight = 250.0f;
     public float Speed = 6.0F;
+    private AvatarStates state = AvatarStates.Normal;
+    public AvatarStates State
+    {
+        get
+        {
+            return this.state;
+        }
+        set
+        {
+            this.state = value;
+
+            //Set variables depending new state.
+            switch (this.state)
+            {
+                #region Hipervelocity
+                case AvatarStates.Hipervelocity:
+                    {
+                        this.rigidBody.gravityScale = 0;
+                        break;
+                    }
+                #endregion
+                #region Normal
+                case AvatarStates.Normal:
+                    {
+                        this.rigidBody.gravityScale = 1f;
+                        break;
+                    }
+                    #endregion
+            }
+        }
+    }
 
     private bool isJumping = false;
     private int playerNumber;
@@ -14,6 +46,7 @@ public class AvatarController : MonoBehaviour
     {
         get { return "Player" + this.playerNumber + "-"; }
     }
+
     private Rigidbody2D rigidBody;
 
     private void Awake()
@@ -24,18 +57,56 @@ public class AvatarController : MonoBehaviour
 
     void Update()
     {
-        //if ((Input.GetAxisRaw("Horizontal") > 0.5f) || (Input.GetAxisRaw("Horizontal") < -0.5f))
-        if (Input.GetButton(this.playerName + "Left"))
-            transform.Translate(-this.Speed * Time.deltaTime, 0f, 0f);
-        else if (Input.GetButton(this.playerName + "Right"))
-            transform.Translate(this.Speed * Time.deltaTime, 0f, 0f);
+        if (Input.GetButton(this.playerName + "Hipervelocity"))
+            this.State = AvatarStates.Hipervelocity;
+        else
+            this.State = AvatarStates.Normal;
 
-        if (Input.GetButton(this.playerName + "Jump") && this.isJumping == false)
+        switch (this.State)
         {
-            this.rigidBody.AddForce(Vector2.up * this.JumpHeight);
+            #region Hipervelocity
+            case AvatarStates.Hipervelocity:
+                {
+                    Vector2 moveVector = new Vector2();
 
-            this.isJumping = true;
+                    if (Input.GetButton(this.playerName + "Left"))
+                        moveVector += Vector2.left * this.HipervelocitySpeed * Time.deltaTime;
+                    else if (Input.GetButton(this.playerName + "Right"))
+                        moveVector += Vector2.right * this.HipervelocitySpeed * Time.deltaTime;
+
+                    if (Input.GetButton(this.playerName + "Up"))
+                        moveVector += Vector2.up * this.HipervelocitySpeed * Time.deltaTime;
+                    else if (Input.GetButton(this.playerName + "Down"))
+                        moveVector += Vector2.down * this.HipervelocitySpeed * Time.deltaTime;
+
+                    this.transform.Translate(moveVector);
+                    break;
+                }
+            #endregion
+            #region Normal
+            case AvatarStates.Normal:
+                {
+                    Vector2 moveVector = new Vector2();
+
+                    if (Input.GetButton(this.playerName + "Left"))
+                        moveVector += Vector2.left * this.Speed * Time.deltaTime;
+                    else if (Input.GetButton(this.playerName + "Right"))
+                        moveVector += Vector2.right * this.Speed * Time.deltaTime;
+
+                    if (Input.GetButton(this.playerName + "Jump") && this.isJumping == false)
+                    {
+                        this.rigidBody.AddForce(Vector2.up * this.JumpHeight);
+
+                        this.isJumping = true;
+                    }
+
+                    this.transform.Translate(moveVector);
+                    break;
+                }
+                #endregion
         }
+        //if ((Input.GetAxisRaw("Horizontal") > 0.5f) || (Input.GetAxisRaw("Horizontal") < -0.5f))
+
     }
 
     private void OnCollisionEnter2D(Collision2D col)
