@@ -56,6 +56,7 @@ public class AvatarController : MonoBehaviour
 
     private void Awake()
     {
+        this.tag = "Player";
         this.playerNumber = AppController.GetPlayerNumber();
         this.rigidBody = GetComponent<Rigidbody2D>();
     }
@@ -137,6 +138,10 @@ public class AvatarController : MonoBehaviour
                 move += Vector2.down;
 
             rbColl.AddForce(move * this.HitForce);
+        }
+        else
+        {
+            CollisionsManager.ResolveCollision(this.gameObject, col.gameObject);
         }
     }
 }
