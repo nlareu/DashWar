@@ -2,4 +2,5 @@
 {
     Hipervelocity,
     Normal,
+    CoolingDown,
 }
