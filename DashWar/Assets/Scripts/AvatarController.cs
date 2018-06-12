@@ -5,10 +5,13 @@ using UnityEngine;
 
 public class AvatarController : MonoBehaviour
 {
-    public float HipervelocityBurnTime = 2f;
-    public float HipervelocityCooldownTime = 2f;
-    public float HipervelocitySpeed = 12.0f;
-    public float HitForce = 250.0F;
+    public float debugvar = 10f;
+
+    public float HipervelocityBurnTime = 0.5f;
+    public float HipervelocityCooldownTime = 1.0f;
+    public float HipervelocitySpeed = 17.0f;
+    public float HitForce = 500.0F;
+    public bool IsJumping = false;
     public float JumpHeight = 250.0f;
     public float Speed = 6.0F;
     private AvatarStates state = AvatarStates.Normal;
@@ -30,7 +33,9 @@ public class AvatarController : MonoBehaviour
                     #region Hipervelocity
                     case AvatarStates.Hipervelocity:
                         {
-                            this.rigidBody.gravityScale = 0;
+                            this.spriteRendered.color = Color.yellow;
+
+                            this.rigidBody.gravityScale = 0f;
                             //To disable gravity effects, also settings is velicity to zero.
                             this.rigidBody.velocity = Vector2.zero;
 
@@ -42,6 +47,8 @@ public class AvatarController : MonoBehaviour
                     #region Normal
                     case AvatarStates.Normal:
                         {
+                            this.spriteRendered.color = Color.white;
+
                             this.rigidBody.gravityScale = 1f;
 
                             break;
@@ -50,6 +57,10 @@ public class AvatarController : MonoBehaviour
                     #region CoolingDown
                     case AvatarStates.CoolingDown:
                         {
+                            this.spriteRendered.color = Color.blue;
+
+                            this.rigidBody.gravityScale = 1f;
+
                             this.hiperCooldownTime = 0f;
 
                             break;
@@ -60,7 +71,6 @@ public class AvatarController : MonoBehaviour
         }
     }
 
-    private bool isJumping = false;
     private int playerNumber;
     private string playerName
     {
@@ -71,12 +81,15 @@ public class AvatarController : MonoBehaviour
     private Rigidbody2D rigidBody;
     private float hiperActivedTime;
     private float hiperCooldownTime;
+    private SpriteRenderer spriteRendered;
+    internal Vector2 ejectionVelocity = Vector2.zero;
 
     private void Awake()
     {
         this.animator = GetComponent<Animator>();
         this.playerNumber = AppController.GetPlayerNumber();
         this.rigidBody = GetComponent<Rigidbody2D>();
+        this.spriteRendered = GetComponent<SpriteRenderer>();
         this.tag = "Player";
     }
 
@@ -84,6 +97,21 @@ public class AvatarController : MonoBehaviour
     {
         switch (this.State)
         {
+            #region CoolingDown
+            case AvatarStates.CoolingDown:
+                {
+                    this.CheckAvatarMove();
+
+                    this.hiperCooldownTime += Time.deltaTime;
+
+                    if (this.hiperCooldownTime > this.HipervelocityCooldownTime)
+                    {
+                        this.State = AvatarStates.Normal;
+                    }
+
+                    break;
+                }
+            #endregion
             #region Hipervelocity
             case AvatarStates.Hipervelocity:
                 {
@@ -128,83 +156,87 @@ public class AvatarController : MonoBehaviour
                         break;
                     }
 
-                        Vector2 moveVector = new Vector2();
+                    this.CheckAvatarMove();
 
-                        if (Input.GetButton(this.playerName + "Left"))
-                        {
-                            moveVector += Vector2.left * this.Speed * Time.deltaTime;
-
-                            this.animator.SetBool("Moving", true);
-                            this.animator.SetFloat("MoveX", -1.5f);
-                        }
-                        else if (Input.GetButton(this.playerName + "Right"))
-                        {
-                            moveVector += Vector2.right * this.Speed * Time.deltaTime;
-
-                            this.animator.SetBool("Moving", true);
-                            this.animator.SetFloat("MoveX", 1.5f);
-                        }
-                        else
-                        {
-                            this.animator.SetBool("Moving", false);
-                            //this.animator.SetFloat("MoveX", 0.5f);
-                        }
-
-                        if (Input.GetButton(this.playerName + "Jump") && this.isJumping == false)
-                        {
-                            this.rigidBody.AddForce(Vector2.up * this.JumpHeight);
-
-                            this.isJumping = true;
-                        }
-
-                        this.transform.Translate(moveVector);
-                    
                     break;
                 }
             #endregion
-            case AvatarStates.CoolingDown:
+            #region Stunned
+            case AvatarStates.Stunned:
                 {
-                    this.hiperCooldownTime += Time.deltaTime;
+                    this.ejectionVelocity = this.rigidBody.velocity;
 
-                    if (this.hiperCooldownTime > this.HipervelocityCooldownTime)
-                    {
-                        this.State = AvatarStates.Normal;
-                        break;
-                    }
                     break;
                 }
+            #endregion
         }
-        //if ((Input.GetAxisRaw("Horizontal") > 0.5f) || (Input.GetAxisRaw("Horizontal") < -0.5f))
 
+        if (this.rigidBody.velocity.x != 0) 
+            Debug.Log("Velocity: " + this.rigidBody.velocity.ToString());
+    }
+
+    private void CheckAvatarMove()
+    {
+        Vector2 moveVector = new Vector2();
+
+        if (Input.GetButton(this.playerName + "Left"))
+        {
+            moveVector += Vector2.left * this.Speed * Time.deltaTime;
+
+            this.animator.SetBool("Moving", true);
+            this.animator.SetFloat("MoveX", -1.5f);
+        }
+        else if (Input.GetButton(this.playerName + "Right"))
+        {
+            moveVector += Vector2.right * this.Speed * Time.deltaTime;
+
+            this.animator.SetBool("Moving", true);
+            this.animator.SetFloat("MoveX", 1.5f);
+        }
+        else
+        {
+            this.animator.SetBool("Moving", false);
+            //this.animator.SetFloat("MoveX", 0.5f);
+        }
+
+        if (Input.GetButton(this.playerName + "Jump") && this.IsJumping == false)
+        {
+            this.rigidBody.AddForce(Vector2.up * this.JumpHeight);
+
+            this.IsJumping = true;
+        }
+
+        this.transform.Translate(moveVector);
     }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "ground")
+        if (col.gameObject.tag == "Player")
         {
-            this.isJumping = false;
-        }
-        else if (col.gameObject.tag == "Player")
-        {
-            var gbColl = col.gameObject;
-            var rbColl = col.gameObject.GetComponent<Rigidbody2D>();
-            Vector2 move = new Vector2();
+            if (this.State == AvatarStates.Hipervelocity)
+            {
+                var gbColl = col.gameObject;
+                var rbColl = col.gameObject.GetComponent<Rigidbody2D>();
+                Vector2 move = new Vector2();
 
-            if (this.gameObject.transform.position.x < gbColl.transform.position.x)
-                move += Vector2.right;
-            else
-                move += Vector2.left;
+                if (this.gameObject.transform.position.x < gbColl.transform.position.x)
+                    move += Vector2.right;
+                else
+                    move += Vector2.left;
 
-            if (this.gameObject.transform.position.y < gbColl.transform.position.y)
+                //if (this.gameObject.transform.position.y < gbColl.transform.position.y)
                 move += Vector2.up;
-            else
-                move += Vector2.down;
+                //else
+                //    move += Vector2.down;
 
-            rbColl.AddForce(move * this.HitForce);
+                rbColl.AddForce(move * this.HitForce);
+
+                rbColl.GetComponent<AvatarController>().State = AvatarStates.Stunned;
+            }
         }
         else
         {
-            CollisionsManager.ResolveCollision(this.gameObject, col.gameObject);
+            CollisionsManager.ResolveCollision(this.gameObject, col.gameObject, col);
         }
     }
 }

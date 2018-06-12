@@ -10,15 +10,18 @@ public class CollisionsManager {
     static CollisionsManager() {
         Collisions = new List<IGameCollision>
         {
+            new AvatarGroundCollision(),
+            new AvatarWallCollision(),
             new AvatarWaterCollision(),
             new AvatarMortalWall01Collision(),
         };
     }
 
-    public static void ResolveCollision(GameObject collider1, GameObject collider2)
+    public static void ResolveCollision(GameObject collider1, GameObject collider2, Collision2D collision)
     {
         IGameCollision gameColl = Collisions.Find(item => (collider1.CompareTag(item.Collider1Tag)) && (collider2.CompareTag(item.Collider2Tag)));
 
-        gameColl.Resolve(collider1, collider2);
+        if (gameColl != null)
+            gameColl.Resolve(collider1, collider2, collision);
     }
 }

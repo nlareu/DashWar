@@ -4,9 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - ground
   - Water
   - MortalWall01
+  - Ground
+  - ScreenLimit
+  - Wall
   layers:
   - Default
   - TransparentFX

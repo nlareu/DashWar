@@ -4,7 +4,7 @@ public interface IGameCollision
 {
     string Collider1Tag { get; }
     string Collider2Tag { get; }
-    void Resolve(GameObject collider1, GameObject collider2);
+    void Resolve(GameObject collider1, GameObject collider2, Collision2D collision);
 }
 
 public abstract class GameCollision : IGameCollision
@@ -22,5 +22,5 @@ public abstract class GameCollision : IGameCollision
         //this.Collider2 = collider2;
     }
 
-    public abstract void Resolve(GameObject collider1, GameObject collider2);
+    public abstract void Resolve(GameObject collider1, GameObject collider2, Collision2D collision);
 }

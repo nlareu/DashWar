@@ -3,4 +3,5 @@
     Hipervelocity,
     Normal,
     CoolingDown,
+    Stunned
 }

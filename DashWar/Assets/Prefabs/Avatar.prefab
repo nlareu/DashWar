@@ -117,8 +117,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d89e286fdecb5f4cbf2ac08cd7eedf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HipervelocitySpeed: 12
-  HitForce: 250
+  HipervelocityBurnTime: 0.5
+  HipervelocityCooldownTime: 1
+  HipervelocitySpeed: 17
+  HitForce: 500
+  IsJumping: 0
   JumpHeight: 250
   Speed: 6
 --- !u!212 &212616042359845370
