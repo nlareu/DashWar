@@ -65,6 +65,16 @@ public class AvatarController : MonoBehaviour
 
                             break;
                         }
+                    #endregion
+                    #region Stunned
+                    case AvatarStates.Stunned:
+                        {
+                            this.spriteRendered.color = Color.gray;
+
+                            this.stunningTime = 0f;
+
+                            break;
+                        }
                         #endregion
                 }
             }
@@ -78,15 +88,18 @@ public class AvatarController : MonoBehaviour
     }
 
     private Animator animator;
-    private Rigidbody2D rigidBody;
+    private BoxCollider2D boxCollider;
+    internal Vector2 ejectionVelocity = Vector2.zero;
     private float hiperActivedTime;
     private float hiperCooldownTime;
     private SpriteRenderer spriteRendered;
-    internal Vector2 ejectionVelocity = Vector2.zero;
+    private Rigidbody2D rigidBody;
+    private float stunningTime;
 
     private void Awake()
     {
         this.animator = GetComponent<Animator>();
+        this.boxCollider = GetComponent<BoxCollider2D>();
         this.playerNumber = AppController.GetPlayerNumber();
         this.rigidBody = GetComponent<Rigidbody2D>();
         this.spriteRendered = GetComponent<SpriteRenderer>();
@@ -213,25 +226,110 @@ public class AvatarController : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-            if (this.State == AvatarStates.Hipervelocity)
+            var avatar = this;
+            var otherAvatar = col.gameObject.GetComponent<AvatarController>();
+
+            AvatarController hittingAvatar = null;
+            AvatarController hittedAvatar = null;
+            Vector2 hitDirection = Vector2.zero;
+            var avatarPos = this.rigidBody.position;
+            var otherAvatarPos = otherAvatar.rigidBody.position;
+            var otherAvatarBounds = otherAvatar.boxCollider.bounds;
+
+
+            if ((avatar.State == AvatarStates.Hipervelocity) && (otherAvatar.State == AvatarStates.Hipervelocity))
             {
-                var gbColl = col.gameObject;
-                var rbColl = col.gameObject.GetComponent<Rigidbody2D>();
-                Vector2 move = new Vector2();
+                #region Not working
+                //To know who hit who, check if hitting center of object is between bounds of hitted object.
+                //Also the direction of the hit will determine the direction of the ejection.
+                if ((avatarPos.y >= otherAvatarBounds.min.y) && (avatarPos.y <= otherAvatarBounds.max.y))
+                {
+                    hittedAvatar = otherAvatar;
+                    hittingAvatar = avatar;
 
-                if (this.gameObject.transform.position.x < gbColl.transform.position.x)
-                    move += Vector2.right;
-                else
-                    move += Vector2.left;
+                    if (avatarPos.x < otherAvatarPos.x)
+                        hitDirection = Vector2.right;
+                        //otherAvatar.rigidBody.AddForce(Vector2.right * this.HitForce);
+                    else
+                        hitDirection = Vector2.left;
+                    //otherAvatar.rigidBody.AddForce(Vector2.left * this.HitForce);
 
-                //if (this.gameObject.transform.position.y < gbColl.transform.position.y)
-                move += Vector2.up;
+                    //otherAvatar.State = AvatarStates.Stunned;
+                }
+                else if ((avatarPos.x >= otherAvatarBounds.min.x) && (avatarPos.x <= otherAvatarBounds.max.x))
+                {
+                    hittedAvatar = otherAvatar;
+                    hittingAvatar = avatar;
+
+                    if (avatarPos.y < otherAvatarPos.y)
+                        hitDirection = Vector2.up;
+                        //otherAvatar.rigidBody.AddForce(Vector2.up * this.HitForce);
+                    else
+                        hitDirection = Vector2.down;
+                    //otherAvatar.rigidBody.AddForce(Vector2.left * this.HitForce);
+
+                    //otherAvatar.State = AvatarStates.Stunned;
+                }
+                ////If code goes here, is because this object is the hitted one.
                 //else
-                //    move += Vector2.down;
+                //{
+                //    if (avatarPos.x < otherAvatarPos.x)
+                //        this.rigidBody.AddForce(Vector2.right * this.HitForce);
+                //    else
+                //        this.rigidBody.AddForce(Vector2.left * this.HitForce);
 
-                rbColl.AddForce(move * this.HitForce);
+                //    this.State = AvatarStates.Stunned;
+                //}
+                #endregion
+            }
+            else if (avatar.State == AvatarStates.Hipervelocity)
+            {
+                hittingAvatar = avatar;
+                hittedAvatar = otherAvatar;
 
-                rbColl.GetComponent<AvatarController>().State = AvatarStates.Stunned;
+                if ((avatarPos.y >= otherAvatarBounds.min.y) && (avatarPos.y <= otherAvatarBounds.max.y))
+                {
+                    if (avatarPos.x < otherAvatarPos.x)
+                        hitDirection = Vector2.right;
+                    else
+                        hitDirection = Vector2.left;
+                }
+                else if ((avatarPos.x >= otherAvatarBounds.min.x) && (avatarPos.x <= otherAvatarBounds.max.x))
+                {
+                    if (avatarPos.y < otherAvatarPos.y)
+                        hitDirection = Vector2.up;
+                    else
+                        hitDirection = Vector2.down;
+                }
+            }
+            //else if (otherAvatar.State == AvatarStates.Hipervelocity)
+            //{
+            //    hittingAvatar = otherAvatar;
+            //    hittedAvatar = avatar;
+
+            //    if ((avatarPos.y >= otherAvatarBounds.min.y) && (avatarPos.y <= otherAvatarBounds.max.y))
+            //    {
+            //        if (avatarPos.x < otherAvatarPos.x)
+            //            hitDirection = Vector2.right;
+            //        else
+            //            hitDirection = Vector2.left;
+            //    }
+            //    else if ((avatarPos.x >= otherAvatarBounds.min.x) && (avatarPos.x <= otherAvatarBounds.max.x))
+            //    {
+            //        if (avatarPos.y < otherAvatarPos.y)
+            //            hitDirection = Vector2.up;
+            //        else
+            //            hitDirection = Vector2.down;
+            //    }
+            //}
+
+
+            //Means that a hit happens.
+            if (hittedAvatar != null)
+            {
+                hittedAvatar.State = AvatarStates.Stunned;
+
+                hittedAvatar.rigidBody.AddForce(hitDirection * this.HitForce);
             }
         }
         else
