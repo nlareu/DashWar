@@ -34,6 +34,11 @@ public class AvatarController : MonoBehaviour
                     #region Hipervelocity
                     case AvatarStates.Hipervelocity:
                         {
+                            this.animator.SetBool("Moving", false);
+                            this.animator.SetFloat("MoveX", 0);
+                            this.animator.SetBool("HiperMoving", true);
+                            this.animator.SetFloat("HiperMoveX", this.animator.GetFloat("MoveX"));
+
                             this.spriteRendered.color = Color.yellow;
 
                             this.rigidBody.gravityScale = 0f;
@@ -65,6 +70,12 @@ public class AvatarController : MonoBehaviour
                     #region CoolingDown
                     case AvatarStates.CoolingDown:
                         {
+                            this.animator.SetBool("Moving", true);
+                            this.animator.SetFloat("MoveX", this.animator.GetFloat("HiperMoveX"));
+                            this.animator.SetBool("HiperMoving", false);
+                            this.animator.SetFloat("HiperMoveX", 0);
+                            this.animator.SetFloat("HiperMoveY", 0);
+
                             this.spriteRendered.color = Color.blue;
 
                             this.rigidBody.gravityScale = 1f;
@@ -178,19 +189,7 @@ public class AvatarController : MonoBehaviour
                     }
 
 
-                    Vector2 moveVector = new Vector2();
-
-                    if (Input.GetButton(this.playerName + "Left"))
-                        moveVector += Vector2.left * this.HipervelocitySpeed * Time.deltaTime;
-                    else if (Input.GetButton(this.playerName + "Right"))
-                        moveVector += Vector2.right * this.HipervelocitySpeed * Time.deltaTime;
-
-                    if (Input.GetButton(this.playerName + "Up"))
-                        moveVector += Vector2.up * this.HipervelocitySpeed * Time.deltaTime;
-                    else if (Input.GetButton(this.playerName + "Down"))
-                        moveVector += Vector2.down * this.HipervelocitySpeed * Time.deltaTime;
-
-                    this.transform.Translate(moveVector);
+                    this.CheckAvatarHiperMove();
 
 
                     //If move direction changed, add new position to hiper move line.
@@ -252,6 +251,46 @@ public class AvatarController : MonoBehaviour
         //    Debug.Log("Velocity: " + this.rigidBody.velocity.ToString());
     }
 
+    private void CheckAvatarHiperMove()
+    {
+        Vector2 moveVector = new Vector2();
+
+        if (Input.GetButton(this.playerName + "Left"))
+        {
+            moveVector += Vector2.left * this.HipervelocitySpeed * Time.deltaTime;
+
+            //this.animator.SetBool("HiperMoving", true);
+            this.animator.SetFloat("HiperMoveX", -1.5f);
+            this.animator.SetFloat("HiperMoveY", 0);
+        }
+        else if (Input.GetButton(this.playerName + "Right"))
+        {
+            moveVector += Vector2.right * this.HipervelocitySpeed * Time.deltaTime;
+
+            //this.animator.SetBool("HiperMoving", true);
+            this.animator.SetFloat("HiperMoveX", 1.5f);
+            this.animator.SetFloat("HiperMoveY", 0);
+        }
+
+        if (Input.GetButton(this.playerName + "Up"))
+        {
+            moveVector += Vector2.up * this.HipervelocitySpeed * Time.deltaTime;
+
+            ////this.animator.SetBool("HiperMoving", true);
+            //this.animator.SetFloat("HiperMoveX", 0);
+            //this.animator.SetFloat("HiperMoveY", 1.5f);
+        }
+        else if (Input.GetButton(this.playerName + "Down"))
+        {
+            moveVector += Vector2.down * this.HipervelocitySpeed * Time.deltaTime;
+
+            ////this.animator.SetBool("HiperMoving", true);
+            //this.animator.SetFloat("HiperMoveX", 0);
+            //this.animator.SetFloat("HiperMoveY", -1.5f);
+        }
+
+        this.transform.Translate(moveVector);
+    }
     private void CheckAvatarMove()
     {
         Vector2 moveVector = new Vector2();

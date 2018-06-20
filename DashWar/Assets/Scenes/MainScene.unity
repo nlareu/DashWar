@@ -122,11 +122,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4390555774127266, guid: 92848d785d377cc4ba787c26b2cf8c76, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 11.51
+      value: -9.69
       objectReference: {fileID: 0}
     - target: {fileID: 4390555774127266, guid: 92848d785d377cc4ba787c26b2cf8c76, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.52
+      value: 0.96
       objectReference: {fileID: 0}
     - target: {fileID: 4390555774127266, guid: 92848d785d377cc4ba787c26b2cf8c76, type: 2}
       propertyPath: m_LocalPosition.z
@@ -165,6 +165,11 @@ Prefab:
         type: 2}
       propertyPath: Speed
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114808293114151986, guid: 92848d785d377cc4ba787c26b2cf8c76,
+        type: 2}
+      propertyPath: HipervelocityBurnMaxTime
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 92848d785d377cc4ba787c26b2cf8c76, type: 2}
@@ -930,8 +935,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 760745251}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.314, y: 3.758, z: 0}
-  m_LocalScale: {x: 0.7360597, y: 6.920246, z: 1}
+  m_LocalPosition: {x: -12.314, y: 2.023, z: 0}
+  m_LocalScale: {x: 0.7360597, y: 3.4493842, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4

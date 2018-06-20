@@ -1,105 +1,105 @@
 fileFormatVersion: 2
-guid: 2b0283c7a87675449b7e004a9a21d25c
-timeCreated: 1527982703
+guid: 7bbd60a111162a14b974e1ab8d974c51
+timeCreated: 1529534818
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: sprites_0
-    21300002: sprites_1
-    21300004: sprites_2
-    21300006: sprites_3
-    21300008: sprites_4
-    21300010: sprites_5
-    21300012: sprites_6
-    21300014: sprites_7
-    21300016: sprites_8
-    21300018: sprites_9
-    21300020: sprites_10
-    21300022: sprites_11
-    21300024: sprites_12
-    21300026: sprites_13
-    21300028: sprites_14
-    21300030: sprites_15
-    21300032: sprites_16
-    21300034: sprites_17
-    21300036: sprites_18
-    21300038: sprites_19
-    21300040: sprites_20
-    21300042: sprites_21
-    21300044: sprites_22
-    21300046: sprites_23
-    21300048: sprites_24
-    21300050: sprites_25
-    21300052: sprites_26
-    21300054: sprites_27
-    21300056: sprites_28
-    21300058: sprites_29
-    21300060: sprites_30
-    21300062: sprites_31
-    21300064: sprites_32
-    21300066: sprites_33
-    21300068: sprites_34
-    21300070: sprites_35
-    21300072: sprites_36
-    21300074: sprites_37
-    21300076: sprites_38
-    21300078: sprites_39
-    21300080: sprites_40
-    21300082: sprites_41
-    21300084: sprites_42
-    21300086: sprites_43
-    21300088: sprites_44
-    21300090: sprites_45
-    21300092: sprites_46
-    21300094: sprites_47
-    21300096: sprites_48
-    21300098: sprites_49
-    21300100: sprites_50
-    21300102: sprites_51
-    21300104: sprites_52
-    21300106: sprites_53
-    21300108: sprites_54
-    21300110: sprites_55
-    21300112: sprites_56
-    21300114: sprites_57
-    21300116: sprites_58
-    21300118: sprites_59
-    21300120: sprites_60
-    21300122: sprites_61
-    21300124: sprites_62
-    21300126: sprites_63
-    21300128: sprites_64
-    21300130: sprites_65
-    21300132: sprites_66
-    21300134: sprites_67
-    21300136: sprites_68
-    21300138: sprites_69
-    21300140: sprites_70
-    21300142: sprites_71
-    21300144: sprites_72
-    21300146: sprites_73
-    21300148: sprites_74
-    21300150: sprites_75
-    21300152: sprites_76
-    21300154: sprites_77
-    21300156: sprites_78
-    21300158: sprites_79
-    21300160: sprites_80
-    21300162: sprites_81
-    21300164: sprites_82
-    21300166: sprites_83
-    21300168: sprites_84
-    21300170: sprites_85
-    21300172: sprites_86
-    21300174: sprites_87
-    21300176: sprites_88
-    21300178: sprites_89
-    21300180: sprites_90
-    21300182: sprites_91
-    21300184: sprites_92
-    21300186: sprites_93
-    21300188: sprites_94
-    21300190: sprites_95
+    21300000: Avatars-HiperMove_0
+    21300002: Avatars-HiperMove_1
+    21300004: Avatars-HiperMove_2
+    21300006: Avatars-HiperMove_3
+    21300008: Avatars-HiperMove_4
+    21300010: Avatars-HiperMove_5
+    21300012: Avatars-HiperMove_6
+    21300014: Avatars-HiperMove_7
+    21300016: Avatars-HiperMove_8
+    21300018: Avatars-HiperMove_9
+    21300020: Avatars-HiperMove_10
+    21300022: Avatars-HiperMove_11
+    21300024: Avatars-HiperMove_12
+    21300026: Avatars-HiperMove_13
+    21300028: Avatars-HiperMove_14
+    21300030: Avatars-HiperMove_15
+    21300032: Avatars-HiperMove_16
+    21300034: Avatars-HiperMove_17
+    21300036: Avatars-HiperMove_18
+    21300038: Avatars-HiperMove_19
+    21300040: Avatars-HiperMove_20
+    21300042: Avatars-HiperMove_21
+    21300044: Avatars-HiperMove_22
+    21300046: Avatars-HiperMove_23
+    21300048: Avatars-HiperMove_24
+    21300050: Avatars-HiperMove_25
+    21300052: Avatars-HiperMove_26
+    21300054: Avatars-HiperMove_27
+    21300056: Avatars-HiperMove_28
+    21300058: Avatars-HiperMove_29
+    21300060: Avatars-HiperMove_30
+    21300062: Avatars-HiperMove_31
+    21300064: Avatars-HiperMove_32
+    21300066: Avatars-HiperMove_33
+    21300068: Avatars-HiperMove_34
+    21300070: Avatars-HiperMove_35
+    21300072: Avatars-HiperMove_36
+    21300074: Avatars-HiperMove_37
+    21300076: Avatars-HiperMove_38
+    21300078: Avatars-HiperMove_39
+    21300080: Avatars-HiperMove_40
+    21300082: Avatars-HiperMove_41
+    21300084: Avatars-HiperMove_42
+    21300086: Avatars-HiperMove_43
+    21300088: Avatars-HiperMove_44
+    21300090: Avatars-HiperMove_45
+    21300092: Avatars-HiperMove_46
+    21300094: Avatars-HiperMove_47
+    21300096: Avatars-HiperMove_48
+    21300098: Avatars-HiperMove_49
+    21300100: Avatars-HiperMove_50
+    21300102: Avatars-HiperMove_51
+    21300104: Avatars-HiperMove_52
+    21300106: Avatars-HiperMove_53
+    21300108: Avatars-HiperMove_54
+    21300110: Avatars-HiperMove_55
+    21300112: Avatars-HiperMove_56
+    21300114: Avatars-HiperMove_57
+    21300116: Avatars-HiperMove_58
+    21300118: Avatars-HiperMove_59
+    21300120: Avatars-HiperMove_60
+    21300122: Avatars-HiperMove_61
+    21300124: Avatars-HiperMove_62
+    21300126: Avatars-HiperMove_63
+    21300128: Avatars-HiperMove_64
+    21300130: Avatars-HiperMove_65
+    21300132: Avatars-HiperMove_66
+    21300134: Avatars-HiperMove_67
+    21300136: Avatars-HiperMove_68
+    21300138: Avatars-HiperMove_69
+    21300140: Avatars-HiperMove_70
+    21300142: Avatars-HiperMove_71
+    21300144: Avatars-HiperMove_72
+    21300146: Avatars-HiperMove_73
+    21300148: Avatars-HiperMove_74
+    21300150: Avatars-HiperMove_75
+    21300152: Avatars-HiperMove_76
+    21300154: Avatars-HiperMove_77
+    21300156: Avatars-HiperMove_78
+    21300158: Avatars-HiperMove_79
+    21300160: Avatars-HiperMove_80
+    21300162: Avatars-HiperMove_81
+    21300164: Avatars-HiperMove_82
+    21300166: Avatars-HiperMove_83
+    21300168: Avatars-HiperMove_84
+    21300170: Avatars-HiperMove_85
+    21300172: Avatars-HiperMove_86
+    21300174: Avatars-HiperMove_87
+    21300176: Avatars-HiperMove_88
+    21300178: Avatars-HiperMove_89
+    21300180: Avatars-HiperMove_90
+    21300182: Avatars-HiperMove_91
+    21300184: Avatars-HiperMove_92
+    21300186: Avatars-HiperMove_93
+    21300188: Avatars-HiperMove_94
+    21300190: Avatars-HiperMove_95
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -140,7 +140,7 @@ TextureImporter:
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: 0, y: 1}
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 48
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -177,7 +177,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sprites_0
+      name: Avatars-HiperMove_0
       rect:
         serializedVersion: 2
         x: 0
@@ -185,307 +185,307 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_1
+      name: Avatars-HiperMove_1
       rect:
         serializedVersion: 2
         x: 48
         y: 336
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_2
+      name: Avatars-HiperMove_2
       rect:
         serializedVersion: 2
         x: 96
         y: 336
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_3
+      name: Avatars-HiperMove_3
       rect:
         serializedVersion: 2
         x: 144
         y: 336
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_4
+      name: Avatars-HiperMove_4
       rect:
         serializedVersion: 2
         x: 192
         y: 336
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_5
+      name: Avatars-HiperMove_5
       rect:
         serializedVersion: 2
         x: 240
         y: 336
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_6
+      name: Avatars-HiperMove_6
       rect:
         serializedVersion: 2
         x: 288
         y: 336
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_7
+      name: Avatars-HiperMove_7
       rect:
         serializedVersion: 2
         x: 336
         y: 336
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_8
+      name: Avatars-HiperMove_8
       rect:
         serializedVersion: 2
         x: 384
         y: 336
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_9
+      name: Avatars-HiperMove_9
       rect:
         serializedVersion: 2
         x: 432
         y: 336
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_10
+      name: Avatars-HiperMove_10
       rect:
         serializedVersion: 2
         x: 480
         y: 336
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_11
+      name: Avatars-HiperMove_11
       rect:
         serializedVersion: 2
         x: 528
         y: 336
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_12
+      name: Avatars-HiperMove_12
       rect:
         serializedVersion: 2
         x: 0
         y: 288
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_13
+      name: Avatars-HiperMove_13
       rect:
         serializedVersion: 2
         x: 48
         y: 288
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_14
+      name: Avatars-HiperMove_14
       rect:
         serializedVersion: 2
         x: 96
         y: 288
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_15
+      name: Avatars-HiperMove_15
       rect:
         serializedVersion: 2
         x: 144
         y: 288
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_16
+      name: Avatars-HiperMove_16
       rect:
         serializedVersion: 2
         x: 192
         y: 288
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_17
+      name: Avatars-HiperMove_17
       rect:
         serializedVersion: 2
         x: 240
         y: 288
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_18
+      name: Avatars-HiperMove_18
       rect:
         serializedVersion: 2
         x: 288
         y: 288
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_19
+      name: Avatars-HiperMove_19
       rect:
         serializedVersion: 2
         x: 336
         y: 288
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_20
+      name: Avatars-HiperMove_20
       rect:
         serializedVersion: 2
         x: 384
         y: 288
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_21
+      name: Avatars-HiperMove_21
       rect:
         serializedVersion: 2
         x: 432
         y: 288
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_22
+      name: Avatars-HiperMove_22
       rect:
         serializedVersion: 2
         x: 480
@@ -493,167 +493,167 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_23
+      name: Avatars-HiperMove_23
       rect:
         serializedVersion: 2
         x: 528
         y: 288
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_24
+      name: Avatars-HiperMove_24
       rect:
         serializedVersion: 2
         x: 0
         y: 240
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_25
+      name: Avatars-HiperMove_25
       rect:
         serializedVersion: 2
         x: 48
         y: 240
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_26
+      name: Avatars-HiperMove_26
       rect:
         serializedVersion: 2
         x: 96
         y: 240
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_27
+      name: Avatars-HiperMove_27
       rect:
         serializedVersion: 2
         x: 144
         y: 240
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_28
+      name: Avatars-HiperMove_28
       rect:
         serializedVersion: 2
         x: 192
         y: 240
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_29
+      name: Avatars-HiperMove_29
       rect:
         serializedVersion: 2
         x: 240
         y: 240
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_30
+      name: Avatars-HiperMove_30
       rect:
         serializedVersion: 2
         x: 288
         y: 240
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_31
+      name: Avatars-HiperMove_31
       rect:
         serializedVersion: 2
         x: 336
         y: 240
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_32
+      name: Avatars-HiperMove_32
       rect:
         serializedVersion: 2
         x: 384
         y: 240
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_33
+      name: Avatars-HiperMove_33
       rect:
         serializedVersion: 2
         x: 432
         y: 240
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_34
+      name: Avatars-HiperMove_34
       rect:
         serializedVersion: 2
         x: 480
@@ -661,861 +661,861 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_35
+      name: Avatars-HiperMove_35
       rect:
         serializedVersion: 2
         x: 528
         y: 240
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_36
+      name: Avatars-HiperMove_36
       rect:
         serializedVersion: 2
         x: 0
         y: 192
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_37
+      name: Avatars-HiperMove_37
       rect:
         serializedVersion: 2
         x: 48
         y: 192
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_38
+      name: Avatars-HiperMove_38
       rect:
         serializedVersion: 2
         x: 96
         y: 192
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_39
+      name: Avatars-HiperMove_39
       rect:
         serializedVersion: 2
         x: 144
         y: 192
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_40
+      name: Avatars-HiperMove_40
       rect:
         serializedVersion: 2
         x: 192
         y: 192
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_41
+      name: Avatars-HiperMove_41
       rect:
         serializedVersion: 2
         x: 240
         y: 192
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_42
+      name: Avatars-HiperMove_42
       rect:
         serializedVersion: 2
         x: 288
         y: 192
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_43
+      name: Avatars-HiperMove_43
       rect:
         serializedVersion: 2
         x: 336
         y: 192
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_44
+      name: Avatars-HiperMove_44
       rect:
         serializedVersion: 2
         x: 384
         y: 192
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_45
+      name: Avatars-HiperMove_45
       rect:
         serializedVersion: 2
         x: 432
         y: 192
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_46
+      name: Avatars-HiperMove_46
       rect:
         serializedVersion: 2
         x: 480
         y: 192
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_47
+      name: Avatars-HiperMove_47
       rect:
         serializedVersion: 2
         x: 528
         y: 192
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_48
+      name: Avatars-HiperMove_48
       rect:
         serializedVersion: 2
         x: 0
         y: 144
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_49
+      name: Avatars-HiperMove_49
       rect:
         serializedVersion: 2
         x: 48
         y: 144
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_50
+      name: Avatars-HiperMove_50
       rect:
         serializedVersion: 2
         x: 96
         y: 144
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_51
+      name: Avatars-HiperMove_51
       rect:
         serializedVersion: 2
         x: 144
         y: 144
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_52
+      name: Avatars-HiperMove_52
       rect:
         serializedVersion: 2
         x: 192
         y: 144
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_53
+      name: Avatars-HiperMove_53
       rect:
         serializedVersion: 2
         x: 240
         y: 144
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_54
+      name: Avatars-HiperMove_54
       rect:
         serializedVersion: 2
         x: 288
         y: 144
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_55
+      name: Avatars-HiperMove_55
       rect:
         serializedVersion: 2
         x: 336
         y: 144
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_56
+      name: Avatars-HiperMove_56
       rect:
         serializedVersion: 2
         x: 384
         y: 144
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_57
+      name: Avatars-HiperMove_57
       rect:
         serializedVersion: 2
         x: 432
         y: 144
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_58
+      name: Avatars-HiperMove_58
       rect:
         serializedVersion: 2
         x: 480
         y: 144
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_59
+      name: Avatars-HiperMove_59
       rect:
         serializedVersion: 2
         x: 528
         y: 144
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_60
+      name: Avatars-HiperMove_60
       rect:
         serializedVersion: 2
         x: 0
         y: 96
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_61
+      name: Avatars-HiperMove_61
       rect:
         serializedVersion: 2
         x: 48
         y: 96
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_62
+      name: Avatars-HiperMove_62
       rect:
         serializedVersion: 2
         x: 96
         y: 96
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_63
+      name: Avatars-HiperMove_63
       rect:
         serializedVersion: 2
         x: 144
         y: 96
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_64
+      name: Avatars-HiperMove_64
       rect:
         serializedVersion: 2
         x: 192
         y: 96
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_65
+      name: Avatars-HiperMove_65
       rect:
         serializedVersion: 2
         x: 240
         y: 96
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_66
+      name: Avatars-HiperMove_66
       rect:
         serializedVersion: 2
         x: 288
         y: 96
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_67
+      name: Avatars-HiperMove_67
       rect:
         serializedVersion: 2
         x: 336
         y: 96
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_68
+      name: Avatars-HiperMove_68
       rect:
         serializedVersion: 2
         x: 384
         y: 96
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_69
+      name: Avatars-HiperMove_69
       rect:
         serializedVersion: 2
         x: 432
         y: 96
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_70
+      name: Avatars-HiperMove_70
       rect:
         serializedVersion: 2
         x: 480
         y: 96
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_71
+      name: Avatars-HiperMove_71
       rect:
         serializedVersion: 2
         x: 528
         y: 96
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_72
+      name: Avatars-HiperMove_72
       rect:
         serializedVersion: 2
         x: 0
         y: 48
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_73
+      name: Avatars-HiperMove_73
       rect:
         serializedVersion: 2
         x: 48
         y: 48
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_74
+      name: Avatars-HiperMove_74
       rect:
         serializedVersion: 2
         x: 96
         y: 48
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_75
+      name: Avatars-HiperMove_75
       rect:
         serializedVersion: 2
         x: 144
         y: 48
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_76
+      name: Avatars-HiperMove_76
       rect:
         serializedVersion: 2
         x: 192
         y: 48
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_77
+      name: Avatars-HiperMove_77
       rect:
         serializedVersion: 2
         x: 240
         y: 48
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_78
+      name: Avatars-HiperMove_78
       rect:
         serializedVersion: 2
         x: 288
         y: 48
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_79
+      name: Avatars-HiperMove_79
       rect:
         serializedVersion: 2
         x: 336
         y: 48
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_80
+      name: Avatars-HiperMove_80
       rect:
         serializedVersion: 2
         x: 384
         y: 48
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_81
+      name: Avatars-HiperMove_81
       rect:
         serializedVersion: 2
         x: 432
         y: 48
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_82
+      name: Avatars-HiperMove_82
       rect:
         serializedVersion: 2
         x: 480
         y: 48
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_83
+      name: Avatars-HiperMove_83
       rect:
         serializedVersion: 2
         x: 528
         y: 48
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_84
+      name: Avatars-HiperMove_84
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_85
+      name: Avatars-HiperMove_85
       rect:
         serializedVersion: 2
         x: 48
         y: 0
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_86
+      name: Avatars-HiperMove_86
       rect:
         serializedVersion: 2
         x: 96
         y: 0
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_87
+      name: Avatars-HiperMove_87
       rect:
         serializedVersion: 2
         x: 144
         y: 0
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_88
+      name: Avatars-HiperMove_88
       rect:
         serializedVersion: 2
         x: 192
         y: 0
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_89
+      name: Avatars-HiperMove_89
       rect:
         serializedVersion: 2
         x: 240
         y: 0
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_90
+      name: Avatars-HiperMove_90
       rect:
         serializedVersion: 2
         x: 288
         y: 0
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_91
+      name: Avatars-HiperMove_91
       rect:
         serializedVersion: 2
         x: 336
         y: 0
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_92
+      name: Avatars-HiperMove_92
       rect:
         serializedVersion: 2
         x: 384
         y: 0
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_93
+      name: Avatars-HiperMove_93
       rect:
         serializedVersion: 2
         x: 432
         y: 0
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_94
+      name: Avatars-HiperMove_94
       rect:
         serializedVersion: 2
         x: 480
         y: 0
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sprites_95
+      name: Avatars-HiperMove_95
       rect:
         serializedVersion: 2
         x: 528
         y: 0
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
