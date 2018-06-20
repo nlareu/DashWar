@@ -16,13 +16,13 @@ public class AvatarWallCollision : GameCollision
         //newDir = Vector3.Reflect(curDir, contact.normal);
         //ac.transform.rotation = Quaternion.FromToRotation(Vector3.forward, newDir);
 
-        Debug.Log("Wall hit");
+        //Debug.Log("Wall hit");
 
-        //Reverse horizontal direction of avatar to make a bounce.
-        rb.AddForce(new Vector2(
-            collision.relativeVelocity.normalized.x * (Mathf.Abs(collision.relativeVelocity.x) * ac.HitForce / ac.ejectionVelocity.x),
-            0
-        ));
+        ////Reverse horizontal direction of avatar to make a bounce.
+        //rb.AddForce(new Vector2(
+        //    collision.relativeVelocity.normalized.x * (Mathf.Abs(collision.relativeVelocity.x) * ac.HitForce / ac.ejectionVelocity.x),
+        //    0
+        //));
 
 
         //float factor = 250f;

@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AvatarController : MonoBehaviour
 {
     public float debugvar = 10f;
 
-    public float HipervelocityBurnTime = 0.5f;
-    public float HipervelocityCooldownTime = 1.0f;
+    public float HipervelocityBurnMaxTime = 0.5f;
+    public float HipervelocityCooldownMaxTime = 1.0f;
     public float HipervelocitySpeed = 17.0f;
     public float HitForce = 500.0F;
     public bool IsJumping = false;
@@ -40,6 +41,13 @@ public class AvatarController : MonoBehaviour
                             this.rigidBody.velocity = Vector2.zero;
 
                             this.hiperActivedTime = 0f;
+
+                            //Set initial values for hiper move line.
+                            this.hiperMoveLine.positionCount = 2;
+                            this.hiperMoveLine.SetPositions(new Vector3[] {
+                                new Vector2(this.rigidBody.position.x, this.rigidBody.position.y),
+                                new Vector2(this.rigidBody.position.x, this.rigidBody.position.y),
+                            });
 
                             break;
                         }
@@ -80,6 +88,7 @@ public class AvatarController : MonoBehaviour
             }
         }
     }
+    public float StunnedMaxTime = 1.5f;
 
     private int playerNumber;
     private string playerName
@@ -89,9 +98,31 @@ public class AvatarController : MonoBehaviour
 
     private Animator animator;
     private BoxCollider2D boxCollider;
+    private Vector2 currentDirection
+    {
+        get
+        {
+            return new Vector2(
+                        (this.rigidBody.position.x > this.previousPosition.x)
+                            ? 1
+                            : (this.rigidBody.position.x < this.previousPosition.x)
+                                ? -1
+                                : 0,
+                        (this.rigidBody.position.y > this.previousPosition.y)
+                            ? 1
+                            : (this.rigidBody.position.y < this.previousPosition.y)
+                                ? -1
+                                : 0
+            ); ;
+        }
+    }
     internal Vector2 ejectionVelocity = Vector2.zero;
     private float hiperActivedTime;
     private float hiperCooldownTime;
+    private LineRenderer hiperMoveLine;
+    private Vector2 previousDirection = Vector2.zero;
+    private Vector2 previousPosition = Vector2.zero;
+    private AvatarStates previousState;
     private SpriteRenderer spriteRendered;
     private Rigidbody2D rigidBody;
     private float stunningTime;
@@ -100,6 +131,7 @@ public class AvatarController : MonoBehaviour
     {
         this.animator = GetComponent<Animator>();
         this.boxCollider = GetComponent<BoxCollider2D>();
+        this.hiperMoveLine = GetComponent<LineRenderer>();
         this.playerNumber = AppController.GetPlayerNumber();
         this.rigidBody = GetComponent<Rigidbody2D>();
         this.spriteRendered = GetComponent<SpriteRenderer>();
@@ -117,10 +149,13 @@ public class AvatarController : MonoBehaviour
 
                     this.hiperCooldownTime += Time.deltaTime;
 
-                    if (this.hiperCooldownTime > this.HipervelocityCooldownTime)
+                    if (this.hiperCooldownTime > this.HipervelocityCooldownMaxTime)
                     {
                         this.State = AvatarStates.Normal;
                     }
+
+                    //Reset hiper move line
+                    this.hiperMoveLine.positionCount = 0;
 
                     break;
                 }
@@ -136,7 +171,7 @@ public class AvatarController : MonoBehaviour
 
                     this.hiperActivedTime += Time.deltaTime;
 
-                    if (this.hiperActivedTime > this.HipervelocityBurnTime)
+                    if (this.hiperActivedTime > this.HipervelocityBurnMaxTime)
                     {
                         this.State = AvatarStates.CoolingDown;
                         break;
@@ -145,18 +180,34 @@ public class AvatarController : MonoBehaviour
 
                     Vector2 moveVector = new Vector2();
 
-                        if (Input.GetButton(this.playerName + "Left"))
-                            moveVector += Vector2.left * this.HipervelocitySpeed * Time.deltaTime;
-                        else if (Input.GetButton(this.playerName + "Right"))
-                            moveVector += Vector2.right * this.HipervelocitySpeed * Time.deltaTime;
+                    if (Input.GetButton(this.playerName + "Left"))
+                        moveVector += Vector2.left * this.HipervelocitySpeed * Time.deltaTime;
+                    else if (Input.GetButton(this.playerName + "Right"))
+                        moveVector += Vector2.right * this.HipervelocitySpeed * Time.deltaTime;
 
-                        if (Input.GetButton(this.playerName + "Up"))
-                            moveVector += Vector2.up * this.HipervelocitySpeed * Time.deltaTime;
-                        else if (Input.GetButton(this.playerName + "Down"))
-                            moveVector += Vector2.down * this.HipervelocitySpeed * Time.deltaTime;
+                    if (Input.GetButton(this.playerName + "Up"))
+                        moveVector += Vector2.up * this.HipervelocitySpeed * Time.deltaTime;
+                    else if (Input.GetButton(this.playerName + "Down"))
+                        moveVector += Vector2.down * this.HipervelocitySpeed * Time.deltaTime;
 
-                        this.transform.Translate(moveVector);
-                    
+                    this.transform.Translate(moveVector);
+
+
+                    //If move direction changed, add new position to hiper move line.
+                    if ((this.previousState == AvatarStates.Hipervelocity)
+                        && (this.previousDirection != Vector2.zero)
+                        && (this.previousDirection != this.currentDirection))
+                    {
+                        this.hiperMoveLine.positionCount++;
+                    }
+
+                    //Update hiper move line liast position.
+                    this.hiperMoveLine.SetPosition(this.hiperMoveLine.positionCount - 1, new Vector2(this.rigidBody.position.x, this.rigidBody.position.y));
+
+                    //Vector3[] pos = new Vector3[this.hiperMoveLine.positionCount];
+                    //this.hiperMoveLine.GetPositions(pos);
+                    //Debug.Log(string.Join(",", pos.Select(item => string.Format("x: {0}, y: {1}", item.x, item.y)).ToArray()));
+
                     break;
                 }
             #endregion
@@ -177,6 +228,13 @@ public class AvatarController : MonoBehaviour
             #region Stunned
             case AvatarStates.Stunned:
                 {
+                    this.stunningTime += Time.deltaTime;
+
+                    if (this.stunningTime > this.StunnedMaxTime)
+                    {
+                        this.State = AvatarStates.Normal;
+                    }
+
                     this.ejectionVelocity = this.rigidBody.velocity;
 
                     break;
@@ -184,8 +242,14 @@ public class AvatarController : MonoBehaviour
             #endregion
         }
 
-        if (this.rigidBody.velocity.x != 0) 
-            Debug.Log("Velocity: " + this.rigidBody.velocity.ToString());
+
+        this.previousDirection = this.currentDirection;
+        this.previousPosition = new Vector2(this.rigidBody.position.x, this.rigidBody.position.y);
+        this.previousState = this.State;
+
+        //Debug.Log("Velocity: " + this.rigidBody.velocity.ToString());
+        //if (this.rigidBody.velocity.x != 0) 
+        //    Debug.Log("Velocity: " + this.rigidBody.velocity.ToString());
     }
 
     private void CheckAvatarMove()
