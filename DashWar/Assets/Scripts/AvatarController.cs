@@ -8,6 +8,7 @@ public class AvatarController : MonoBehaviour
 {
     public float debugvar = 10f;
 
+    public float AxisSensitive = 0.7f;
     public float HipervelocityBurnMaxTime = 0.5f;
     public float HipervelocityCooldownMaxTime = 1.0f;
     public float HipervelocitySpeed = 17.0f;
@@ -76,7 +77,7 @@ public class AvatarController : MonoBehaviour
                             this.animator.SetFloat("HiperMoveX", 0);
                             this.animator.SetFloat("HiperMoveY", 0);
 
-                            this.spriteRendered.color = Color.blue;
+                            this.spriteRendered.color = Color.green;
 
                             this.rigidBody.gravityScale = 1f;
 
@@ -88,7 +89,7 @@ public class AvatarController : MonoBehaviour
                     #region Stunned
                     case AvatarStates.Stunned:
                         {
-                            this.spriteRendered.color = Color.gray;
+                            this.spriteRendered.color = Color.red;
 
                             this.stunningTime = 0f;
 
@@ -127,6 +128,7 @@ public class AvatarController : MonoBehaviour
             ); ;
         }
     }
+
     internal Vector2 ejectionVelocity = Vector2.zero;
     private float hiperActivedTime;
     private float hiperCooldownTime;
@@ -249,13 +251,17 @@ public class AvatarController : MonoBehaviour
         //Debug.Log("Velocity: " + this.rigidBody.velocity.ToString());
         //if (this.rigidBody.velocity.x != 0) 
         //    Debug.Log("Velocity: " + this.rigidBody.velocity.ToString());
+        //Debug.Log(string.Format("Axis H: {0}, V: {1}.", (float)Input.GetAxis(this.playerName + "Horizontal"), (float)Input.GetAxis(this.playerName + "Vertical")));
     }
 
     private void CheckAvatarHiperMove()
     {
         Vector2 moveVector = new Vector2();
+        float axisHor = Input.GetAxis(this.playerName + "Horizontal");
+        float axisVer = Input.GetAxis(this.playerName + "Vertical");
 
-        if (Input.GetButton(this.playerName + "Left"))
+        //if (Input.GetButton(this.playerName + "Left"))
+        if (axisHor <= -this.AxisSensitive)
         {
             moveVector += Vector2.left * this.HipervelocitySpeed * Time.deltaTime;
 
@@ -263,7 +269,8 @@ public class AvatarController : MonoBehaviour
             this.animator.SetFloat("HiperMoveX", -1.5f);
             this.animator.SetFloat("HiperMoveY", 0);
         }
-        else if (Input.GetButton(this.playerName + "Right"))
+        //if (Input.GetButton(this.playerName + "Right"))
+        if (axisHor >= this.AxisSensitive)
         {
             moveVector += Vector2.right * this.HipervelocitySpeed * Time.deltaTime;
 
@@ -272,7 +279,8 @@ public class AvatarController : MonoBehaviour
             this.animator.SetFloat("HiperMoveY", 0);
         }
 
-        if (Input.GetButton(this.playerName + "Up"))
+        //if (Input.GetButton(this.playerName + "Up"))
+        if (axisVer >= this.AxisSensitive)
         {
             moveVector += Vector2.up * this.HipervelocitySpeed * Time.deltaTime;
 
@@ -280,7 +288,8 @@ public class AvatarController : MonoBehaviour
             //this.animator.SetFloat("HiperMoveX", 0);
             //this.animator.SetFloat("HiperMoveY", 1.5f);
         }
-        else if (Input.GetButton(this.playerName + "Down"))
+        //if (Input.GetButton(this.playerName + "Down"))
+        else if (axisVer <= -this.AxisSensitive)
         {
             moveVector += Vector2.down * this.HipervelocitySpeed * Time.deltaTime;
 
@@ -294,15 +303,19 @@ public class AvatarController : MonoBehaviour
     private void CheckAvatarMove()
     {
         Vector2 moveVector = new Vector2();
+        float axisHor = Input.GetAxis(this.playerName + "Horizontal");
+        float axisVer = Input.GetAxis(this.playerName + "Vertical");
 
-        if (Input.GetButton(this.playerName + "Left"))
+        //if (Input.GetButton(this.playerName + "Left"))
+        if (axisHor <= -this.AxisSensitive)
         {
             moveVector += Vector2.left * this.Speed * Time.deltaTime;
 
             this.animator.SetBool("Moving", true);
             this.animator.SetFloat("MoveX", -1.5f);
         }
-        else if (Input.GetButton(this.playerName + "Right"))
+        //else if (Input.GetButton(this.playerName + "Right"))
+        else if (axisHor >= this.AxisSensitive)
         {
             moveVector += Vector2.right * this.Speed * Time.deltaTime;
 

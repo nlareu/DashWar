@@ -121,7 +121,7 @@ MonoBehaviour:
   debugvar: 10
   HipervelocityBurnMaxTime: 0.5
   HipervelocityCooldownMaxTime: 1
-  HipervelocitySpeed: 17
+  HipervelocitySpeed: 13
   HitForce: 500
   IsJumping: 0
   JumpHeight: 250

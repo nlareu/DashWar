@@ -804,21 +804,6 @@ Prefab:
       propertyPath: m_Name
       value: Avatar (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 212616042359845370, guid: 92848d785d377cc4ba787c26b2cf8c76,
-        type: 2}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212616042359845370, guid: 92848d785d377cc4ba787c26b2cf8c76,
-        type: 2}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 212616042359845370, guid: 92848d785d377cc4ba787c26b2cf8c76,
-        type: 2}
-      propertyPath: m_Color.b
-      value: 0.26896572
-      objectReference: {fileID: 0}
     - target: {fileID: 114808293114151986, guid: 92848d785d377cc4ba787c26b2cf8c76,
         type: 2}
       propertyPath: HipervelocityBurnTime
@@ -838,6 +823,26 @@ Prefab:
         type: 2}
       propertyPath: debugvar
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114808293114151986, guid: 92848d785d377cc4ba787c26b2cf8c76,
+        type: 2}
+      propertyPath: HipervelocityBurnMaxTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 212616042359845370, guid: 92848d785d377cc4ba787c26b2cf8c76,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212616042359845370, guid: 92848d785d377cc4ba787c26b2cf8c76,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212616042359845370, guid: 92848d785d377cc4ba787c26b2cf8c76,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 92848d785d377cc4ba787c26b2cf8c76, type: 2}
