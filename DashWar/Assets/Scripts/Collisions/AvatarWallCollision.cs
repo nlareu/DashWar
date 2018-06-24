@@ -7,8 +7,8 @@ public class AvatarWallCollision : GameCollision
 
     public override void Resolve(GameObject collider1, GameObject collider2, Collision2D collision)
     {
-        AvatarController ac = collider1.GetComponent<AvatarController>();
-        Rigidbody2D rb = collider1.GetComponent<Rigidbody2D>();
+        //AvatarController ac = collider1.GetComponent<AvatarController>();
+        //Rigidbody2D rb = collider1.GetComponent<Rigidbody2D>();
 
         //var contact = collision.contacts[0];
         //var newDir = Vector3.zero;

@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class AppController : MonoBehaviour {
 
-    private static int playersCount = 0;
+    private static List<AvatarController> players = new List<AvatarController>();
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 	}
 	
 	// Update is called once per frame
@@ -16,16 +16,22 @@ public class AppController : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Return))
         {
             //Reset static.
-            AppController.playersCount = 0;
+            AppController.players.Clear();
 
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
 
-    public static int GetPlayerNumber()
+    public static int AddPlayer(AvatarController avatar)
     {
-        playersCount++;
-        return playersCount;
+        AppController.players.Add(avatar);
+
+        return AppController.players.Count;
+    }
+    public static List<AvatarController> GetPlayers()
+    {
+        //Return a copy to prevent reference and not desired changes on the list.
+        return new List<AvatarController>(AppController.players);
     }
 }

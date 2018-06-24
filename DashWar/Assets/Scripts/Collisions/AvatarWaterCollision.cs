@@ -7,8 +7,6 @@ public class AvatarWaterCollision : GameCollision
 
     public override void Resolve(GameObject collider1, GameObject collider2, Collision2D collision)
     {
-        AvatarController ac = collider1.GetComponent<AvatarController>();
-
         //Just destroy avatar for now.
         Object.Destroy(collider1);
     }

@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugvar: 10
+  AxisSensitive: 0.7
   HipervelocityBurnMaxTime: 0.5
   HipervelocityCooldownMaxTime: 1
   HipervelocitySpeed: 13

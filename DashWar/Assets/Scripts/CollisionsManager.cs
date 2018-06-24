@@ -10,6 +10,7 @@ public class CollisionsManager {
     static CollisionsManager() {
         Collisions = new List<IGameCollision>
         {
+            new AvatarAvatarCollision(),
             new AvatarGroundCollision(),
             new AvatarWallCollision(),
             new AvatarWaterCollision(),
