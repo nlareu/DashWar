@@ -100,7 +100,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 1  
+    joyNum: 1
   - serializedVersion: 3
     m_Name: Player1-Vertical
     descriptiveName: 
@@ -356,7 +356,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 3  
+    joyNum: 3
   - serializedVersion: 3
     m_Name: Player3-Vertical
     descriptiveName: 
@@ -484,7 +484,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 4  
+    joyNum: 4
   - serializedVersion: 3
     m_Name: Player4-Vertical
     descriptiveName: 
