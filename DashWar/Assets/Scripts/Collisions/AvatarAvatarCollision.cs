@@ -14,6 +14,7 @@ public class AvatarAvatarCollision : GameCollision
         AvatarController hittedAvatar = null;
         Vector2 hitDirection = Vector2.zero;
         var avatarPos = avatar.rigidBody.position;
+        var AvatarBounds = avatar.boxCollider.bounds;
         var otherAvatarPos = otherAvatar.rigidBody.position;
         var otherAvatarBounds = otherAvatar.boxCollider.bounds;
 
@@ -24,48 +25,30 @@ public class AvatarAvatarCollision : GameCollision
 
         if ((avatar.State == AvatarStates.Hipervelocity) && (otherAvatar.State == AvatarStates.Hipervelocity))
         {
-            #region Not working
-            //To know who hit who, check if hitting center of object is between bounds of hitted object.
-            //Also the direction of the hit will determine the direction of the ejection.
-            if ((avatarPos.y >= otherAvatarBounds.min.y) && (avatarPos.y <= otherAvatarBounds.max.y))
+            //If avatar is going to right or left and other avatar is going up or down
+            if (
+                (avatar.currentDirection.x == 1 || avatar.currentDirection.x == -1) &&
+                (otherAvatar.currentDirection.y == 1 || otherAvatar.currentDirection.y == -1)
+               )
             {
-                hittedAvatar = otherAvatar;
-                hittingAvatar = avatar;
+                if (((avatarPos.y >= otherAvatarBounds.min.y) && (avatarPos.y <= otherAvatarBounds.max.y)))
+                {
+                    hittedAvatar = otherAvatar;
+                    hittingAvatar = avatar;
 
-                if (avatarPos.x < otherAvatarPos.x)
-                    hitDirection = Vector2.right;
-                //otherAvatar.rigidBody.AddForce(Vector2.right * this.HitForce);
-                else
-                    hitDirection = Vector2.left;
-                //otherAvatar.rigidBody.AddForce(Vector2.left * this.HitForce);
+                    if (avatar.currentDirection.x == 1)
+                    {
+                        hitDirection = Vector2.right;
+                        otherAvatar.rigidBody.AddForce(Vector2.right * avatar.HitForce);
+                    }
+                    else
+                    {
+                        hitDirection = Vector2.left;
+                        otherAvatar.rigidBody.AddForce(Vector2.left * avatar.HitForce);
+                    }
 
-                //otherAvatar.State = AvatarStates.Stunned;
+                }
             }
-            else if ((avatarPos.x >= otherAvatarBounds.min.x) && (avatarPos.x <= otherAvatarBounds.max.x))
-            {
-                hittedAvatar = otherAvatar;
-                hittingAvatar = avatar;
-
-                if (avatarPos.y < otherAvatarPos.y)
-                    hitDirection = Vector2.up;
-                //otherAvatar.rigidBody.AddForce(Vector2.up * this.HitForce);
-                else
-                    hitDirection = Vector2.down;
-                //otherAvatar.rigidBody.AddForce(Vector2.left * this.HitForce);
-
-                //otherAvatar.State = AvatarStates.Stunned;
-            }
-            ////If code goes here, is because this object is the hitted one.
-            //else
-            //{
-            //    if (avatarPos.x < otherAvatarPos.x)
-            //        this.rigidBody.AddForce(Vector2.right * this.HitForce);
-            //    else
-            //        this.rigidBody.AddForce(Vector2.left * this.HitForce);
-
-            //    this.State = AvatarStates.Stunned;
-            //}
-            #endregion
         }
         else if (avatar.State == AvatarStates.Hipervelocity)
         {
@@ -87,29 +70,115 @@ public class AvatarAvatarCollision : GameCollision
                     hitDirection = Vector2.down;
             }
         }
-        //else if (otherAvatar.State == AvatarStates.Hipervelocity)
-        //{
-        //    hittingAvatar = otherAvatar;
-        //    hittedAvatar = avatar;
+        else if (otherAvatar.State == AvatarStates.Hipervelocity)
+        {
+            hittingAvatar = otherAvatar;
+            hittedAvatar = avatar;
 
-        //    if ((avatarPos.y >= otherAvatarBounds.min.y) && (avatarPos.y <= otherAvatarBounds.max.y))
-        //    {
-        //        if (avatarPos.x < otherAvatarPos.x)
-        //            hitDirection = Vector2.right;
-        //        else
-        //            hitDirection = Vector2.left;
-        //    }
-        //    else if ((avatarPos.x >= otherAvatarBounds.min.x) && (avatarPos.x <= otherAvatarBounds.max.x))
-        //    {
-        //        if (avatarPos.y < otherAvatarPos.y)
-        //            hitDirection = Vector2.up;
-        //        else
-        //            hitDirection = Vector2.down;
-        //    }
-        //}
+            if ((avatarPos.y >= otherAvatarBounds.min.y) && (avatarPos.y <= otherAvatarBounds.max.y))
+            {
+                if (avatarPos.x < otherAvatarPos.x)
+                    hitDirection = Vector2.right;
+                else
+                    hitDirection = Vector2.left;
+            }
+            else if ((avatarPos.x >= otherAvatarBounds.min.x) && (avatarPos.x <= otherAvatarBounds.max.x))
+            {
+                if (avatarPos.y < otherAvatarPos.y)
+                    hitDirection = Vector2.up;
+                else
+                    hitDirection = Vector2.down;
+            }
+        }
+
+                //if ((avatar.State == AvatarStates.Hipervelocity) && (otherAvatar.State == AvatarStates.Hipervelocity))
+                //{
+                //    #region Not working
+                //    To know who hit who, check if hitting center of object is between bounds of hitted object.
+                //    Also the direction of the hit will determine the direction of the ejection.
+                //    if ((avatarPos.y >= otherAvatarBounds.min.y) && (avatarPos.y <= otherAvatarBounds.max.y))
+                //    {
+                //        hittedAvatar = otherAvatar;
+                //        hittingAvatar = avatar;
+
+                //        if (avatarPos.x < otherAvatarPos.x)
+                //            hitDirection = Vector2.right;
+                //        otherAvatar.rigidBody.AddForce(Vector2.right * this.HitForce);
+                //        else
+                //            hitDirection = Vector2.left;
+                //        otherAvatar.rigidBody.AddForce(Vector2.left * this.HitForce);
+
+                //        otherAvatar.State = AvatarStates.Stunned;
+                //    }
+                //    else if ((avatarPos.x >= otherAvatarBounds.min.x) && (avatarPos.x <= otherAvatarBounds.max.x))
+                //    {
+                //        hittedAvatar = otherAvatar;
+                //        hittingAvatar = avatar;
+
+                //        if (avatarPos.y < otherAvatarPos.y)
+                //            hitDirection = Vector2.up;
+                //        otherAvatar.rigidBody.AddForce(Vector2.up * this.HitForce);
+                //        else
+                //            hitDirection = Vector2.down;
+                //        otherAvatar.rigidBody.AddForce(Vector2.left * this.HitForce);
+
+                //        otherAvatar.State = AvatarStates.Stunned;
+                //    }
+                //    //If code goes here, is because this object is the hitted one.
+                //    else
+                //    {
+                //        if (avatarPos.x < otherAvatarPos.x)
+                //            this.rigidBody.AddForce(Vector2.right * this.HitForce);
+                //        else
+                //            this.rigidBody.AddForce(Vector2.left * this.HitForce);
+
+                //        this.State = AvatarStates.Stunned;
+                //    }
+                //    #endregion
+                //}
+                //else if (avatar.State == AvatarStates.Hipervelocity)
+                //{
+                //    hittingAvatar = avatar;
+                //    hittedAvatar = otherAvatar;
+
+                //    if ((avatarPos.y >= otherAvatarBounds.min.y) && (avatarPos.y <= otherAvatarBounds.max.y))
+                //    {
+                //        if (avatarPos.x < otherAvatarPos.x)
+                //            hitDirection = Vector2.right;
+                //        else
+                //            hitDirection = Vector2.left;
+                //    }
+                //    else if ((avatarPos.x >= otherAvatarBounds.min.x) && (avatarPos.x <= otherAvatarBounds.max.x))
+                //    {
+                //        if (avatarPos.y < otherAvatarPos.y)
+                //            hitDirection = Vector2.up;
+                //        else
+                //            hitDirection = Vector2.down;
+                //    }
+                //}
+                //else if (otherAvatar.State == AvatarStates.Hipervelocity)
+                //{
+                //    hittingAvatar = otherAvatar;
+                //    hittedAvatar = avatar;
+
+                //    if ((avatarPos.y >= otherAvatarBounds.min.y) && (avatarPos.y <= otherAvatarBounds.max.y))
+                //    {
+                //        if (avatarPos.x < otherAvatarPos.x)
+                //            hitDirection = Vector2.right;
+                //        else
+                //            hitDirection = Vector2.left;
+                //    }
+                //    else if ((avatarPos.x >= otherAvatarBounds.min.x) && (avatarPos.x <= otherAvatarBounds.max.x))
+                //    {
+                //        if (avatarPos.y < otherAvatarPos.y)
+                //            hitDirection = Vector2.up;
+                //        else
+                //            hitDirection = Vector2.down;
+                //    }
+                //}
 
 
-        //Means that a hit happens.
+                //Means that a hit happens.
         if (hittedAvatar != null)
         {
             hittedAvatar.State = AvatarStates.Stunned;
