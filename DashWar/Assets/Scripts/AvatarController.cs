@@ -15,7 +15,7 @@ public class AvatarController : MonoBehaviour
     public float HitForce = 500.0F;
     public bool IsJumping = false;
     public float JumpHeight = 250.0f;
-    public int PlayerNumber { get; protected set; }
+    public int PlayerNumber;
     public float Speed = 6.0F;
     protected AvatarStates state = AvatarStates.Normal;
     public AvatarStates State
@@ -168,9 +168,6 @@ public class AvatarController : MonoBehaviour
         this.rigidBody = GetComponent<Rigidbody2D>();
         this.spriteRendered = GetComponent<SpriteRenderer>();
         this.tag = "Player";
-
-
-        this.PlayerNumber = AppController.AddPlayer(this);
     }
 
     protected virtual void Update()
@@ -289,42 +286,44 @@ public class AvatarController : MonoBehaviour
         float axisHor = Input.GetAxis(this.playerName + "Horizontal");
         float axisVer = Input.GetAxis(this.playerName + "Vertical");
 
-        //if (Input.GetButton(this.playerName + "Left"))
-        if (Input.GetButton(this.playerName + "Left") || axisHor <= -this.AxisSensitive)
+        if ((Input.GetButton(this.playerName + "Left") || axisHor <= -this.AxisSensitive)
+            || (Input.GetButton(this.playerName + "Right") || axisHor >= this.AxisSensitive))
         {
-            moveVector += Vector2.left * this.HipervelocitySpeed * Time.deltaTime;
+            if (Input.GetButton(this.playerName + "Left") || axisHor <= -this.AxisSensitive)
+            {
+                moveVector += Vector2.left * this.HipervelocitySpeed * Time.deltaTime;
 
-            //this.animator.SetBool("HiperMoving", true);
-            this.animator.SetFloat("HiperMoveX", -1.5f);
-            this.animator.SetFloat("HiperMoveY", 0);
+                //this.animator.SetBool("HiperMoving", true);
+                this.animator.SetFloat("HiperMoveX", -1.5f);
+                this.animator.SetFloat("HiperMoveY", 0);
+            }
+            else if (Input.GetButton(this.playerName + "Right") || axisHor >= this.AxisSensitive)
+            {
+                moveVector += Vector2.right * this.HipervelocitySpeed * Time.deltaTime;
+
+                //this.animator.SetBool("HiperMoving", true);
+                this.animator.SetFloat("HiperMoveX", 1.5f);
+                this.animator.SetFloat("HiperMoveY", 0);
+            }
         }
-        //if (Input.GetButton(this.playerName + "Right"))
-        if (Input.GetButton(this.playerName + "Right") || axisHor >= this.AxisSensitive)
+        else
         {
-            moveVector += Vector2.right * this.HipervelocitySpeed * Time.deltaTime;
+            if (Input.GetButton(this.playerName + "Up") || axisVer >= this.AxisSensitive)
+            {
+                moveVector += Vector2.up * this.HipervelocitySpeed * Time.deltaTime;
 
-            //this.animator.SetBool("HiperMoving", true);
-            this.animator.SetFloat("HiperMoveX", 1.5f);
-            this.animator.SetFloat("HiperMoveY", 0);
-        }
+                ////this.animator.SetBool("HiperMoving", true);
+                //this.animator.SetFloat("HiperMoveX", 0);
+                //this.animator.SetFloat("HiperMoveY", 1.5f);
+            }
+            else if (Input.GetButton(this.playerName + "Down") || axisVer <= -this.AxisSensitive)
+            {
+                moveVector += Vector2.down * this.HipervelocitySpeed * Time.deltaTime;
 
-        //if (Input.GetButton(this.playerName + "Up"))
-        if (Input.GetButton(this.playerName + "Up") || axisVer >= this.AxisSensitive)
-        {
-            moveVector += Vector2.up * this.HipervelocitySpeed * Time.deltaTime;
-
-            ////this.animator.SetBool("HiperMoving", true);
-            //this.animator.SetFloat("HiperMoveX", 0);
-            //this.animator.SetFloat("HiperMoveY", 1.5f);
-        }
-        //if (Input.GetButton(this.playerName + "Down"))
-        else if (Input.GetButton(this.playerName + "Down") || axisVer <= -this.AxisSensitive)
-        {
-            moveVector += Vector2.down * this.HipervelocitySpeed * Time.deltaTime;
-
-            ////this.animator.SetBool("HiperMoving", true);
-            //this.animator.SetFloat("HiperMoveX", 0);
-            //this.animator.SetFloat("HiperMoveY", -1.5f);
+                ////this.animator.SetBool("HiperMoving", true);
+                //this.animator.SetFloat("HiperMoveX", 0);
+                //this.animator.SetFloat("HiperMoveY", -1.5f);
+            }
         }
 
         this.transform.Translate(moveVector);

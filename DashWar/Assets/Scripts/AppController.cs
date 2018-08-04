@@ -5,11 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class AppController : MonoBehaviour {
 
+    public AvatarController PlayerSource;
+    public int PlayersCount = 4;
+    public List<GameObject> RespawnPositions = new List<GameObject>();
+
     private static List<AvatarController> players = new List<AvatarController>();
 
     // Use this for initialization
     void Start () {
-	}
+        for (int i = 0; i < this.PlayersCount; i++)
+        {
+            AvatarController player = Instantiate(this.PlayerSource, this.RespawnPositions[i].transform.position, Quaternion.identity);
+
+            player.PlayerNumber = AppController.AddPlayer(player);
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
