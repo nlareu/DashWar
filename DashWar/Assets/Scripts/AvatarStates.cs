@@ -1,7 +1,7 @@
-﻿public enum AvatarStates
+﻿public enum AvatarStates : int
 {
-    Hipervelocity,
-    Normal,
-    CoolingDown,
-    Stunned
+    Hipervelocity = 0,
+    Normal = 1,
+    CoolingDown = 2,
+    Stunned = 3
 }

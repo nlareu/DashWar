@@ -10,43 +10,63 @@ public class AvatarAvatarCollision : GameCollision
         AvatarController avatar = collider1.GetComponent<AvatarController>();
         AvatarController otherAvatar = collider2.GetComponent<AvatarController>();
 
-        AvatarController hittingAvatar = null;
-        AvatarController hittedAvatar = null;
-        Vector2 hitDirection = Vector2.zero;
-        var avatarPos = avatar.rigidBody.position;
-        var AvatarBounds = avatar.boxCollider.bounds;
-        var otherAvatarPos = otherAvatar.rigidBody.position;
-        var otherAvatarBounds = otherAvatar.boxCollider.bounds;
-
         //This collision will be fired by both avatars. Only process the one fired by the player
         //with smaller player number.
         if (avatar.PlayerNumber > otherAvatar.PlayerNumber)
             return;
 
+        float boundsDiffCheck = 0.5f;
+        AvatarController hittingAvatar = null;
+        AvatarController hittedAvatar = null;
+        Vector2 hitDirection = Vector2.zero;
+        bool isDraw = false;
+
+        var avatarPos = avatar.rigidBody.position;
+        var avatarBounds = avatar.boxCollider.bounds;
+        var otherAvatarPos = otherAvatar.rigidBody.position;
+        var otherAvatarBounds = otherAvatar.boxCollider.bounds;
+
+
         if ((avatar.State == AvatarStates.Hipervelocity) && (otherAvatar.State == AvatarStates.Hipervelocity))
         {
-            //If avatar is going to right or left and other avatar is going up or down
-            if (
-                (avatar.currentDirection.x == 1 || avatar.currentDirection.x == -1) &&
-                (otherAvatar.currentDirection.y == 1 || otherAvatar.currentDirection.y == -1)
-               )
+            //Check if it is an horizontal collision.
+            if (((Mathf.Abs(avatarBounds.max.x - otherAvatarBounds.min.x) <= boundsDiffCheck) || (Mathf.Abs(avatarBounds.min.x - otherAvatarBounds.max.x) <= boundsDiffCheck)))
             {
-                if (((avatarPos.y >= otherAvatarBounds.min.y) && (avatarPos.y <= otherAvatarBounds.max.y)))
+                //If the collision is horizontal, then the hitting avatar is the one which it's direction is horizontal.
+                if ((avatar.currentDirection.x != 0) && (otherAvatar.currentDirection.x == 0))
                 {
-                    hittedAvatar = otherAvatar;
                     hittingAvatar = avatar;
-
-                    if (avatar.currentDirection.x == 1)
-                    {
-                        hitDirection = Vector2.right;
-                        otherAvatar.rigidBody.AddForce(Vector2.right * avatar.HitForce);
-                    }
-                    else
-                    {
-                        hitDirection = Vector2.left;
-                        otherAvatar.rigidBody.AddForce(Vector2.left * avatar.HitForce);
-                    }
-
+                    hittedAvatar = otherAvatar;
+                }
+                else if ((avatar.currentDirection.x == 0) && (otherAvatar.currentDirection.x != 0))
+                {
+                    hittingAvatar = otherAvatar;
+                    hittedAvatar = avatar;
+                }
+                //Draw
+                else
+                {
+                    isDraw = true;
+                }
+            }
+            //Check if it is a vertical collision.
+            else if (((Mathf.Abs(avatarBounds.max.y - otherAvatarBounds.min.y) <= boundsDiffCheck) || (Mathf.Abs(avatarBounds.min.y - otherAvatarBounds.max.y) <= boundsDiffCheck)))
+            {
+                //If the collision is vertical, then the hitting avatar is the one which it's direction is vertical.
+                if ((avatar.currentDirection.y != 0) && (otherAvatar.currentDirection.y == 0))
+                {
+                    hittingAvatar = avatar;
+                    hittedAvatar = otherAvatar;
+                }
+                else if ((avatar.currentDirection.y == 0) && (otherAvatar.currentDirection.y != 0))
+                {
+                    hittingAvatar = otherAvatar;
+                    hittedAvatar = avatar;
+                }
+                //Draw
+                else
+                {
+                    isDraw = true;
                 }
             }
         }
@@ -54,136 +74,51 @@ public class AvatarAvatarCollision : GameCollision
         {
             hittingAvatar = avatar;
             hittedAvatar = otherAvatar;
-
-            if ((avatarPos.y >= otherAvatarBounds.min.y) && (avatarPos.y <= otherAvatarBounds.max.y))
-            {
-                if (avatarPos.x < otherAvatarPos.x)
-                    hitDirection = Vector2.right;
-                else
-                    hitDirection = Vector2.left;
-            }
-            else if ((avatarPos.x >= otherAvatarBounds.min.x) && (avatarPos.x <= otherAvatarBounds.max.x))
-            {
-                if (avatarPos.y < otherAvatarPos.y)
-                    hitDirection = Vector2.up;
-                else
-                    hitDirection = Vector2.down;
-            }
         }
         else if (otherAvatar.State == AvatarStates.Hipervelocity)
         {
             hittingAvatar = otherAvatar;
             hittedAvatar = avatar;
-
-            if ((avatarPos.y >= otherAvatarBounds.min.y) && (avatarPos.y <= otherAvatarBounds.max.y))
-            {
-                if (avatarPos.x < otherAvatarPos.x)
-                    hitDirection = Vector2.right;
-                else
-                    hitDirection = Vector2.left;
-            }
-            else if ((avatarPos.x >= otherAvatarBounds.min.x) && (avatarPos.x <= otherAvatarBounds.max.x))
-            {
-                if (avatarPos.y < otherAvatarPos.y)
-                    hitDirection = Vector2.up;
-                else
-                    hitDirection = Vector2.down;
-            }
         }
 
-                //if ((avatar.State == AvatarStates.Hipervelocity) && (otherAvatar.State == AvatarStates.Hipervelocity))
-                //{
-                //    #region Not working
-                //    To know who hit who, check if hitting center of object is between bounds of hitted object.
-                //    Also the direction of the hit will determine the direction of the ejection.
-                //    if ((avatarPos.y >= otherAvatarBounds.min.y) && (avatarPos.y <= otherAvatarBounds.max.y))
-                //    {
-                //        hittedAvatar = otherAvatar;
-                //        hittingAvatar = avatar;
-
-                //        if (avatarPos.x < otherAvatarPos.x)
-                //            hitDirection = Vector2.right;
-                //        otherAvatar.rigidBody.AddForce(Vector2.right * this.HitForce);
-                //        else
-                //            hitDirection = Vector2.left;
-                //        otherAvatar.rigidBody.AddForce(Vector2.left * this.HitForce);
-
-                //        otherAvatar.State = AvatarStates.Stunned;
-                //    }
-                //    else if ((avatarPos.x >= otherAvatarBounds.min.x) && (avatarPos.x <= otherAvatarBounds.max.x))
-                //    {
-                //        hittedAvatar = otherAvatar;
-                //        hittingAvatar = avatar;
-
-                //        if (avatarPos.y < otherAvatarPos.y)
-                //            hitDirection = Vector2.up;
-                //        otherAvatar.rigidBody.AddForce(Vector2.up * this.HitForce);
-                //        else
-                //            hitDirection = Vector2.down;
-                //        otherAvatar.rigidBody.AddForce(Vector2.left * this.HitForce);
-
-                //        otherAvatar.State = AvatarStates.Stunned;
-                //    }
-                //    //If code goes here, is because this object is the hitted one.
-                //    else
-                //    {
-                //        if (avatarPos.x < otherAvatarPos.x)
-                //            this.rigidBody.AddForce(Vector2.right * this.HitForce);
-                //        else
-                //            this.rigidBody.AddForce(Vector2.left * this.HitForce);
-
-                //        this.State = AvatarStates.Stunned;
-                //    }
-                //    #endregion
-                //}
-                //else if (avatar.State == AvatarStates.Hipervelocity)
-                //{
-                //    hittingAvatar = avatar;
-                //    hittedAvatar = otherAvatar;
-
-                //    if ((avatarPos.y >= otherAvatarBounds.min.y) && (avatarPos.y <= otherAvatarBounds.max.y))
-                //    {
-                //        if (avatarPos.x < otherAvatarPos.x)
-                //            hitDirection = Vector2.right;
-                //        else
-                //            hitDirection = Vector2.left;
-                //    }
-                //    else if ((avatarPos.x >= otherAvatarBounds.min.x) && (avatarPos.x <= otherAvatarBounds.max.x))
-                //    {
-                //        if (avatarPos.y < otherAvatarPos.y)
-                //            hitDirection = Vector2.up;
-                //        else
-                //            hitDirection = Vector2.down;
-                //    }
-                //}
-                //else if (otherAvatar.State == AvatarStates.Hipervelocity)
-                //{
-                //    hittingAvatar = otherAvatar;
-                //    hittedAvatar = avatar;
-
-                //    if ((avatarPos.y >= otherAvatarBounds.min.y) && (avatarPos.y <= otherAvatarBounds.max.y))
-                //    {
-                //        if (avatarPos.x < otherAvatarPos.x)
-                //            hitDirection = Vector2.right;
-                //        else
-                //            hitDirection = Vector2.left;
-                //    }
-                //    else if ((avatarPos.x >= otherAvatarBounds.min.x) && (avatarPos.x <= otherAvatarBounds.max.x))
-                //    {
-                //        if (avatarPos.y < otherAvatarPos.y)
-                //            hitDirection = Vector2.up;
-                //        else
-                //            hitDirection = Vector2.down;
-                //    }
-                //}
-
-
-                //Means that a hit happens.
+        //Means that a hit happens.
         if (hittedAvatar != null)
         {
+            if (hittingAvatar.currentDirection.x == 1)
+                hitDirection = Vector2.left;
+            else if (hittingAvatar.currentDirection.x == -1)
+                hitDirection = Vector2.right;
+            else if (hittingAvatar.currentDirection.y == 1)
+                hitDirection = Vector2.down;
+            else if (hittingAvatar.currentDirection.y == -1)
+                hitDirection = Vector2.up;
+
             hittedAvatar.State = AvatarStates.Stunned;
 
             hittedAvatar.rigidBody.AddForce(hitDirection * hittingAvatar.HitForce);
+        }
+        //If it is a draw, both are hit.
+        else if (isDraw == true)
+        {
+            avatar.State =
+            otherAvatar.State = AvatarStates.Stunned;
+
+            if (Mathf.Abs(avatar.currentDirection.x) == 1)
+            {
+                var avatarHitDir = new Vector2(avatar.previousDirection.x * -1, avatar.previousDirection.y);
+                var otherAvatarHitDir = new Vector2(otherAvatar.currentDirection.x * -1, otherAvatar.currentDirection.y);
+
+                avatar.rigidBody.AddForce(avatarHitDir * otherAvatar.HitForce);
+                otherAvatar.rigidBody.AddForce(otherAvatarHitDir * avatar.HitForce);
+            }
+            else if (Mathf.Abs(avatar.currentDirection.y) == 1)
+            {
+                var avatarHitDir = new Vector2(avatar.previousDirection.x, avatar.previousDirection.y * -1);
+                var otherAvatarHitDir = new Vector2(otherAvatar.currentDirection.x, otherAvatar.currentDirection.y * -1);
+
+                avatar.rigidBody.AddForce(avatarHitDir * otherAvatar.HitForce);
+                otherAvatar.rigidBody.AddForce(otherAvatarHitDir * avatar.HitForce);
+            }
         }
     }
 }

@@ -17,7 +17,7 @@ public class AvatarController : MonoBehaviour
     public float JumpHeight = 250.0f;
     public int PlayerNumber { get; protected set; }
     public float Speed = 6.0F;
-    private AvatarStates state = AvatarStates.Normal;
+    protected AvatarStates state = AvatarStates.Normal;
     public AvatarStates State
     {
         get
@@ -125,7 +125,7 @@ public class AvatarController : MonoBehaviour
     }
     public float StunnedMaxTime = 1.5f;
 
-    private Animator animator;
+    protected Animator animator;
     internal BoxCollider2D boxCollider;
     internal Vector2 currentDirection
     {
@@ -146,21 +146,21 @@ public class AvatarController : MonoBehaviour
         }
     }
     internal Vector2 ejectionVelocity = Vector2.zero;
-    private float hiperActivedTime;
-    private float hiperCooldownTime;
-    private LineRenderer hiperMoveLine;
-    private string playerName
+    protected float hiperActivedTime;
+    protected float hiperCooldownTime;
+    protected LineRenderer hiperMoveLine;
+    protected string playerName
     {
         get { return "Player" + this.PlayerNumber + "-"; }
     }
-    private Vector2 previousDirection = Vector2.zero;
-    private Vector2 previousPosition = Vector2.zero;
-    private AvatarStates previousState;
-    private SpriteRenderer spriteRendered;
-    internal Rigidbody2D rigidBody;
-    private float stunningTime;
+    protected internal Vector2 previousDirection = Vector2.zero;
+    protected internal Vector2 previousPosition = Vector2.zero;
+    protected internal AvatarStates previousState;
+    protected SpriteRenderer spriteRendered;
+    protected internal Rigidbody2D rigidBody;
+    protected float stunningTime;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         this.animator = GetComponent<Animator>();
         this.boxCollider = GetComponent<BoxCollider2D>();
@@ -173,7 +173,7 @@ public class AvatarController : MonoBehaviour
         this.PlayerNumber = AppController.AddPlayer(this);
     }
 
-    void Update()
+    protected virtual void Update()
     {
         switch (this.State)
         {

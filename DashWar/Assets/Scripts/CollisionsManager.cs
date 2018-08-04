@@ -11,6 +11,7 @@ public class CollisionsManager {
         Collisions = new List<IGameCollision>
         {
             new AvatarAvatarCollision(),
+            new AvatarAvatarFixedPositionCollision(),
             new AvatarGroundCollision(),
             new AvatarWallCollision(),
             new AvatarWaterCollision(),

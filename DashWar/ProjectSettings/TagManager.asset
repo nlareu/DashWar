@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - ScreenLimit
   - Wall
+  - PlayerFixedPosition
   layers:
   - Default
   - TransparentFX
