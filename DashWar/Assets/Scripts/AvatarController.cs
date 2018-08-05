@@ -332,7 +332,7 @@ public class AvatarController : MonoBehaviour
     {
         Vector2 moveVector = new Vector2();
         float axisHor = Input.GetAxis(this.playerName + "Horizontal");
-        float axisVer = Input.GetAxis(this.playerName + "Vertical");
+        //float axisVer = Input.GetAxis(this.playerName + "Vertical");
 
         //if (Input.GetButton(this.playerName + "Left"))
         if (Input.GetButton(this.playerName + "Left") || axisHor <= -this.AxisSensitive)
@@ -358,7 +358,8 @@ public class AvatarController : MonoBehaviour
 
         if (Input.GetButton(this.playerName + "Jump") && this.IsJumping == false)
         {
-            this.rigidBody.AddForce(Vector2.up * this.JumpHeight);
+            //this.rigidBody.AddForce(Vector2.up * this.JumpHeight);
+            this.rigidBody.velocity = new Vector2(this.rigidBody.velocity.x, Vector2.up.y * this.JumpHeight);
 
             this.IsJumping = true;
         }
