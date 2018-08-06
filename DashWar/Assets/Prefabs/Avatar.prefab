@@ -125,8 +125,9 @@ MonoBehaviour:
   HipervelocitySpeed: 13
   HitForce: 500
   IsJumping: 0
-  JumpHeight: 400
-  Speed: 6
+  JumpHeight: 8
+  PlayerNumber: 0
+  Speed: 4
   StunnedMaxTime: 1.5
 --- !u!120 &120366313493396392
 LineRenderer:
