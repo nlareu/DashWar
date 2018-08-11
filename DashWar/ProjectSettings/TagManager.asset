@@ -10,6 +10,9 @@ TagManager:
   - ScreenLimit
   - Wall
   - PlayerFixedPosition
+  - MortalObject
+  - Spikes
+  - SnowBall
   layers:
   - Default
   - TransparentFX

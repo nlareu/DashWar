@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4336507168028962}
   - component: {fileID: 212305713697244776}
   - component: {fileID: 61545848728894034}
+  - component: {fileID: 114066813761605628}
   m_Layer: 0
   m_Name: Spike-Left
-  m_TagString: MortalWall01
+  m_TagString: Spikes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,6 +67,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.5}
   m_EdgeRadius: 0
+--- !u!114 &114066813761605628
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1076429866668744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a29311a0f8fc90340a430a327f97c534, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212305713697244776
 SpriteRenderer:
   m_ObjectHideFlags: 1

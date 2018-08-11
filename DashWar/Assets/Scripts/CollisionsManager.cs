@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class CollisionsManager {
 
@@ -13,9 +11,11 @@ public class CollisionsManager {
             new AvatarAvatarCollision(),
             new AvatarAvatarFixedPositionCollision(),
             new AvatarGroundCollision(),
-            new AvatarWallCollision(),
-            new AvatarWaterCollision(),
-            new AvatarMortalWall01Collision(),
+            new AvatarMortalObjectCollision("MortalWall01"),
+            new AvatarMortalObjectCollision("SnowBall"),
+            new AvatarMortalObjectCollision("Spikes"),
+            new AvatarMortalObjectCollision("Water"),
+            new DestroySecondObjectCollision("Spikes", "SnowBall"),
         };
     }
 

@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 
-public class AvatarMortalWall01Collision : GameCollision
+public class AvatarMortalObjectCollision : GameCollision
 {
-    public override string Collider1Tag { get { return "Player"; } }
-    public override string Collider2Tag { get { return "MortalWall01"; } }
+    public AvatarMortalObjectCollision(string mortalObjectColliderTag) : base("Player", mortalObjectColliderTag) { }
 
     public override void Resolve(GameObject collider1, GameObject collider2, Collision2D collision)
     {
