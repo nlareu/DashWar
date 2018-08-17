@@ -111,7 +111,7 @@ public class AvatarFixedPositionController : AvatarController
     {
         base.Awake();
 
-        this.tag = "PlayerFixedPosition";
+        this.tag = Tags.PLAYER_FIXED_POSITION;
 
         //this.rigidBody.gravityScale = 0.0f;
 

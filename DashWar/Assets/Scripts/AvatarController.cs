@@ -167,7 +167,7 @@ public class AvatarController : MonoBehaviour
         this.hiperMoveLine = GetComponent<LineRenderer>();
         this.rigidBody = GetComponent<Rigidbody2D>();
         this.spriteRendered = GetComponent<SpriteRenderer>();
-        this.tag = "Player";
+        this.tag = Tags.PLAYER;
     }
 
     protected virtual void Update()

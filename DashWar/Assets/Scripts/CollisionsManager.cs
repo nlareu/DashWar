@@ -11,11 +11,11 @@ public class CollisionsManager {
             new AvatarAvatarCollision(),
             new AvatarAvatarFixedPositionCollision(),
             new AvatarGroundCollision(),
-            new AvatarMortalObjectCollision("MortalWall01"),
-            new AvatarMortalObjectCollision("SnowBall"),
-            new AvatarMortalObjectCollision("Spikes"),
-            new AvatarMortalObjectCollision("Water"),
-            new DestroySecondObjectCollision("Spikes", "SnowBall"),
+            new AvatarMortalObjectCollision(Tags.MORTAL_WALL_01),
+            new AvatarMortalObjectCollision(Tags.SNOWBALL),
+            new AvatarMortalObjectCollision(Tags.SPIKES),
+            new AvatarMortalObjectCollision(Tags.WATER),
+            new DestroySecondObjectCollision(Tags.SPIKES, Tags.SNOWBALL),
         };
     }
 
