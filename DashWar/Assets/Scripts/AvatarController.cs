@@ -8,6 +8,7 @@ public class AvatarController : MonoBehaviour
 {
     public float debugvar = 10f;
 
+    public AppController AppController;
     public float AxisSensitive = 0.7f;
     public float HipervelocityBurnMaxTime = 0.5f;
     public float HipervelocityCooldownMaxTime = 1.0f;
@@ -67,7 +68,7 @@ public class AvatarController : MonoBehaviour
                             this.rigidBody.gravityScale = 1f;
 
                             //Enable again collision with other avatars, except with those that are stunned.
-                            AppController
+                            this.AppController
                                 .GetPlayers()
                                 .ForEach(item =>
                                 {
@@ -106,7 +107,7 @@ public class AvatarController : MonoBehaviour
                             this.stunningTime = 0f;
 
                             //Ignore collision with other avatars.
-                            AppController
+                            this.AppController
                                 .GetPlayers()
                                 .ForEach(item =>
                                 {
@@ -124,6 +125,8 @@ public class AvatarController : MonoBehaviour
         }
     }
     public float StunnedMaxTime = 1.5f;
+
+    public event EventHandler Died;
 
     protected Animator animator;
     internal BoxCollider2D boxCollider;
@@ -365,6 +368,12 @@ public class AvatarController : MonoBehaviour
         }
 
         this.transform.Translate(moveVector);
+    }
+
+    internal void OnDied()
+    {
+        if (this.Died != null)
+            this.Died(this, new EventArgs());
     }
 
     private void OnCollisionEnter2D(Collision2D col)

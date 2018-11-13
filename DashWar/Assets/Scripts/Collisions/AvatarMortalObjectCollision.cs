@@ -6,7 +6,13 @@ public class AvatarMortalObjectCollision : GameCollision
 
     public override void Resolve(GameObject collider1, GameObject collider2, Collision2D collision)
     {
-       //Just destroy avatar for now.
-        Object.Destroy(collider1);
+        collider1.SetActive(false);
+
+        AvatarController av = collider1.GetComponent<AvatarController>();
+
+        av.OnDied();
+
+        ////Just destroy avatar for now.
+        //Object.Destroy(collider1);
     }
 }

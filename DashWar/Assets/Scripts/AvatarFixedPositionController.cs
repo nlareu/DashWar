@@ -43,7 +43,7 @@ public class AvatarFixedPositionController : AvatarController
                             this.rigidBody.gravityScale = 1f;
 
                             //Enable again collision with other avatars, except with those that are stunned.
-                            AppController
+                            this.AppController
                                 .GetPlayers()
                                 .ForEach(item =>
                                 {
