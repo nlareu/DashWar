@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -44,10 +43,28 @@ public class AppController : MonoBehaviour {
 
         return this.players.Count;
     }
+    private bool CheckRoundEnded()
+    {
+        return (this.players.Count - this.playersDead.Count <= 1);
+    }
     public List<AvatarController> GetPlayers()
     {
         //Return a copy to prevent reference and not desired changes on the list.
         return new List<AvatarController>(this.players);
+    }
+    private void RestartRound()
+    {
+        this.playersDead.Clear();
+
+        for (int i = 0; i < this.players.Count; i++)
+        {
+            var player = this.players[i];
+            var respawnPos = this.RespawnPositions[i].transform.position;
+
+            player.transform.position = new Vector2(respawnPos.x, respawnPos.y);
+
+            player.gameObject.SetActive(true);
+        }
     }
 
 
@@ -60,21 +77,6 @@ public class AppController : MonoBehaviour {
 
 
         if (this.CheckRoundEnded() == true)
-        {
-            for (int i = 0; i < this.players.Count; i++)
-            {
-                var player = this.players[i];
-                var respawnPos = this.RespawnPositions[i].transform.position;
-
-                player.transform.position = new Vector2(respawnPos.x, respawnPos.y);
-
-                player.gameObject.SetActive(true);
-            }
-        }
-    }
-
-    private bool CheckRoundEnded()
-    {
-        return (this.players.Count - this.playersDead.Count <= 1);
+            this.RestartRound();
     }
 }

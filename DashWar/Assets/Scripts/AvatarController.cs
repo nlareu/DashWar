@@ -369,15 +369,20 @@ public class AvatarController : MonoBehaviour
 
         this.transform.Translate(moveVector);
     }
-
-    internal void OnDied()
+    public void Kill()
     {
-        if (this.Died != null)
-            this.Died(this, new EventArgs());
+        this.gameObject.SetActive(false);
+
+        this.OnDied();
     }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
         CollisionsManager.ResolveCollision(this.gameObject, col.gameObject, col);
+    }
+    private void OnDied()
+    {
+        if (this.Died != null)
+            this.Died(this, new EventArgs());
     }
 }
