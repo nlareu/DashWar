@@ -1,4 +1,4 @@
 *Cambiar los destroy por un setActive(false)
 *En vez de instanciarlos activar los objetos mediante
 un pool de objetos o un setActive(true) si ya estan en
-escena
+escena.
