@@ -15,6 +15,10 @@ public class AppController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        if(DataLevel.InstanceDataLevel != null)
+        {
+            PlayersCount = DataLevel.InstanceDataLevel.GetNumberPlayer();
+        }
         for (int i = 0; i < this.PlayersCount; i++)
         {
             AvatarController player = Instantiate(this.PlayerSource, this.RespawnPositions[i].transform.position, Quaternion.identity);

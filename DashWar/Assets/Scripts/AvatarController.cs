@@ -7,7 +7,6 @@ using UnityEngine;
 public class AvatarController : MonoBehaviour
 {
     public float debugvar = 10f;
-
     public AppController AppController;
     public float AxisSensitive = 0.7f;
     public float HipervelocityBurnMaxTime = 0.5f;
@@ -19,6 +18,8 @@ public class AvatarController : MonoBehaviour
     public int PlayerNumber;
     public float Speed = 6.0F;
     protected AvatarStates state = AvatarStates.Normal;
+    public Animator animator;
+
     public AvatarStates State
     {
         get
@@ -128,7 +129,7 @@ public class AvatarController : MonoBehaviour
 
     public event EventHandler Died;
 
-    protected Animator animator;
+
     internal BoxCollider2D boxCollider;
     internal Vector2 currentDirection
     {
@@ -177,6 +178,7 @@ public class AvatarController : MonoBehaviour
     {
         switch (this.State)
         {
+            
             #region CoolingDown
             case AvatarStates.CoolingDown:
                 {
