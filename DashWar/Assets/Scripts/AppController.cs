@@ -19,13 +19,40 @@ public class AppController : MonoBehaviour {
         {
             PlayersCount = DataLevel.InstanceDataLevel.GetNumberPlayer();
         }
-        for (int i = 0; i < this.PlayersCount; i++)
+        for (int i = 0; i < PlayersCount; i++)
         {
-            AvatarController player = Instantiate(this.PlayerSource, this.RespawnPositions[i].transform.position, Quaternion.identity);
-
-            player.AppController = this;
-            player.PlayerNumber = this.AddPlayer(player);
-            player.Died += this.Player_Died;
+            if(DataLevel.InstanceDataLevel != null)
+            {
+                AvatarController player;
+                if (i == 0)
+                {
+                    player = Instantiate(DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer1()], this.RespawnPositions[i].transform.position, Quaternion.identity);
+                    player.AppController = this;
+                    player.PlayerNumber = this.AddPlayer(player);
+                    player.Died += this.Player_Died;
+                }
+                if(i == 1)
+                {
+                    player = Instantiate(DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer2()], this.RespawnPositions[i].transform.position, Quaternion.identity);
+                    player.AppController = this;
+                    player.PlayerNumber = this.AddPlayer(player);
+                    player.Died += this.Player_Died;
+                }
+                if(i == 2)
+                {
+                    player = Instantiate(DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer3()], this.RespawnPositions[i].transform.position, Quaternion.identity);
+                    player.AppController = this;
+                    player.PlayerNumber = this.AddPlayer(player);
+                    player.Died += this.Player_Died;
+                }
+                if(i == 3)
+                {
+                    player = Instantiate(DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer4()], this.RespawnPositions[i].transform.position, Quaternion.identity);
+                    player.AppController = this;
+                    player.PlayerNumber = this.AddPlayer(player);
+                    player.Died += this.Player_Died;
+                }
+            }
         }
     }
 

@@ -9,50 +9,53 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1168603220929068}
+  m_RootGameObject: {fileID: 1456063738701672}
   m_IsPrefabAsset: 1
---- !u!1 &1168603220929068
+--- !u!1 &1456063738701672
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4290901810645022}
-  - component: {fileID: 114814588752079546}
+  - component: {fileID: 4311222081565844}
+  - component: {fileID: 114510956772429718}
   m_Layer: 0
-  m_Name: DataLevel
+  m_Name: App
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4290901810645022
+--- !u!4 &4311222081565844
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1168603220929068}
+  m_GameObject: {fileID: 1456063738701672}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 423.05508, y: 216.7737, z: -2.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114814588752079546
+--- !u!114 &114510956772429718
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1168603220929068}
+  m_GameObject: {fileID: 1456063738701672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11cdc1dce48c5694caf122428004efda, type: 3}
+  m_Script: {fileID: 11500000, guid: c062ac4fd47bf4e41887650f13fada33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  avatarsControllers:
-  - {fileID: 114808293114151986, guid: 2541fc2fe831804419718cf5e62069dd, type: 2}
-  - {fileID: 114808293114151986, guid: bc9df0c184292564f87bb15b3a31d634, type: 2}
-  - {fileID: 114029588050062734, guid: a5e49e3ee657d6c429817f467b8d3bfc, type: 2}
-  - {fileID: 114294771961774374, guid: f96004062b3002441a7c7bb293561c14, type: 2}
+  PlayerSource: {fileID: 114808293114151986, guid: 2541fc2fe831804419718cf5e62069dd,
+    type: 2}
+  PlayersCount: 2
+  RespawnPositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
