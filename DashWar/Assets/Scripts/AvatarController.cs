@@ -218,102 +218,108 @@ public class AvatarController : MonoBehaviour
 
     protected virtual void Update()
     {
-        switch (this.State)
+        if (DataLevel.InstanceDataLevel != null)
         {
-            
-            #region CoolingDown
-            case AvatarStates.CoolingDown:
+            if (!DataLevel.InstanceDataLevel.pause)
+            {
+                switch (this.State)
                 {
-                    this.CheckAvatarMove();
 
-                    this.hiperCooldownTime += Time.deltaTime;
+                    #region CoolingDown
+                    case AvatarStates.CoolingDown:
+                        {
+                            this.CheckAvatarMove();
 
-                    if (this.hiperCooldownTime > this.HipervelocityCooldownMaxTime)
-                    {
-                        this.State = AvatarStates.Normal;
-                    }
+                            this.hiperCooldownTime += Time.deltaTime;
 
-                    //Reset hiper move line
-                    this.hiperMoveLine.positionCount = 0;
+                            if (this.hiperCooldownTime > this.HipervelocityCooldownMaxTime)
+                            {
+                                this.State = AvatarStates.Normal;
+                            }
 
-                    break;
+                            //Reset hiper move line
+                            this.hiperMoveLine.positionCount = 0;
+
+                            break;
+                        }
+                    #endregion
+                    #region Hipervelocity
+                    case AvatarStates.Hipervelocity:
+                        {
+                            if (Input.GetButton(this.playerName + "Hipervelocity") == false)
+                            {
+                                this.State = AvatarStates.CoolingDown;
+                                break;
+                            }
+
+                            this.hiperActivedTime += Time.deltaTime;
+
+                            if (this.hiperActivedTime > this.HipervelocityBurnMaxTime)
+                            {
+                                this.State = AvatarStates.CoolingDown;
+                                break;
+                            }
+
+
+                            this.CheckAvatarHiperMove();
+
+
+                            //If move direction changed, add new position to hiper move line.
+                            if ((this.previousState == AvatarStates.Hipervelocity)
+                                && (this.previousDirection != Vector2.zero)
+                                && (this.previousDirection != this.currentDirection))
+                            {
+                                this.hiperMoveLine.positionCount++;
+                            }
+
+                            //Update hiper move line liast position.
+                            this.hiperMoveLine.SetPosition(this.hiperMoveLine.positionCount - 1, new Vector2(this.rigidBody.position.x, this.rigidBody.position.y));
+
+                            //Vector3[] pos = new Vector3[this.hiperMoveLine.positionCount];
+                            //this.hiperMoveLine.GetPositions(pos);
+                            //Debug.Log(string.Join(",", pos.Select(item => string.Format("x: {0}, y: {1}", item.x, item.y)).ToArray()));
+
+                            break;
+                        }
+                    #endregion
+                    #region Normal
+                    case AvatarStates.Normal:
+                        {
+                            if (Input.GetButton(this.playerName + "Hipervelocity") &&
+                                 (
+                                    (Input.GetButton(this.playerName + "Right") || Input.GetButton(this.playerName + "Left")) ||
+                                    (Input.GetAxis(this.playerName + "Horizontal") <= -this.AxisSensitive || Input.GetAxis(this.playerName + "Horizontal") >= this.AxisSensitive) ||
+                                    (Input.GetButton(this.playerName + "Up") || Input.GetButton(this.playerName + "Down")) ||
+                                    (Input.GetAxis(this.playerName + "Vertical") <= -this.AxisSensitive || Input.GetAxis(this.playerName + "Vertical") >= this.AxisSensitive)
+                                  )
+                                )
+                            {
+                                this.State = AvatarStates.Hipervelocity;
+                                break;
+                            }
+
+                            this.CheckAvatarMove();
+
+                            break;
+                        }
+                    #endregion
+                    #region Stunned
+                    case AvatarStates.Stunned:
+                        {
+                            this.stunningTime += Time.deltaTime;
+
+                            if (this.stunningTime > this.StunnedMaxTime)
+                            {
+                                this.State = AvatarStates.Normal;
+                            }
+
+                            this.ejectionVelocity = this.rigidBody.velocity;
+
+                            break;
+                        }
+                        #endregion
                 }
-            #endregion
-            #region Hipervelocity
-            case AvatarStates.Hipervelocity:
-                {
-                    if (Input.GetButton(this.playerName + "Hipervelocity") == false)
-                    {
-                        this.State = AvatarStates.CoolingDown;
-                        break;
-                    }
-
-                    this.hiperActivedTime += Time.deltaTime;
-
-                    if (this.hiperActivedTime > this.HipervelocityBurnMaxTime)
-                    {
-                        this.State = AvatarStates.CoolingDown;
-                        break;
-                    }
-
-
-                    this.CheckAvatarHiperMove();
-
-
-                    //If move direction changed, add new position to hiper move line.
-                    if ((this.previousState == AvatarStates.Hipervelocity)
-                        && (this.previousDirection != Vector2.zero)
-                        && (this.previousDirection != this.currentDirection))
-                    {
-                        this.hiperMoveLine.positionCount++;
-                    }
-
-                    //Update hiper move line liast position.
-                    this.hiperMoveLine.SetPosition(this.hiperMoveLine.positionCount - 1, new Vector2(this.rigidBody.position.x, this.rigidBody.position.y));
-
-                    //Vector3[] pos = new Vector3[this.hiperMoveLine.positionCount];
-                    //this.hiperMoveLine.GetPositions(pos);
-                    //Debug.Log(string.Join(",", pos.Select(item => string.Format("x: {0}, y: {1}", item.x, item.y)).ToArray()));
-
-                    break;
-                }
-            #endregion
-            #region Normal
-            case AvatarStates.Normal:
-                {
-                    if (Input.GetButton(this.playerName + "Hipervelocity") &&
-                         (
-                            (Input.GetButton(this.playerName + "Right") || Input.GetButton(this.playerName + "Left")) ||
-                            (Input.GetAxis(this.playerName + "Horizontal") <= -this.AxisSensitive || Input.GetAxis(this.playerName + "Horizontal") >= this.AxisSensitive) ||
-                            (Input.GetButton(this.playerName + "Up") || Input.GetButton(this.playerName + "Down")) ||
-                            (Input.GetAxis(this.playerName + "Vertical") <= -this.AxisSensitive || Input.GetAxis(this.playerName + "Vertical") >= this.AxisSensitive)
-                          )
-                        )
-                    {
-                        this.State = AvatarStates.Hipervelocity;
-                        break;
-                    }
-
-                    this.CheckAvatarMove();
-
-                    break;
-                }
-            #endregion
-            #region Stunned
-            case AvatarStates.Stunned:
-                {
-                    this.stunningTime += Time.deltaTime;
-
-                    if (this.stunningTime > this.StunnedMaxTime)
-                    {
-                        this.State = AvatarStates.Normal;
-                    }
-
-                    this.ejectionVelocity = this.rigidBody.velocity;
-
-                    break;
-                }
-            #endregion
+            }
         }
 
 

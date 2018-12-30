@@ -5,6 +5,8 @@ using UnityEngine;
 public class DataLevel : MonoBehaviour {
 
     // Use this for initialization
+    [HideInInspector]
+    public bool pause;
     public static DataLevel InstanceDataLevel;
     public AvatarController[] avatarsControllers;
     private int numberPlayers;

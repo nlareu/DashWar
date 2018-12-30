@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
     // Use this for initialization
+    public GameObject camvasPause;
+    private bool pause;
     public int winningScore;
     public Text[] textsScore;
     public Text textWiner;
@@ -14,8 +16,9 @@ public class GameManager : MonoBehaviour {
     public List<AvatarController> Avatars;
     public int countAvatars;
     public int auxCountAvatars;
-    public Camera camera;
+    public Camera cam;
 	void Start () {
+        pause = false;
         for(int i = 0; i<textsScore.Length; i++)
         {
             textsScore[i].text = " ";
@@ -24,6 +27,7 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        CheckPause();
         CheckDead();
         CheckWin();
         CheckScore();
@@ -39,6 +43,35 @@ public class GameManager : MonoBehaviour {
                 countAvatars--;
                 Avatars[i].SetVerifiedDeath(true);
             }
+        }
+    }
+    public void CheckPause()
+    {
+        //Hago que el juego se ponga en pausa.
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            //Debug.Log("ENTRE");
+            if (pause)
+            {
+                pause = false;
+                if(DataLevel.InstanceDataLevel != null)
+                {
+                    DataLevel.InstanceDataLevel.pause = false;
+                }
+                Time.timeScale = 1;
+                camvasPause.SetActive(false);
+            }
+            else if (!pause)
+            {
+                pause = true;
+                if (DataLevel.InstanceDataLevel != null)
+                {
+                    DataLevel.InstanceDataLevel.pause = true;
+                }
+                Time.timeScale = 0;
+                camvasPause.SetActive(true);
+            }
+            
         }
     }
     public void CheckWin()
@@ -70,7 +103,7 @@ public class GameManager : MonoBehaviour {
         {
             if(Avatars[j].GetScore() >= winningScore)
             {
-                camera.transform.position = new Vector3(Avatars[j].transform.position.x, Avatars[j].transform.position.y, Avatars[j].transform.position.z-0.3f);
+                cam.transform.position = new Vector3(Avatars[j].transform.position.x, Avatars[j].transform.position.y, Avatars[j].transform.position.z-0.3f);
                 if (DataLevel.InstanceDataLevel != null)
                 {
                     textWiner.text = "¡Ganador!";
