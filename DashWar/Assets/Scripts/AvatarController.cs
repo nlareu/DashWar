@@ -77,8 +77,8 @@ public class AvatarController : MonoBehaviour
                 //Set variables depending new state.
                 switch (this.state)
                 {
-                    #region Hipervelocity
-                    case AvatarStates.Hipervelocity:
+                    #region Dash
+                    case AvatarStates.Dash:
                         {
                             this.animator.SetBool("Moving", false);
                             this.animator.SetFloat("MoveX", 0);
@@ -243,10 +243,10 @@ public class AvatarController : MonoBehaviour
                             break;
                         }
                     #endregion
-                    #region Hipervelocity
-                    case AvatarStates.Hipervelocity:
+                    #region Dash
+                    case AvatarStates.Dash:
                         {
-                            if (Input.GetButton(this.playerName + "Hipervelocity") == false)
+                            if (Input.GetButton(this.playerName + "Dash") == false)
                             {
                                 this.State = AvatarStates.CoolingDown;
                                 break;
@@ -265,7 +265,7 @@ public class AvatarController : MonoBehaviour
 
 
                             //If move direction changed, add new position to hiper move line.
-                            if ((this.previousState == AvatarStates.Hipervelocity)
+                            if ((this.previousState == AvatarStates.Dash)
                                 && (this.previousDirection != Vector2.zero)
                                 && (this.previousDirection != this.currentDirection))
                             {
@@ -285,7 +285,7 @@ public class AvatarController : MonoBehaviour
                     #region Normal
                     case AvatarStates.Normal:
                         {
-                            if (Input.GetButton(this.playerName + "Hipervelocity") &&
+                            if (Input.GetButton(this.playerName + "Dash") &&
                                  (
                                     (Input.GetButton(this.playerName + "Right") || Input.GetButton(this.playerName + "Left")) ||
                                     (Input.GetAxis(this.playerName + "Horizontal") <= -this.AxisSensitive || Input.GetAxis(this.playerName + "Horizontal") >= this.AxisSensitive) ||
@@ -294,7 +294,7 @@ public class AvatarController : MonoBehaviour
                                   )
                                 )
                             {
-                                this.State = AvatarStates.Hipervelocity;
+                                this.State = AvatarStates.Dash;
                                 break;
                             }
 

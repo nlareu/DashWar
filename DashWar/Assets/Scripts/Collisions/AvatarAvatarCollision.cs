@@ -35,7 +35,7 @@ public class AvatarAvatarCollision : GameCollisionAbstract
         var otherAvatarBounds = otherAvatar.boxCollider.bounds;
 
 
-        if ((avatarState == AvatarStates.Hipervelocity) && (otherAvatarState == AvatarStates.Hipervelocity))
+        if ((avatarState == AvatarStates.Dash) && (otherAvatarState == AvatarStates.Dash))
         {
             //Check if it is an horizontal collision.
             if (((Mathf.Abs(avatarBounds.max.x - otherAvatarBounds.min.x) <= boundsDiffCheck) || (Mathf.Abs(avatarBounds.min.x - otherAvatarBounds.max.x) <= boundsDiffCheck)))
@@ -78,12 +78,12 @@ public class AvatarAvatarCollision : GameCollisionAbstract
                 }
             }
         }
-        else if (avatarState == AvatarStates.Hipervelocity)
+        else if (avatarState == AvatarStates.Dash)
         {
             hittingAvatar = avatar;
             hittedAvatar = otherAvatar;
         }
-        else if (otherAvatarState == AvatarStates.Hipervelocity)
+        else if (otherAvatarState == AvatarStates.Dash)
         {
             hittingAvatar = otherAvatar;
             hittedAvatar = avatar;

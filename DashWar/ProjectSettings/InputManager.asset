@@ -310,7 +310,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Player1-Hipervelocity
+    m_Name: Player1-Dash
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -326,7 +326,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Player0-Hipervelocity
+    m_Name: Player0-Dash
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -454,7 +454,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Player2-Hipervelocity
+    m_Name: Player2-Dash
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -582,7 +582,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Player3-Hipervelocity
+    m_Name: Player3-Dash
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -710,7 +710,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Player4-Hipervelocity
+    m_Name: Player4-Dash
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 

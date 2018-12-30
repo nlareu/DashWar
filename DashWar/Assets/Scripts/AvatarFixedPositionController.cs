@@ -18,8 +18,8 @@ public class AvatarFixedPositionController : AvatarController
                 //Set variables depending new state.
                 switch (this.state)
                 {
-                    #region Hipervelocity
-                    case AvatarStates.Hipervelocity:
+                    #region Dash
+                    case AvatarStates.Dash:
                         {
                             this.animator.SetBool("Moving", false);
                             this.animator.SetFloat("MoveX", 0);
