@@ -8,6 +8,7 @@ public class AppController : MonoBehaviour {
     public AvatarController PlayerSource;
     public int PlayersCount = 4;
     public List<GameObject> RespawnPositions = new List<GameObject>();
+    public GameManager gameManager;
 
     private List<AvatarController> players = new List<AvatarController>();
     private List<AvatarController> playersDead = new List<AvatarController>();
@@ -30,6 +31,8 @@ public class AppController : MonoBehaviour {
                     player.AppController = this;
                     player.PlayerNumber = this.AddPlayer(player);
                     player.Died += this.Player_Died;
+                    gameManager.Avatars.Add(player);
+                    gameManager.countAvatars++;
                 }
                 if(i == 1)
                 {
@@ -37,6 +40,8 @@ public class AppController : MonoBehaviour {
                     player.AppController = this;
                     player.PlayerNumber = this.AddPlayer(player);
                     player.Died += this.Player_Died;
+                    gameManager.Avatars.Add(player);
+                    gameManager.countAvatars++;
                 }
                 if(i == 2)
                 {
@@ -44,6 +49,8 @@ public class AppController : MonoBehaviour {
                     player.AppController = this;
                     player.PlayerNumber = this.AddPlayer(player);
                     player.Died += this.Player_Died;
+                    gameManager.Avatars.Add(player);
+                    gameManager.countAvatars++;
                 }
                 if(i == 3)
                 {
@@ -51,9 +58,12 @@ public class AppController : MonoBehaviour {
                     player.AppController = this;
                     player.PlayerNumber = this.AddPlayer(player);
                     player.Died += this.Player_Died;
+                    gameManager.Avatars.Add(player);
+                    gameManager.countAvatars++;
                 }
             }
         }
+        gameManager.auxCountAvatars = gameManager.countAvatars;
     }
 
     // Update is called once per frame

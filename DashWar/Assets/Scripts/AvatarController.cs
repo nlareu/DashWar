@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AvatarController : MonoBehaviour
 {
+    public string textScore;
     public float debugvar = 10f;
     public AppController AppController;
     public float AxisSensitive = 0.7f;
@@ -19,7 +21,47 @@ public class AvatarController : MonoBehaviour
     public float Speed = 6.0F;
     protected AvatarStates state = AvatarStates.Normal;
     public Animator animator;
+    private float score;
+    private bool death = false;
+    private bool verifiedDeath = false;
 
+    private void OnDisable()
+    {
+        death = true;
+        
+    }
+    public void SetVerifiedDeath(bool _verifiedDeath)
+    {
+        verifiedDeath = _verifiedDeath;
+    }
+    public bool GetVerifiedDeath()
+    {
+        return verifiedDeath;
+    }
+    public void SetDeath(bool _deadth)
+    {
+        death = _deadth;
+    }
+    public bool GetDeath()
+    {
+        return death;
+    }
+    public void SetScore(float _score)
+    {
+        score = _score;
+    }
+    public float GetScore()
+    {
+        return score;
+    }
+    public void AddScore(float _score)
+    {
+        score = score + _score;
+    }
+    public void SubstractScore(float _score)
+    {
+        score = score - _score;
+    }
     public AvatarStates State
     {
         get

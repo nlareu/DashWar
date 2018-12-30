@@ -51,4 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec71d8e67c4251d4fadf451bfc2e960a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textsScore: []
   spawnerPlayer: []
+  Avatars: []
+  countAvatars: 0
+  auxCountAvatars: 0

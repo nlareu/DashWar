@@ -11,6 +11,22 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1784792231434274}
   m_IsPrefabAsset: 1
+--- !u!1 &1014340107097798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4028972874390210}
+  - component: {fileID: 114290883032632646}
+  m_Layer: 0
+  m_Name: App
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1015508996569590
 GameObject:
   m_ObjectHideFlags: 1
@@ -542,6 +558,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1860257446906772
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4151834320457420}
+  - component: {fileID: 114834155729137612}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1888748006914304
 GameObject:
   m_ObjectHideFlags: 1
@@ -632,6 +664,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4028972874390210
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1014340107097798}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.6546168, y: -5.2889504, z: -0.28125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4411927661372750}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4030048710779414
 Transform:
   m_ObjectHideFlags: 1
@@ -722,6 +767,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4888600749165788}
   m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4151834320457420
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1860257446906772}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 359.39636, y: 237.6518, z: -2.651684}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4411927661372750}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4193563388857026
 Transform:
@@ -865,6 +923,8 @@ Transform:
   m_Children:
   - {fileID: 4497223141766690}
   - {fileID: 4888600749165788}
+  - {fileID: 4151834320457420}
+  - {fileID: 4028972874390210}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2352,6 +2412,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a29311a0f8fc90340a430a327f97c534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114290883032632646
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1014340107097798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c062ac4fd47bf4e41887650f13fada33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerSource: {fileID: 114808293114151986, guid: 2541fc2fe831804419718cf5e62069dd,
+    type: 2}
+  PlayersCount: 2
+  RespawnPositions:
+  - {fileID: 1833201791761944}
+  - {fileID: 1845301380255508}
+  - {fileID: 1183893466705574}
+  - {fileID: 1547165196810188}
+  gameManager: {fileID: 114834155729137612}
 --- !u!114 &114349491411415272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2495,6 +2575,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a29311a0f8fc90340a430a327f97c534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114834155729137612
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1860257446906772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec71d8e67c4251d4fadf451bfc2e960a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winningScore: 5
+  textsScore:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Avatars: []
+  countAvatars: 0
+  auxCountAvatars: 0
+  objectsLevelDisable: []
 --- !u!114 &114844282334070928
 MonoBehaviour:
   m_ObjectHideFlags: 1

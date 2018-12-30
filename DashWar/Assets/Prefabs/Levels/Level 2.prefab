@@ -125,6 +125,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1164873633459718
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4221612472216886}
+  - component: {fileID: 114063319390391472}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1244227143787662
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,6 +560,19 @@ Transform:
   m_Father: {fileID: 4264977140320828}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4221612472216886
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1164873633459718}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 366.5577, y: 239.83891, z: -2.557934}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4264977140320828}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4264977140320828
 Transform:
   m_ObjectHideFlags: 1
@@ -571,6 +600,7 @@ Transform:
   - {fileID: 4643644708841670}
   - {fileID: 4380184917281938}
   - {fileID: 4661356882476088}
+  - {fileID: 4221612472216886}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1398,6 +1428,27 @@ EdgeCollider2D:
   - {x: -0.41574386, y: 0.25815386}
   - {x: -0.014524201, y: 0.25895035}
   - {x: 0.41499987, y: 0.25815386}
+--- !u!114 &114063319390391472
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1164873633459718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec71d8e67c4251d4fadf451bfc2e960a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winningScore: 5
+  textsScore:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Avatars: []
+  countAvatars: 0
+  auxCountAvatars: 0
+  objectsLevelDisable: []
 --- !u!114 &114064011391160820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1539,14 +1590,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c062ac4fd47bf4e41887650f13fada33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerSource: {fileID: 114808293114151986, guid: 92848d785d377cc4ba787c26b2cf8c76,
-    type: 2}
+  PlayerSource: {fileID: 0}
   PlayersCount: 4
   RespawnPositions:
   - {fileID: 1292877171187114}
   - {fileID: 1070033744630866}
   - {fileID: 1776564183430452}
   - {fileID: 1161958575547518}
+  gameManager: {fileID: 114063319390391472}
 --- !u!114 &114579100501393226
 MonoBehaviour:
   m_ObjectHideFlags: 1
