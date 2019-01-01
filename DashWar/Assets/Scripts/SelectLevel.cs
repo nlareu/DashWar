@@ -10,10 +10,10 @@ public class SelectLevel : MonoBehaviour {
 	// Update is called once per frame
     public void Level1()
     {
-        SceneManager.LoadScene("Level-01");
+        SceneManager.LoadScene("Level-01_TL");
     }
     public void Level2()
     {
-        SceneManager.LoadScene("Level-02-Snow");
+        SceneManager.LoadScene("Level-02-Snow_TL");
     }
 }
