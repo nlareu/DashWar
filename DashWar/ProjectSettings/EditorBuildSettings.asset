@@ -6,9 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Level-01_TL.unity
+    path: Assets/Scenes/Menu.unity
+    guid: 9d601944915419d45b1b4253e76cecb9
+  - enabled: 1
+    path: Assets/Scenes/SelectAvatars.unity
+    guid: 46d4e7582e38d3144a74252c905065ac
+  - enabled: 1
+    path: Assets/Scenes/SelectLevel.unity
+    guid: 65c3f73dd1d9ac443bc81bf5f4b59e80
+  - enabled: 1
+    path: Assets/Scenes/Lvl01-Level-01.unity
     guid: 7a497c45a386a874784aa5ed7dc1d480
   - enabled: 1
-    path: Assets/Scenes/Level-02-Snow_TL.unity
+    path: Assets/Scenes/Lvl02-Level-02-Snow.unity
     guid: 8d0daadf05bb96d4187e17dd8a99eed3
+  - enabled: 1
+    path: Assets/Scenes/LoadLevel.unity
+    guid: 1ff1ba39041429e4ba1efa6214b78fd9
   m_configObjects: {}

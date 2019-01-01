@@ -5,15 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class SelectLevel : MonoBehaviour {
 
-	// Use this for initialization
-	
-	// Update is called once per frame
+    // Use this for initialization
+
+    // Update is called once per frame
+    public void SelectLvl()
+    {
+        SceneManager.LoadScene("SelectLevel");
+    }
+    public void LoadLevel()
+    {
+        SceneManager.LoadScene("LoadLevel");
+    }
+    public void SelectAvatar()
+    {
+        SceneManager.LoadScene("SelectAvatars");
+    }
     public void Level1()
     {
-        SceneManager.LoadScene("Level-01_TL");
+        SceneManager.LoadScene("Lvl01-Level-01");
     }
     public void Level2()
     {
-        SceneManager.LoadScene("Level-02-Snow_TL");
+        SceneManager.LoadScene("Lvl02-Level-02-Snow");
     }
 }

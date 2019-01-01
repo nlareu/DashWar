@@ -11,9 +11,9 @@ public class AvatarController : MonoBehaviour
     public float debugvar = 10f;
     public AppController AppController;
     public float AxisSensitive = 0.7f;
-    public float HipervelocityBurnMaxTime = 0.5f;
-    public float HipervelocityCooldownMaxTime = 1.0f;
-    public float HipervelocitySpeed = 17.0f;
+    public float DashBurnMaxTime = 0.5f;
+    public float DashCooldownMaxTime = 1.0f;
+    public float DashSpeed = 17.0f;
     public float HitForce = 500.0F;
     public bool IsJumping = false;
     public float JumpHeight = 250.0f;
@@ -232,7 +232,7 @@ public class AvatarController : MonoBehaviour
 
                             this.hiperCooldownTime += Time.deltaTime;
 
-                            if (this.hiperCooldownTime > this.HipervelocityCooldownMaxTime)
+                            if (this.hiperCooldownTime > this.DashCooldownMaxTime)
                             {
                                 this.State = AvatarStates.Normal;
                             }
@@ -254,7 +254,7 @@ public class AvatarController : MonoBehaviour
 
                             this.hiperActivedTime += Time.deltaTime;
 
-                            if (this.hiperActivedTime > this.HipervelocityBurnMaxTime)
+                            if (this.hiperActivedTime > this.DashBurnMaxTime)
                             {
                                 this.State = AvatarStates.CoolingDown;
                                 break;
@@ -344,7 +344,7 @@ public class AvatarController : MonoBehaviour
         {
             if (Input.GetButton(this.playerName + "Left") || axisHor <= -this.AxisSensitive)
             {
-                moveVector += Vector2.left * this.HipervelocitySpeed * Time.deltaTime;
+                moveVector += Vector2.left * this.DashSpeed * Time.deltaTime;
 
                 //this.animator.SetBool("HiperMoving", true);
                 this.animator.SetFloat("HiperMoveX", -1.5f);
@@ -352,7 +352,7 @@ public class AvatarController : MonoBehaviour
             }
             else if (Input.GetButton(this.playerName + "Right") || axisHor >= this.AxisSensitive)
             {
-                moveVector += Vector2.right * this.HipervelocitySpeed * Time.deltaTime;
+                moveVector += Vector2.right * this.DashSpeed * Time.deltaTime;
 
                 //this.animator.SetBool("HiperMoving", true);
                 this.animator.SetFloat("HiperMoveX", 1.5f);
@@ -363,7 +363,7 @@ public class AvatarController : MonoBehaviour
         {
             if (Input.GetButton(this.playerName + "Up") || axisVer >= this.AxisSensitive)
             {
-                moveVector += Vector2.up * this.HipervelocitySpeed * Time.deltaTime;
+                moveVector += Vector2.up * this.DashSpeed * Time.deltaTime;
 
                 ////this.animator.SetBool("HiperMoving", true);
                 //this.animator.SetFloat("HiperMoveX", 0);
@@ -371,7 +371,7 @@ public class AvatarController : MonoBehaviour
             }
             else if (Input.GetButton(this.playerName + "Down") || axisVer <= -this.AxisSensitive)
             {
-                moveVector += Vector2.down * this.HipervelocitySpeed * Time.deltaTime;
+                moveVector += Vector2.down * this.DashSpeed * Time.deltaTime;
 
                 ////this.animator.SetBool("HiperMoving", true);
                 //this.animator.SetFloat("HiperMoveX", 0);
