@@ -23,8 +23,8 @@ public class AvatarFixedPositionController : AvatarController
                         {
                             this.animator.SetBool("Moving", false);
                             this.animator.SetFloat("MoveX", 0);
-                            this.animator.SetBool("HiperMoving", true);
-                            this.animator.SetFloat("HiperMoveX", this.animator.GetFloat("MoveX"));
+                            this.animator.SetBool("DashMoving", true);
+                            this.animator.SetFloat("DashMoveX", this.animator.GetFloat("MoveX"));
 
                             this.spriteRendered.color = Color.yellow;
 
@@ -60,10 +60,10 @@ public class AvatarFixedPositionController : AvatarController
                     case AvatarStates.CoolingDown:
                         {
                             this.animator.SetBool("Moving", true);
-                            this.animator.SetFloat("MoveX", this.animator.GetFloat("HiperMoveX"));
-                            this.animator.SetBool("HiperMoving", false);
-                            this.animator.SetFloat("HiperMoveX", 0);
-                            this.animator.SetFloat("HiperMoveY", 0);
+                            this.animator.SetFloat("MoveX", this.animator.GetFloat("DashMoveX"));
+                            this.animator.SetBool("DashMoving", false);
+                            this.animator.SetFloat("DashMoveX", 0);
+                            this.animator.SetFloat("DashMoveY", 0);
 
                             this.spriteRendered.color = Color.green;
 

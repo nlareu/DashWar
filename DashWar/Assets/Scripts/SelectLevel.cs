@@ -20,6 +20,10 @@ public class SelectLevel : MonoBehaviour {
     {
         SceneManager.LoadScene("SelectAvatars");
     }
+    public void SelectGameMode()
+    {
+        SceneManager.LoadScene("SelectGameMode");
+    }
     public void Level1()
     {
         SceneManager.LoadScene("Lvl01-Level-01");

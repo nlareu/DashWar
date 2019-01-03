@@ -10,11 +10,13 @@ public class DataLevel : MonoBehaviour {
     public static DataLevel InstanceDataLevel;
     public AvatarController[] avatarsControllers;
     private int numberPlayers;
+    private int gameMode;
     //los players representan a cada jugador segun el valor que tengan sera el personaje que elijieron.
     private int player1;
     private int player2;
     private int player3;
     private int player4;
+    private int winingScore;
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -75,5 +77,21 @@ public class DataLevel : MonoBehaviour {
     public int GetPlayer4()
     {
         return player4;
+    }
+    public void SetGameMode(int _gameMode)
+    {
+        gameMode = _gameMode;
+    }
+    public int GetGameMode()
+    {
+        return gameMode;
+    }
+    public void SetWiningScore(int _winingScore)
+    {
+        winingScore = _winingScore;
+    }
+    public int GetWiningScore()
+    {
+        return winingScore;
     }
 }

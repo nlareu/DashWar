@@ -10,10 +10,13 @@ EditorBuildSettings:
     guid: 9d601944915419d45b1b4253e76cecb9
   - enabled: 1
     path: Assets/Scenes/SelectAvatars.unity
-    guid: 46d4e7582e38d3144a74252c905065ac
+    guid: d46a948e692302348b3d66b4457edc98
   - enabled: 1
     path: Assets/Scenes/SelectLevel.unity
     guid: 65c3f73dd1d9ac443bc81bf5f4b59e80
+  - enabled: 1
+    path: Assets/Scenes/SelectGameMode.unity
+    guid: ea20e13a3cff4c6458ab81c8cb6ca589
   - enabled: 1
     path: Assets/Scenes/Lvl01-Level-01.unity
     guid: 7a497c45a386a874784aa5ed7dc1d480

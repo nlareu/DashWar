@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
     // Use this for initialization
     public GameObject camvasPause;
     private bool pause;
-    public int winningScore;
+    private int winningScore;
     public Text[] textsScore;
     public Text textWiner;
     //public GameObject[] spawnerPlayer;
@@ -23,15 +23,26 @@ public class GameManager : MonoBehaviour {
         {
             textsScore[i].text = " ";
         }
+        winningScore = DataLevel.InstanceDataLevel.GetWiningScore();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        CheckPause();
-        CheckDead();
-        CheckWin();
-        CheckScore();
-        CheckLevelFinish();
+
+    // Update is called once per frame
+    void Update() {
+        //SEGUN QUE VALOR TENGA EL GetGameMode() DEL DataLevel SERA EL MODO DE JUEGO QUE ELIJA EL SWITCH 
+        switch (DataLevel.InstanceDataLevel.GetGameMode())
+        {
+            case 1:
+                //Modo de supervivencia.
+                CheckPause();
+                CheckDead();
+                CheckWinGameModeSorvival();
+                CheckScore();
+                CheckLevelFinish();
+                break;
+            case 2:
+                break;
+        
+        }
 
     }
     public void CheckDead()
@@ -74,7 +85,7 @@ public class GameManager : MonoBehaviour {
             
         }
     }
-    public void CheckWin()
+    public void CheckWinGameModeSorvival()
     {
         if(countAvatars == 1)
         { 

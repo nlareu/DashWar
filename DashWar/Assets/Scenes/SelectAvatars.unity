@@ -1402,7 +1402,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2676734}
-        m_MethodName: SelectLvl
+        m_MethodName: SelectGameMode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -91,11 +91,11 @@ public class AvatarController : MonoBehaviour
                             //To disable gravity effects, also settings is velicity to zero.
                             this.rigidBody.velocity = Vector2.zero;
 
-                            this.hiperActivedTime = 0f;
+                            this.dashActivedTime = 0f;
 
                             //Set initial values for hiper move line.
-                            this.hiperMoveLine.positionCount = 2;
-                            this.hiperMoveLine.SetPositions(new Vector3[] {
+                            this.dashMoveLine.positionCount = 2;
+                            this.dashMoveLine.SetPositions(new Vector3[] {
                                 new Vector2(this.rigidBody.position.x, this.rigidBody.position.y),
                                 new Vector2(this.rigidBody.position.x, this.rigidBody.position.y),
                             });
@@ -137,7 +137,7 @@ public class AvatarController : MonoBehaviour
 
                             this.rigidBody.gravityScale = 1f;
 
-                            this.hiperCooldownTime = 0f;
+                            this.dashCooldownTime = 0f;
 
                             break;
                         }
@@ -192,9 +192,9 @@ public class AvatarController : MonoBehaviour
         }
     }
     internal Vector2 ejectionVelocity = Vector2.zero;
-    protected float hiperActivedTime;
-    protected float hiperCooldownTime;
-    protected LineRenderer hiperMoveLine;
+    protected float dashActivedTime;
+    protected float dashCooldownTime;
+    protected LineRenderer dashMoveLine;
     protected string playerName
     {
         get { return "Player" + this.PlayerNumber + "-"; }
@@ -210,7 +210,7 @@ public class AvatarController : MonoBehaviour
     {
         this.animator = GetComponent<Animator>();
         this.boxCollider = GetComponent<BoxCollider2D>();
-        this.hiperMoveLine = GetComponent<LineRenderer>();
+        this.dashMoveLine = GetComponent<LineRenderer>();
         this.rigidBody = GetComponent<Rigidbody2D>();
         this.spriteRendered = GetComponent<SpriteRenderer>();
         this.tag = Tags.PLAYER;
@@ -230,15 +230,15 @@ public class AvatarController : MonoBehaviour
                         {
                             this.CheckAvatarMove();
 
-                            this.hiperCooldownTime += Time.deltaTime;
+                            this.dashCooldownTime += Time.deltaTime;
 
-                            if (this.hiperCooldownTime > this.DashCooldownMaxTime)
+                            if (this.dashCooldownTime > this.DashCooldownMaxTime)
                             {
                                 this.State = AvatarStates.Normal;
                             }
 
                             //Reset hiper move line
-                            this.hiperMoveLine.positionCount = 0;
+                            this.dashMoveLine.positionCount = 0;
 
                             break;
                         }
@@ -252,9 +252,9 @@ public class AvatarController : MonoBehaviour
                                 break;
                             }
 
-                            this.hiperActivedTime += Time.deltaTime;
+                            this.dashActivedTime += Time.deltaTime;
 
-                            if (this.hiperActivedTime > this.DashBurnMaxTime)
+                            if (this.dashActivedTime > this.DashBurnMaxTime)
                             {
                                 this.State = AvatarStates.CoolingDown;
                                 break;
@@ -269,11 +269,11 @@ public class AvatarController : MonoBehaviour
                                 && (this.previousDirection != Vector2.zero)
                                 && (this.previousDirection != this.currentDirection))
                             {
-                                this.hiperMoveLine.positionCount++;
+                                this.dashMoveLine.positionCount++;
                             }
 
                             //Update hiper move line liast position.
-                            this.hiperMoveLine.SetPosition(this.hiperMoveLine.positionCount - 1, new Vector2(this.rigidBody.position.x, this.rigidBody.position.y));
+                            this.dashMoveLine.SetPosition(this.dashMoveLine.positionCount - 1, new Vector2(this.rigidBody.position.x, this.rigidBody.position.y));
 
                             //Vector3[] pos = new Vector3[this.hiperMoveLine.positionCount];
                             //this.hiperMoveLine.GetPositions(pos);
@@ -346,17 +346,17 @@ public class AvatarController : MonoBehaviour
             {
                 moveVector += Vector2.left * this.DashSpeed * Time.deltaTime;
 
-                //this.animator.SetBool("HiperMoving", true);
-                this.animator.SetFloat("HiperMoveX", -1.5f);
-                this.animator.SetFloat("HiperMoveY", 0);
+                //this.animator.SetBool("DashMoving", true);
+                this.animator.SetFloat("DashMoveX", -1.5f);
+                this.animator.SetFloat("DashMoveY", 0);
             }
             else if (Input.GetButton(this.playerName + "Right") || axisHor >= this.AxisSensitive)
             {
                 moveVector += Vector2.right * this.DashSpeed * Time.deltaTime;
 
-                //this.animator.SetBool("HiperMoving", true);
-                this.animator.SetFloat("HiperMoveX", 1.5f);
-                this.animator.SetFloat("HiperMoveY", 0);
+                //this.animator.SetBool("DashMoving", true);
+                this.animator.SetFloat("DashMoveX", 1.5f);
+                this.animator.SetFloat("DashMoveY", 0);
             }
         }
         else
@@ -365,17 +365,17 @@ public class AvatarController : MonoBehaviour
             {
                 moveVector += Vector2.up * this.DashSpeed * Time.deltaTime;
 
-                ////this.animator.SetBool("HiperMoving", true);
-                //this.animator.SetFloat("HiperMoveX", 0);
-                //this.animator.SetFloat("HiperMoveY", 1.5f);
+                ////this.animator.SetBool("DashMoving", true);
+                //this.animator.SetFloat("DashMoveX", 0);
+                //this.animator.SetFloat("DashMoveY", 1.5f);
             }
             else if (Input.GetButton(this.playerName + "Down") || axisVer <= -this.AxisSensitive)
             {
                 moveVector += Vector2.down * this.DashSpeed * Time.deltaTime;
 
-                ////this.animator.SetBool("HiperMoving", true);
-                //this.animator.SetFloat("HiperMoveX", 0);
-                //this.animator.SetFloat("HiperMoveY", -1.5f);
+                ////this.animator.SetBool("DashMoving", true);
+                //this.animator.SetFloat("DashMoveX", 0);
+                //this.animator.SetFloat("DashMoveY", -1.5f);
             }
         }
 
