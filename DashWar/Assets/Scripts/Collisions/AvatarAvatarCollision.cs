@@ -134,5 +134,6 @@ public class AvatarAvatarCollision : GameCollisionAbstract
                 otherAvatar.rigidBody.AddForce(otherAvatarHitDir * avatar.HitForce);
             }
         }
+         Debug.Log("Choque contra " + otherAvatar.gameObject.name.ToString());   
     }
 }
