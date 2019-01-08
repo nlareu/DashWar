@@ -24,6 +24,7 @@ public class AvatarController : MonoBehaviour
     private float score;
     private bool death = false;
     private bool verifiedDeath = false;
+    private bool notMove;
 
     private void OnDisable()
     {
@@ -82,8 +83,8 @@ public class AvatarController : MonoBehaviour
                         {
                             this.animator.SetBool("Moving", false);
                             this.animator.SetFloat("MoveX", 0);
-                            this.animator.SetBool("HiperMoving", true);
-                            this.animator.SetFloat("HiperMoveX", this.animator.GetFloat("MoveX"));
+                            this.animator.SetBool("DashMoving", true);
+                            this.animator.SetFloat("DashMoveX", this.animator.GetFloat("MoveX"));
 
                             this.spriteRendered.color = Color.yellow;
 
@@ -128,10 +129,10 @@ public class AvatarController : MonoBehaviour
                     case AvatarStates.CoolingDown:
                         {
                             this.animator.SetBool("Moving", true);
-                            this.animator.SetFloat("MoveX", this.animator.GetFloat("HiperMoveX"));
-                            this.animator.SetBool("HiperMoving", false);
-                            this.animator.SetFloat("HiperMoveX", 0);
-                            this.animator.SetFloat("HiperMoveY", 0);
+                            this.animator.SetFloat("MoveX", this.animator.GetFloat("DashMoveX"));
+                            this.animator.SetBool("DashMoving", false);
+                            this.animator.SetFloat("DashMoveX", 0);
+                            this.animator.SetFloat("DashMoveY", 0);
 
                             this.spriteRendered.color = Color.green;
 
@@ -261,7 +262,7 @@ public class AvatarController : MonoBehaviour
                             }
 
 
-                            this.CheckAvatarHiperMove();
+                            this.CheckAvatarDashMove();
 
 
                             //If move direction changed, add new position to hiper move line.
@@ -333,91 +334,97 @@ public class AvatarController : MonoBehaviour
         //Debug.Log(string.Format("Axis H: {0}, V: {1}.", (float)Input.GetAxis(this.playerName + "Horizontal"), (float)Input.GetAxis(this.playerName + "Vertical")));
     }
 
-    private void CheckAvatarHiperMove()
+    private void CheckAvatarDashMove()
     {
-        Vector2 moveVector = new Vector2();
-        float axisHor = Input.GetAxis(this.playerName + "Horizontal");
-        float axisVer = Input.GetAxis(this.playerName + "Vertical");
-
-        if ((Input.GetButton(this.playerName + "Left") || axisHor <= -this.AxisSensitive)
-            || (Input.GetButton(this.playerName + "Right") || axisHor >= this.AxisSensitive))
+        if (!notMove)
         {
-            if (Input.GetButton(this.playerName + "Left") || axisHor <= -this.AxisSensitive)
-            {
-                moveVector += Vector2.left * this.DashSpeed * Time.deltaTime;
+            Vector2 moveVector = new Vector2();
+            float axisHor = Input.GetAxis(this.playerName + "Horizontal");
+            float axisVer = Input.GetAxis(this.playerName + "Vertical");
 
-                //this.animator.SetBool("DashMoving", true);
-                this.animator.SetFloat("DashMoveX", -1.5f);
-                this.animator.SetFloat("DashMoveY", 0);
-            }
-            else if (Input.GetButton(this.playerName + "Right") || axisHor >= this.AxisSensitive)
+            if ((Input.GetButton(this.playerName + "Left") || axisHor <= -this.AxisSensitive)
+                || (Input.GetButton(this.playerName + "Right") || axisHor >= this.AxisSensitive))
             {
-                moveVector += Vector2.right * this.DashSpeed * Time.deltaTime;
+                if (Input.GetButton(this.playerName + "Left") || axisHor <= -this.AxisSensitive)
+                {
+                    moveVector += Vector2.left * this.DashSpeed * Time.deltaTime;
 
-                //this.animator.SetBool("DashMoving", true);
-                this.animator.SetFloat("DashMoveX", 1.5f);
-                this.animator.SetFloat("DashMoveY", 0);
+                    //this.animator.SetBool("DashMoving", true);
+                    this.animator.SetFloat("DashMoveX", -1.5f);
+                    this.animator.SetFloat("DashMoveY", 0);
+                }
+                else if (Input.GetButton(this.playerName + "Right") || axisHor >= this.AxisSensitive)
+                {
+                    moveVector += Vector2.right * this.DashSpeed * Time.deltaTime;
+
+                    //this.animator.SetBool("DashMoving", true);
+                    this.animator.SetFloat("DashMoveX", 1.5f);
+                    this.animator.SetFloat("DashMoveY", 0);
+                }
             }
+            else
+            {
+                if (Input.GetButton(this.playerName + "Up") || axisVer >= this.AxisSensitive)
+                {
+                    moveVector += Vector2.up * this.DashSpeed * Time.deltaTime;
+
+                    ////this.animator.SetBool("DashMoving", true);
+                    //this.animator.SetFloat("DashMoveX", 0);
+                    //this.animator.SetFloat("DashMoveY", 1.5f);
+                }
+                else if (Input.GetButton(this.playerName + "Down") || axisVer <= -this.AxisSensitive)
+                {
+                    moveVector += Vector2.down * this.DashSpeed * Time.deltaTime;
+
+                    ////this.animator.SetBool("DashMoving", true);
+                    //this.animator.SetFloat("DashMoveX", 0);
+                    //this.animator.SetFloat("DashMoveY", -1.5f);
+                }
+            }
+
+            this.transform.Translate(moveVector);
         }
-        else
-        {
-            if (Input.GetButton(this.playerName + "Up") || axisVer >= this.AxisSensitive)
-            {
-                moveVector += Vector2.up * this.DashSpeed * Time.deltaTime;
-
-                ////this.animator.SetBool("DashMoving", true);
-                //this.animator.SetFloat("DashMoveX", 0);
-                //this.animator.SetFloat("DashMoveY", 1.5f);
-            }
-            else if (Input.GetButton(this.playerName + "Down") || axisVer <= -this.AxisSensitive)
-            {
-                moveVector += Vector2.down * this.DashSpeed * Time.deltaTime;
-
-                ////this.animator.SetBool("DashMoving", true);
-                //this.animator.SetFloat("DashMoveX", 0);
-                //this.animator.SetFloat("DashMoveY", -1.5f);
-            }
-        }
-
-        this.transform.Translate(moveVector);
     }
     private void CheckAvatarMove()
     {
-        Vector2 moveVector = new Vector2();
-        float axisHor = Input.GetAxis(this.playerName + "Horizontal");
-        //float axisVer = Input.GetAxis(this.playerName + "Vertical");
-
-        //if (Input.GetButton(this.playerName + "Left"))
-        if (Input.GetButton(this.playerName + "Left") || axisHor <= -this.AxisSensitive)
+        if (!notMove)
         {
-            moveVector += Vector2.left * this.Speed * Time.deltaTime;
+            Vector2 moveVector = new Vector2();
+            float axisHor = Input.GetAxis(this.playerName + "Horizontal");
+            //float axisVer = Input.GetAxis(this.playerName + "Vertical");
 
-            this.animator.SetBool("Moving", true);
-            this.animator.SetFloat("MoveX", -1.5f);
+            //if (Input.GetButton(this.playerName + "Left"))
+            if (Input.GetButton(this.playerName + "Left") || axisHor <= -this.AxisSensitive)
+            {
+                moveVector += Vector2.left * this.Speed * Time.deltaTime;
+
+                this.animator.SetBool("Moving", true);
+                this.animator.SetFloat("MoveX", -1.5f);
+            }
+            //else if (Input.GetButton(this.playerName + "Right"))
+            else if (Input.GetButton(this.playerName + "Right") || axisHor >= this.AxisSensitive)
+            {
+                moveVector += Vector2.right * this.Speed * Time.deltaTime;
+
+                this.animator.SetBool("Moving", true);
+                this.animator.SetFloat("MoveX", 1.5f);
+            }
+            else
+            {
+                this.animator.SetBool("Moving", false);
+                //this.animator.SetFloat("MoveX", 0.5f);
+            }
+
+            if (Input.GetButton(this.playerName + "Jump") && this.IsJumping == false)
+            {
+                //this.rigidBody.AddForce(Vector2.up * this.JumpHeight);
+                this.rigidBody.velocity = new Vector2(this.rigidBody.velocity.x, Vector2.up.y * this.JumpHeight);
+
+                this.IsJumping = true;
+            }
+
+            this.transform.Translate(moveVector);
         }
-        //else if (Input.GetButton(this.playerName + "Right"))
-        else if (Input.GetButton(this.playerName + "Right") || axisHor >= this.AxisSensitive)
-        {
-            moveVector += Vector2.right * this.Speed * Time.deltaTime;
-
-            this.animator.SetBool("Moving", true);
-            this.animator.SetFloat("MoveX", 1.5f);
-        }
-        else
-        {
-            this.animator.SetBool("Moving", false);
-            //this.animator.SetFloat("MoveX", 0.5f);
-        }
-
-        if (Input.GetButton(this.playerName + "Jump") && this.IsJumping == false)
-        {
-            //this.rigidBody.AddForce(Vector2.up * this.JumpHeight);
-            this.rigidBody.velocity = new Vector2(this.rigidBody.velocity.x, Vector2.up.y * this.JumpHeight);
-
-            this.IsJumping = true;
-        }
-
-        this.transform.Translate(moveVector);
     }
     public void Kill()
     {
@@ -434,5 +441,13 @@ public class AvatarController : MonoBehaviour
     {
         if (this.Died != null)
             this.Died(this, new EventArgs());
+    }
+    public void SetNotMove(bool _notMove)
+    {
+        notMove = _notMove;
+    }
+    public bool GetNotMove()
+    {
+        return notMove;
     }
 }

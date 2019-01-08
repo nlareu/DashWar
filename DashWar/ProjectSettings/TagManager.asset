@@ -13,6 +13,10 @@ TagManager:
   - MortalObject
   - Spikes
   - SnowBall
+  - SelectAvatar_1
+  - SelectAvatar_2
+  - SelectAvatar_3
+  - SelectAvatar_4
   layers:
   - Default
   - TransparentFX

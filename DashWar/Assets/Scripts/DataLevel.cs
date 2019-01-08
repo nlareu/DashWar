@@ -8,7 +8,7 @@ public class DataLevel : MonoBehaviour {
     [HideInInspector]
     public bool pause;
     public static DataLevel InstanceDataLevel;
-    public AvatarController[] avatarsControllers;
+    public List<AvatarController> avatarsControllers;
     private int numberPlayers;
     private int gameMode;
     //los players representan a cada jugador segun el valor que tengan sera el personaje que elijieron.
@@ -28,6 +28,7 @@ public class DataLevel : MonoBehaviour {
         {
             InstanceDataLevel.gameObject.SetActive(false);
         }
+        numberPlayers = 1;
     }
 
     public void SetNumberPlayer(int num)

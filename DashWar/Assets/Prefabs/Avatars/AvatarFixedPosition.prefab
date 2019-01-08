@@ -123,9 +123,9 @@ MonoBehaviour:
   debugvar: 10
   AppController: {fileID: 0}
   AxisSensitive: 0.7
-  HipervelocityBurnMaxTime: 0.5
-  HipervelocityCooldownMaxTime: 1
-  HipervelocitySpeed: 17
+  DashBurnMaxTime: 0.5
+  DashCooldownMaxTime: 1
+  DashSpeed: 17
   HitForce: 500
   IsJumping: 0
   JumpHeight: 250
@@ -260,7 +260,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300054, guid: 2b0283c7a87675449b7e004a9a21d25c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
