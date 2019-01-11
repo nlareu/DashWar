@@ -25,7 +25,19 @@ public class AvatarController : MonoBehaviour
     private bool death = false;
     private bool verifiedDeath = false;
     private bool notMove;
-
+    private bool revive;
+    private void Start()
+    {
+        revive = true;
+    }
+    public void SetRevive(bool _revive)
+    {
+        revive = _revive;
+    }
+    public bool GetRevive()
+    {
+        return revive;
+    }
     private void OnDisable()
     {
         death = true;

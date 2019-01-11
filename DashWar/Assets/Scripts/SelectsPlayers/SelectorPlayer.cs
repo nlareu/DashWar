@@ -27,6 +27,7 @@ public class SelectorPlayer : MonoBehaviour {
         //SI HAY LA CAPACIDAD DE JUGADORES ES MAYOR AGREGAR UN IF CON OTRO NUM PLAYER
         if (Movement)
         {
+
             if (numPlayer == 1)
             {
                 if (Input.GetKeyDown(KeyCode.LeftShift))
@@ -36,7 +37,7 @@ public class SelectorPlayer : MonoBehaviour {
                     Movement = false;
                     selectAvatar.SetMovement1(false);
                     app.InstanciarJugador1(false);
-                    selectCantPlayerDefinitive.SetSubstract(false);
+                    //selectCantPlayerDefinitive.SetSubstract(false);
                     app.activateAvatarController = true;
                     app.cancelSelectionAvatarController = true;
                 }
@@ -50,37 +51,40 @@ public class SelectorPlayer : MonoBehaviour {
                     Movement = false;
                     selectAvatar.SetMovement2(false);
                     app.InstanciarJugador2(false);                
-                    selectCantPlayerDefinitive.SetSubstract(false);
+                    //selectCantPlayerDefinitive.SetSubstract(false);
                     app.activateAvatarController = true;
                     app.cancelSelectionAvatarController = true;
                 }
             }
             if (numPlayer == 3)
             {
-                //Cambiar la G por la condicion correspondiente del JOSTICK
-                if (Input.GetKeyDown(KeyCode.G))
+                float axisButtonXJostick1 = Input.GetAxis("Player3-Dash");
+            
+                //Cambiar la G por la condicion correspondiente del JOSTICK(El boton de dash del jostick)
+                if (Input.GetButtonDown("Player3-Dash") || axisButtonXJostick1 > 0)
                 {
                     //El numAvatar que se setea en el SetPlayer representa el avatar que tendra ese jugador.
                     DataLevel.InstanceDataLevel.SetPlayer3(numAvatar);
                     Movement = false;
                     selectAvatar.SetMovement3(false);
                     app.InstanciarJugador3(false);
-                    selectCantPlayerDefinitive.SetSubstract(false);
+                    //selectCantPlayerDefinitive.SetSubstract(false);
                     app.activateAvatarController = true;
                     app.cancelSelectionAvatarController = true;
                 }
             }
             if (numPlayer == 4)
             {
+                float axisButtonXJostick2 = Input.GetAxis("Player4-Dash");
                 //Cambiar la G por la condicion correspondiente del JOSTICK
-                if (Input.GetKeyDown(KeyCode.G))
+                if (Input.GetButtonDown("Player4-Dash") || axisButtonXJostick2 > 0)
                 {
                     //El numAvatar que se setea en el SetPlayer representa el avatar que tendra ese jugador.
                     DataLevel.InstanceDataLevel.SetPlayer4(numAvatar);
                     Movement = false;
                     selectAvatar.SetMovement4(false);
                     app.InstanciarJugador4(false);
-                    selectCantPlayerDefinitive.SetSubstract(false);
+                    //selectCantPlayerDefinitive.SetSubstract(false);
                     app.activateAvatarController = true;
                     app.cancelSelectionAvatarController = true;
                 }

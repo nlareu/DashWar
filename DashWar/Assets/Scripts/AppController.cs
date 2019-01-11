@@ -32,6 +32,7 @@ public class AppController : MonoBehaviour {
     private AvatarController auxPlayer2;
     private AvatarController auxPlayer3;
     private AvatarController auxPlayer4;
+    public bool InSelectAvatars;
 
     // Use this for initialization
     void Start() {
@@ -44,46 +45,84 @@ public class AppController : MonoBehaviour {
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             //Reset static.
             this.players.Clear();
 
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-        ActivateAvatarController();
-        CancelSelectionAvatarControler();
+        if (InSelectAvatars == true)
+        {
+            ActivateAvatarController();
+            CancelSelectionAvatarControler();
+        }
     }
     public void CancelSelectionAvatarControler()
-    {
-        //float axisHorJostick1 = Input.GetAxis("Jostick1-LeftStick_Horizontal");
-        //float axisHorJostick2 = Input.GetAxis("Jostick2-LeftStick_Horizontal");
-        
-        if (Input.GetKeyDown(KeyCode.Space) && cancelSelectionAvatarController)
+    {      
+        if (Input.GetKeyDown(KeyCode.Escape) && cancelSelectionAvatarController)
         {
             selectAvatarDefinitive.SetMovement1(true);
             selectorPlayer1.SetMovement(true);
-            Destroy(auxPlayer1);
             cancelSelectionAvatarController = false;
             activateAvatarController = false;
-            //DataLevel.InstanceDataLevel.avatarsControllers.Remove(DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer1()]);
-            //Destroy(DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer1()].gameObject);
+            SpritePlayer1.SetActive(true);
+            DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer1()].gameObject.SetActive(false);
+            DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer1()].SetRevive(false);
+            auxPlayer1.gameObject.SetActive(false);
+            auxPlayer1.SetRevive(false);
+            DataLevel.InstanceDataLevel.SubtractPlayer();
         }
         if(Input.GetKeyDown(KeyCode.Alpha0) && cancelSelectionAvatarController)
         {
             selectAvatarDefinitive.SetMovement2(true);
             selectorPlayer2.SetMovement(true);
-            Destroy(auxPlayer2);
             cancelSelectionAvatarController = false;
             activateAvatarController = false;
-            //DataLevel.InstanceDataLevel.avatarsControllers.Remove(DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer2()]);
-            //Destroy(DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer2()].gameObject);
+            SpritePlayer2.SetActive(true);
+            DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer2()].gameObject.SetActive(false);
+            DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer1()].SetRevive(false);
+            auxPlayer2.gameObject.SetActive(false);
+            auxPlayer2.SetRevive(false);
+            DataLevel.InstanceDataLevel.SubtractPlayer();
+        }
+        if(Input.GetButtonDown("Player3-Cancel") && cancelSelectionAvatarController)
+        {
+            selectAvatarDefinitive.SetMovement3(true);
+            selectorPlayer3.SetMovement(true);
+            cancelSelectionAvatarController = false;
+            activateAvatarController = false;
+            SpritePlayer3.SetActive(true);
+            DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer3()].gameObject.SetActive(false);
+            DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer1()].SetRevive(false);
+            auxPlayer3.gameObject.SetActive(false);
+            auxPlayer3.SetRevive(false);
+            DataLevel.InstanceDataLevel.SubtractPlayer();
+        }
+        if(Input.GetButtonDown("Player4-Cancel") && cancelSelectionAvatarController)
+        {
+            selectAvatarDefinitive.SetMovement4(true);
+            selectorPlayer4.SetMovement(true);
+            cancelSelectionAvatarController = false;
+            activateAvatarController = false;
+            SpritePlayer4.SetActive(true);
+            DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer4()].gameObject.SetActive(false);
+            DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer1()].SetRevive(false);
+            auxPlayer4.gameObject.SetActive(false);
+            auxPlayer4.SetRevive(false);
+            DataLevel.InstanceDataLevel.SubtractPlayer();
         }
     }
     public void ActivateAvatarController()
     {
-        float axisHorJostick1 = Input.GetAxis("Jostick1-LeftStick_Horizontal");
-        float axisHorJostick2 = Input.GetAxis("Jostick2-LeftStick_Horizontal");
+        float axisHorPlayer3 = Input.GetAxis("Player3-LeftStick-Horizontal");
+        float axisLeftPlayer3 = Input.GetAxis("Player3-Left");
+        float axisRightPlayer3 = Input.GetAxis("Player3-Right");
+
+        float axisHorPlayer4 = Input.GetAxis("Player4-LeftStick-Horizontal");
+        float axisLeftPlayer4 = Input.GetAxis("Player4-Left");
+        float axisRightPlayer4 = Input.GetAxis("Player4-Right");
+
         if (Input.GetKeyDown(KeyCode.A) && activateAvatarController || Input.GetKeyDown(KeyCode.D) && activateAvatarController)
         {
             auxPlayer1.SetNotMove(false);
@@ -102,7 +141,10 @@ public class AppController : MonoBehaviour {
             activateAvatarController = false;
         }
         //JOSTICK 1
-        if(Input.GetButtonDown("Jostick1-LeftStick_Horizontal") && activateAvatarController ||axisHorJostick1 >0 && activateAvatarController || axisHorJostick1 < 0 && activateAvatarController)
+        if(Input.GetButtonDown("Player3-LeftStick-Horizontal") && activateAvatarController && axisHorPlayer3 >0 || 
+            Input.GetButtonDown("Player3-LeftStick-Horizontal") && axisHorPlayer3 < 0 && activateAvatarController ||
+            Input.GetButtonDown("Player3-Left") && axisLeftPlayer3 > 0 && activateAvatarController ||
+            Input.GetButtonDown("Player3-Right") && axisRightPlayer3 > 0 && activateAvatarController)
         {
             auxPlayer3.SetNotMove(false);
             auxPlayer3.GetComponent<Rigidbody2D>().simulated = true;
@@ -111,7 +153,10 @@ public class AppController : MonoBehaviour {
             activateAvatarController = false;
         }
         //JOSTICK 2
-        if(Input.GetButtonDown("Jostick2-LeftStick_Horizontal") && activateAvatarController || axisHorJostick2 > 0 && activateAvatarController || axisHorJostick2 < 0 && activateAvatarController)
+        if(Input.GetButtonDown("Player4-LeftStick-Horizontal") && activateAvatarController && axisHorPlayer4 > 0 ||
+            Input.GetButtonDown("Player4-LeftStick-Horizontal") && axisHorPlayer4 < 0 && activateAvatarController ||
+            Input.GetButtonDown("Player4-Left") && axisLeftPlayer4 > 0 && activateAvatarController ||
+            Input.GetButtonDown("Player4-Right") && axisRightPlayer4 > 0 && activateAvatarController)
         {
             auxPlayer4.SetNotMove(false);
             auxPlayer4.GetComponent<Rigidbody2D>().simulated = true;
@@ -143,6 +188,7 @@ public class AppController : MonoBehaviour {
                 player.GetComponent<Rigidbody2D>().simulated = false;
                 player.gameObject.SetActive(false);
             }
+            DataLevel.InstanceDataLevel.AddPlayer();
         }
     }
     
@@ -167,6 +213,7 @@ public class AppController : MonoBehaviour {
             player.GetComponent<Rigidbody2D>().simulated = false;
             player.gameObject.SetActive(false);
         }
+        DataLevel.InstanceDataLevel.AddPlayer();
     }
 
     public void InstanciarJugador3(bool activate)
@@ -177,6 +224,7 @@ public class AppController : MonoBehaviour {
         player.AppController = this;
         player.PlayerNumber = 3;
         player.Died += this.Player_Died;
+        DataLevel.InstanceDataLevel.AddPlayer();
         if (gameManager != null)
         {
             gameManager.Avatars.Add(player);
@@ -211,6 +259,7 @@ public class AppController : MonoBehaviour {
             player.GetComponent<Rigidbody2D>().simulated = false;
             player.gameObject.SetActive(false);
         }
+        DataLevel.InstanceDataLevel.AddPlayer();
     }
 
     public void StartAppController()
@@ -219,6 +268,7 @@ public class AppController : MonoBehaviour {
         {
             PlayersCount = DataLevel.InstanceDataLevel.GetNumberPlayer();
         }
+        //RestartRound();
         // el i aqui representa el numero del jugador y el contenido del avatarsControllers el avatar que el jugador elijio.
         //-Agregar un if de (i== x numero) por cada vez que se extienda en 1 el limite de jugadores.
         //Tambien se debe agregar un player y get player en la clase DataLevel cada vez que se extiende la cantidad de jugadores que pueden jugar
@@ -238,6 +288,7 @@ public class AppController : MonoBehaviour {
                     player.AppController = this;
                     player.PlayerNumber = this.AddPlayer(player);
                     player.Died += this.Player_Died;
+                    player.gameObject.SetActive(true);
                     if (gameManager != null)
                     {
                         gameManager.Avatars.Add(player);
@@ -250,6 +301,7 @@ public class AppController : MonoBehaviour {
                     player.AppController = this;
                     player.PlayerNumber = this.AddPlayer(player);
                     player.Died += this.Player_Died;
+                    player.gameObject.SetActive(true);
                     if (gameManager != null)
                     {
                         gameManager.Avatars.Add(player);
@@ -262,6 +314,7 @@ public class AppController : MonoBehaviour {
                     player.AppController = this;
                     player.PlayerNumber = this.AddPlayer(player);
                     player.Died += this.Player_Died;
+                    player.gameObject.SetActive(true);
                     if (gameManager != null)
                     {
                         gameManager.Avatars.Add(player);
@@ -274,6 +327,7 @@ public class AppController : MonoBehaviour {
                     player.AppController = this;
                     player.PlayerNumber = this.AddPlayer(player);
                     player.Died += this.Player_Died;
+                    player.gameObject.SetActive(true);
                     if (gameManager != null)
                     {
                         gameManager.Avatars.Add(player);
@@ -287,7 +341,7 @@ public class AppController : MonoBehaviour {
             gameManager.auxCountAvatars = gameManager.countAvatars;
         }
     }
-    // Update is called once per frame
+        // Update is called once per frame
     public int AddPlayer(AvatarController avatar)
     {
         this.players.Add(avatar);
@@ -326,7 +380,7 @@ public class AppController : MonoBehaviour {
                 Debug.Log(players[i]);
                 if (players[i] != null)
                 {
-                    if (players[i].gameObject.activeSelf == false)
+                    if (players[i].gameObject.activeSelf == false && players[i].GetRevive() == true)
                     {
                         var player = players[i];
                         var respawnPos = RespawnPositions[players[i].PlayerNumber - 1].transform.position;

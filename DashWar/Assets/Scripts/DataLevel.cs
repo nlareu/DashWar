@@ -28,7 +28,7 @@ public class DataLevel : MonoBehaviour {
         {
             InstanceDataLevel.gameObject.SetActive(false);
         }
-        numberPlayers = 1;
+        //numberPlayers = 1;
     }
 
     public void SetNumberPlayer(int num)
