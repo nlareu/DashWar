@@ -184,9 +184,10 @@ public class AppController : MonoBehaviour {
             }
             if(!activate)
             {
-                player.SetNotMove(true);
-                player.GetComponent<Rigidbody2D>().simulated = false;
-                player.gameObject.SetActive(false);
+                player.SetNotMove(false);
+                player.GetComponent<Rigidbody2D>().simulated = true;
+                player.gameObject.SetActive(true);
+                SpritePlayer1.SetActive(false);
             }
             DataLevel.InstanceDataLevel.AddPlayer();
         }
@@ -209,9 +210,10 @@ public class AppController : MonoBehaviour {
         }
         if (!activate)
         {
-            player.SetNotMove(true);
-            player.GetComponent<Rigidbody2D>().simulated = false;
-            player.gameObject.SetActive(false);
+            player.SetNotMove(false);
+            player.GetComponent<Rigidbody2D>().simulated = true;
+            player.gameObject.SetActive(true);
+            SpritePlayer2.SetActive(false);
         }
         DataLevel.InstanceDataLevel.AddPlayer();
     }
@@ -233,9 +235,10 @@ public class AppController : MonoBehaviour {
         }
         if (!activate)
         {
-            player.SetNotMove(true);
-            player.GetComponent<Rigidbody2D>().simulated = false;
-            player.gameObject.SetActive(false);
+            player.SetNotMove(false);
+            player.GetComponent<Rigidbody2D>().simulated = true;
+            player.gameObject.SetActive(true);
+            SpritePlayer3.SetActive(false);
         }
     }
 
@@ -255,9 +258,10 @@ public class AppController : MonoBehaviour {
         }
         if (!activate)
         {
-            player.SetNotMove(true);
-            player.GetComponent<Rigidbody2D>().simulated = false;
-            player.gameObject.SetActive(false);
+            player.SetNotMove(false);
+            player.GetComponent<Rigidbody2D>().simulated = true;
+            player.gameObject.SetActive(true);
+            SpritePlayer4.SetActive(false);
         }
         DataLevel.InstanceDataLevel.AddPlayer();
     }
