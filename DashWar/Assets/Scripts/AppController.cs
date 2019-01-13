@@ -10,7 +10,14 @@ public class AppController : MonoBehaviour {
     [HideInInspector]
     public bool activateAvatarController;
     [HideInInspector]
-    public bool cancelSelectionAvatarController;
+    public bool cancelSelectionAvatarController1;
+    [HideInInspector]
+    public bool cancelSelectionAvatarController2;
+    [HideInInspector]
+    public bool cancelSelectionAvatarController3;
+    [HideInInspector]
+    public bool cancelSelectionAvatarController4;
+
     //limite de jugadores que va a tener el juego.
     public int PlayersCount = 4;
     public List<GameObject> RespawnPositions = new List<GameObject>();
@@ -33,15 +40,33 @@ public class AppController : MonoBehaviour {
     private AvatarController auxPlayer3;
     private AvatarController auxPlayer4;
     public bool InSelectAvatars;
+    private float auxTimeCancelPlayer1;
+    private float auxTimeCancelPlayer2;
+    private float auxTimeCancelPlayer3;
+    private float auxTimeCancelPlayer4;
+    private float timeCancelPlayer1;
+    private float timeCancelPlayer2;
+    private float timeCancelPlayer3;
+    private float timeCancelPlayer4;
 
     // Use this for initialization
     void Start() {
+        //tiempo en el que hay que mantener apretado para cancelar la selecion.
+        auxTimeCancelPlayer1 = 1.5f;
+        auxTimeCancelPlayer2 = 1.5f;
+        auxTimeCancelPlayer3 = 1.5f;
+        auxTimeCancelPlayer4 = 1.5f;
+        timeCancelPlayer1 = auxTimeCancelPlayer1;
+        timeCancelPlayer2 = auxTimeCancelPlayer2;
+        timeCancelPlayer3 = auxTimeCancelPlayer3;
+        timeCancelPlayer4 = auxTimeCancelPlayer4;
+
         if (!notInstanciateImmediately)
         {
             StartAppController();
         }
         activateAvatarController = false;
-        cancelSelectionAvatarController = false;
+        cancelSelectionAvatarController1 = false;
     }
     void Update()
     {
@@ -54,63 +79,96 @@ public class AppController : MonoBehaviour {
         }
         if (InSelectAvatars == true)
         {
-            ActivateAvatarController();
+            //ActivateAvatarController();
             CancelSelectionAvatarControler();
+            RestartRound();
         }
     }
     public void CancelSelectionAvatarControler()
-    {      
-        if (Input.GetKeyDown(KeyCode.Escape) && cancelSelectionAvatarController)
+    {    
+        if (Input.GetKey(KeyCode.Escape) && cancelSelectionAvatarController1)
         {
-            selectAvatarDefinitive.SetMovement1(true);
-            selectorPlayer1.SetMovement(true);
-            cancelSelectionAvatarController = false;
-            activateAvatarController = false;
-            SpritePlayer1.SetActive(true);
-            DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer1()].gameObject.SetActive(false);
-            DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer1()].SetRevive(false);
-            auxPlayer1.gameObject.SetActive(false);
-            auxPlayer1.SetRevive(false);
-            DataLevel.InstanceDataLevel.SubtractPlayer();
+            if(timeCancelPlayer1 > 0)
+            {
+                timeCancelPlayer1 = timeCancelPlayer1 - Time.deltaTime;
+            }
+            if (timeCancelPlayer1 <= 0)
+            {
+                timeCancelPlayer1 = auxTimeCancelPlayer1;
+                selectAvatarDefinitive.SetMovement1(true);
+                selectorPlayer1.SetMovement(true);
+                cancelSelectionAvatarController1 = false;
+                activateAvatarController = false;
+                SpritePlayer1.SetActive(true);
+                DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer1()].gameObject.SetActive(false);
+                DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer1()].SetRevive(false);
+                auxPlayer1.gameObject.SetActive(false);
+                auxPlayer1.SetRevive(false);
+                DataLevel.InstanceDataLevel.SubtractPlayer();
+            }
         }
-        if(Input.GetKeyDown(KeyCode.Alpha0) && cancelSelectionAvatarController)
+        if(Input.GetKey(KeyCode.Alpha0) && cancelSelectionAvatarController2)
         {
-            selectAvatarDefinitive.SetMovement2(true);
-            selectorPlayer2.SetMovement(true);
-            cancelSelectionAvatarController = false;
-            activateAvatarController = false;
-            SpritePlayer2.SetActive(true);
-            DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer2()].gameObject.SetActive(false);
-            DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer1()].SetRevive(false);
-            auxPlayer2.gameObject.SetActive(false);
-            auxPlayer2.SetRevive(false);
-            DataLevel.InstanceDataLevel.SubtractPlayer();
+            if(timeCancelPlayer2 > 0)
+            {
+                timeCancelPlayer2 = timeCancelPlayer2 - Time.deltaTime;
+            }
+            if (timeCancelPlayer2 <= 0)
+            {
+                timeCancelPlayer2 = auxTimeCancelPlayer2;
+                selectAvatarDefinitive.SetMovement2(true);
+                selectorPlayer2.SetMovement(true);
+                cancelSelectionAvatarController2 = false;
+                activateAvatarController = false;
+                SpritePlayer2.SetActive(true);
+                DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer2()].gameObject.SetActive(false);
+                DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer2()].SetRevive(false);
+                auxPlayer2.gameObject.SetActive(false);
+                auxPlayer2.SetRevive(false);
+                DataLevel.InstanceDataLevel.SubtractPlayer();
+            }
         }
-        if(Input.GetButtonDown("Player3-Cancel") && cancelSelectionAvatarController)
+        if(Input.GetButton("Player3-Cancel") && cancelSelectionAvatarController3)
         {
-            selectAvatarDefinitive.SetMovement3(true);
-            selectorPlayer3.SetMovement(true);
-            cancelSelectionAvatarController = false;
-            activateAvatarController = false;
-            SpritePlayer3.SetActive(true);
-            DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer3()].gameObject.SetActive(false);
-            DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer1()].SetRevive(false);
-            auxPlayer3.gameObject.SetActive(false);
-            auxPlayer3.SetRevive(false);
-            DataLevel.InstanceDataLevel.SubtractPlayer();
+            if(timeCancelPlayer3 > 0)
+            {
+                timeCancelPlayer3 = timeCancelPlayer3 - Time.deltaTime;
+            }
+            if (timeCancelPlayer3 <= 0)
+            {
+                timeCancelPlayer3 = auxTimeCancelPlayer3;
+                selectAvatarDefinitive.SetMovement3(true);
+                selectorPlayer3.SetMovement(true);
+                cancelSelectionAvatarController3 = false;
+                activateAvatarController = false;
+                SpritePlayer3.SetActive(true);
+                DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer3()].gameObject.SetActive(false);
+                DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer3()].SetRevive(false);
+                auxPlayer3.gameObject.SetActive(false);
+                auxPlayer3.SetRevive(false);
+                DataLevel.InstanceDataLevel.SubtractPlayer();
+            }
         }
-        if(Input.GetButtonDown("Player4-Cancel") && cancelSelectionAvatarController)
+        if(Input.GetButton("Player4-Cancel") && cancelSelectionAvatarController4)
         {
-            selectAvatarDefinitive.SetMovement4(true);
-            selectorPlayer4.SetMovement(true);
-            cancelSelectionAvatarController = false;
-            activateAvatarController = false;
-            SpritePlayer4.SetActive(true);
-            DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer4()].gameObject.SetActive(false);
-            DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer1()].SetRevive(false);
-            auxPlayer4.gameObject.SetActive(false);
-            auxPlayer4.SetRevive(false);
-            DataLevel.InstanceDataLevel.SubtractPlayer();
+            if (timeCancelPlayer4 > 0)
+            {
+                timeCancelPlayer4 = timeCancelPlayer4 - Time.deltaTime;
+            }
+            if (timeCancelPlayer4 <= 0)
+            {
+                timeCancelPlayer4 = auxTimeCancelPlayer4;
+                selectAvatarDefinitive.SetMovement4(true);
+                selectorPlayer4.SetMovement(true);
+                cancelSelectionAvatarController4 = false;
+                activateAvatarController = false;
+                SpritePlayer4.SetActive(true);
+                DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer4()].gameObject.SetActive(false);
+                DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer4()].SetRevive(false);
+                auxPlayer4.gameObject.SetActive(false);
+                auxPlayer4.SetRevive(false);
+                DataLevel.InstanceDataLevel.SubtractPlayer();
+            }
         }
     }
     public void ActivateAvatarController()

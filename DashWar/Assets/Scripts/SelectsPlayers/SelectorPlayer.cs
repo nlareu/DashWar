@@ -39,7 +39,7 @@ public class SelectorPlayer : MonoBehaviour {
                     app.InstanciarJugador1(false);
                     //selectCantPlayerDefinitive.SetSubstract(false);
                     app.activateAvatarController = true;
-                    app.cancelSelectionAvatarController = true;
+                    app.cancelSelectionAvatarController1 = true;
                 }
             }
             if (numPlayer == 2)
@@ -53,7 +53,7 @@ public class SelectorPlayer : MonoBehaviour {
                     app.InstanciarJugador2(false);                
                     //selectCantPlayerDefinitive.SetSubstract(false);
                     app.activateAvatarController = true;
-                    app.cancelSelectionAvatarController = true;
+                    app.cancelSelectionAvatarController2 = true;
                 }
             }
             if (numPlayer == 3)
@@ -70,7 +70,7 @@ public class SelectorPlayer : MonoBehaviour {
                     app.InstanciarJugador3(false);
                     //selectCantPlayerDefinitive.SetSubstract(false);
                     app.activateAvatarController = true;
-                    app.cancelSelectionAvatarController = true;
+                    app.cancelSelectionAvatarController3 = true;
                 }
             }
             if (numPlayer == 4)
@@ -86,7 +86,7 @@ public class SelectorPlayer : MonoBehaviour {
                     app.InstanciarJugador4(false);
                     //selectCantPlayerDefinitive.SetSubstract(false);
                     app.activateAvatarController = true;
-                    app.cancelSelectionAvatarController = true;
+                    app.cancelSelectionAvatarController4 = true;
                 }
             }
         }

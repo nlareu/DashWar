@@ -509,6 +509,26 @@ Prefab:
       propertyPath: auxCamPosition
       value: 
       objectReference: {fileID: 2069011526}
+    - target: {fileID: 4038888912533246, guid: 94edbf84e232a944f99cbfb304aa6619, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.6810495
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194082250496798, guid: 94edbf84e232a944f99cbfb304aa6619, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403307808955064, guid: 94edbf84e232a944f99cbfb304aa6619, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 6.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4670252009100184, guid: 94edbf84e232a944f99cbfb304aa6619, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.5700002
+      objectReference: {fileID: 0}
+    - target: {fileID: 4497223141766690, guid: 94edbf84e232a944f99cbfb304aa6619, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94edbf84e232a944f99cbfb304aa6619, type: 2}
   m_IsPrefabAsset: 0
