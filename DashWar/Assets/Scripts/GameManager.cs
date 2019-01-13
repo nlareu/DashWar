@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
     public int countAvatars;
     public int auxCountAvatars;
     public Camera cam;
+    private Vector3 auxCamPosition;
 	void Start () {
         pause = false;
         for(int i = 0; i<textsScore.Length; i++)
@@ -24,6 +25,10 @@ public class GameManager : MonoBehaviour {
             textsScore[i].text = " ";
         }
         winningScore = DataLevel.InstanceDataLevel.GetWiningScore();
+        auxCamPosition.x = cam.transform.position.x;
+        auxCamPosition.y = cam.transform.position.y;
+        auxCamPosition.z = cam.transform.position.z;
+        
 	}
 
     // Update is called once per frame
@@ -61,28 +66,12 @@ public class GameManager : MonoBehaviour {
         //Hago que el juego se ponga en pausa.
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            //Debug.Log("ENTRE");
-            if (pause)
+            if (DataLevel.InstanceDataLevel != null)
             {
-                pause = false;
-                if(DataLevel.InstanceDataLevel != null)
-                {
-                    DataLevel.InstanceDataLevel.pause = false;
-                }
-                Time.timeScale = 1;
-                camvasPause.SetActive(false);
+                DataLevel.InstanceDataLevel.pause = true;
             }
-            else if (!pause)
-            {
-                pause = true;
-                if (DataLevel.InstanceDataLevel != null)
-                {
-                    DataLevel.InstanceDataLevel.pause = true;
-                }
-                Time.timeScale = 0;
-                camvasPause.SetActive(true);
-            }
-            
+            Time.timeScale = 0;
+            camvasPause.SetActive(true);
         }
     }
     public void CheckWinGameModeSorvival()
@@ -127,8 +116,10 @@ public class GameManager : MonoBehaviour {
     {
         for(int i = 0; i<Avatars.Count; i++)
         {
+            cam.gameObject.transform.position = auxCamPosition;
             Avatars[i].SetDeath(false);
             Avatars[i].SetVerifiedDeath(false);
+            textWiner.gameObject.SetActive(false);
             countAvatars = auxCountAvatars;
         }
     }

@@ -162,6 +162,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114420847982059030, guid: d282c1b6e55db334eb4f3315567dea9e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224902767643047068, guid: d282c1b6e55db334eb4f3315567dea9e,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -252,9 +257,54 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1955037359668578, guid: d282c1b6e55db334eb4f3315567dea9e, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114972976685259854, guid: d282c1b6e55db334eb4f3315567dea9e,
+        type: 2}
+      propertyPath: app
+      value: 
+      objectReference: {fileID: 696782523}
+    - target: {fileID: 114420847982059030, guid: d282c1b6e55db334eb4f3315567dea9e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114420847982059030, guid: d282c1b6e55db334eb4f3315567dea9e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114420847982059030, guid: d282c1b6e55db334eb4f3315567dea9e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 590883470}
+    - target: {fileID: 114420847982059030, guid: d282c1b6e55db334eb4f3315567dea9e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Restart
+      objectReference: {fileID: 0}
+    - target: {fileID: 114420847982059030, guid: d282c1b6e55db334eb4f3315567dea9e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114972976685259854, guid: d282c1b6e55db334eb4f3315567dea9e,
+        type: 2}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 696782524}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d282c1b6e55db334eb4f3315567dea9e, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &590883470 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114972976685259854, guid: d282c1b6e55db334eb4f3315567dea9e,
+    type: 2}
+  m_PrefabInternal: {fileID: 590883469}
+  m_Script: {fileID: 11500000, guid: 7b98f4d72ff62a849abfe0074f6d490c, type: 3}
 --- !u!1 &614480064 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1782539576325212, guid: 94edbf84e232a944f99cbfb304aa6619,
@@ -454,9 +504,26 @@ Prefab:
       propertyPath: cam
       value: 
       objectReference: {fileID: 2069011525}
+    - target: {fileID: 114834155729137612, guid: 94edbf84e232a944f99cbfb304aa6619,
+        type: 2}
+      propertyPath: auxCamPosition
+      value: 
+      objectReference: {fileID: 2069011526}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94edbf84e232a944f99cbfb304aa6619, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &696782523 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114290883032632646, guid: 94edbf84e232a944f99cbfb304aa6619,
+    type: 2}
+  m_PrefabInternal: {fileID: 696782522}
+  m_Script: {fileID: 11500000, guid: c062ac4fd47bf4e41887650f13fada33, type: 3}
+--- !u!114 &696782524 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114834155729137612, guid: 94edbf84e232a944f99cbfb304aa6619,
+    type: 2}
+  m_PrefabInternal: {fileID: 696782522}
+  m_Script: {fileID: 11500000, guid: ec71d8e67c4251d4fadf451bfc2e960a, type: 3}
 --- !u!1 &700810416 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1405621395952362, guid: 94edbf84e232a944f99cbfb304aa6619,

@@ -357,7 +357,7 @@ public class AppController : MonoBehaviour {
         //Return a copy to prevent reference and not desired changes on the list.
         return new List<AvatarController>(this.players);
     }
-    private void RestartRound()
+    public void RestartParty()
     {
         if (!SpecialRestart)
         {
@@ -369,15 +369,15 @@ public class AppController : MonoBehaviour {
                 var respawnPos = this.RespawnPositions[i].transform.position;
 
                 player.transform.position = new Vector2(respawnPos.x, respawnPos.y);
-
+                player.SetScore(0);
                 player.gameObject.SetActive(true);
             }
         }
         else
         {
-            for(int i = 0; i< players.Count; i++)
+            for (int i = 0; i < players.Count; i++)
             {
-                Debug.Log(players[i]);
+                //Debug.Log(players[i]);
                 if (players[i] != null)
                 {
                     if (players[i].gameObject.activeSelf == false && players[i].GetRevive() == true)
@@ -386,7 +386,43 @@ public class AppController : MonoBehaviour {
                         var respawnPos = RespawnPositions[players[i].PlayerNumber - 1].transform.position;
 
                         player.transform.position = new Vector2(respawnPos.x, respawnPos.y);
+                        player.SetScore(0);
+                        player.gameObject.SetActive(true);
+                    }
+                }
+            }
+        }
+    }
+    public void RestartRound()
+    {
+        if (!SpecialRestart)
+        {
+            this.playersDead.Clear();
 
+            for (int i = 0; i < this.players.Count; i++)
+            {
+                var player = this.players[i];
+                var respawnPos = this.RespawnPositions[i].transform.position;
+
+                player.transform.position = new Vector2(respawnPos.x, respawnPos.y);
+                //player.SetScore(0);
+                player.gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            for(int i = 0; i< players.Count; i++)
+            {
+                //Debug.Log(players[i]);
+                if (players[i] != null)
+                {
+                    if (players[i].gameObject.activeSelf == false && players[i].GetRevive() == true)
+                    {
+                        var player = players[i];
+                        var respawnPos = RespawnPositions[players[i].PlayerNumber - 1].transform.position;
+
+                        player.transform.position = new Vector2(respawnPos.x, respawnPos.y);
+                        //player.SetScore(0);
                         player.gameObject.SetActive(true);
                     }
                 }
