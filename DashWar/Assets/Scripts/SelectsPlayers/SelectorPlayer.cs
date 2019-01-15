@@ -44,7 +44,7 @@ public class SelectorPlayer : MonoBehaviour {
             }
             if (numPlayer == 2)
             {
-                if (Input.GetKeyDown(KeyCode.RightShift))
+                if (Input.GetKeyDown(KeyCode.Return))
                 {
                     //El numAvatar que se setea en el SetPlayer representa el avatar que tendra ese jugador.
                     DataLevel.InstanceDataLevel.SetPlayer2(numAvatar);

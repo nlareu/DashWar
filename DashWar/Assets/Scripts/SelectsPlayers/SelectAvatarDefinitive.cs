@@ -76,6 +76,14 @@ public class SelectAvatarDefinitive : MonoBehaviour {
             }
             spriteSelectAvatar1.transform.position = new Vector3(spriteSelectAvatar1.transform.position.x, spriteSelectAvatar1.transform.position.y - Distance, spriteSelectAvatar1.transform.position.z);
         }
+        else if (Input.GetButtonDown("Player1-Jump"))
+        {
+            spriteSelectAvatar1.SetActive(true);
+        }
+        else if (Input.GetButtonDown("Player1-Dash"))
+        {
+            spriteSelectAvatar1.SetActive(true);
+        }
     }
 
     public void ControlPlayer2()
@@ -121,6 +129,15 @@ public class SelectAvatarDefinitive : MonoBehaviour {
             }
             spriteSelectAvatar2.transform.position = new Vector3(spriteSelectAvatar2.transform.position.x, spriteSelectAvatar2.transform.position.y - Distance, spriteSelectAvatar2.transform.position.z);
         }
+        else if (Input.GetButtonDown("Player2-Jump"))
+        {
+            spriteSelectAvatar2.SetActive(true);
+        }
+        else if (Input.GetButtonDown("Player2-Dash"))
+        {
+            spriteSelectAvatar2.SetActive(true);
+        }
+
     }
 
     public void ControlPlayer3()
@@ -171,6 +188,14 @@ public class SelectAvatarDefinitive : MonoBehaviour {
                 spriteSelectAvatar3.transform.position = new Vector3(spriteSelectAvatar3.transform.position.x, spriteSelectAvatar3.transform.position.y + Distance, spriteSelectAvatar3.transform.position.z);
             }
             spriteSelectAvatar3.transform.position = new Vector3(spriteSelectAvatar3.transform.position.x, spriteSelectAvatar3.transform.position.y - Distance, spriteSelectAvatar3.transform.position.z);
+        }
+        else if (Input.GetButtonDown("Player3-Jump"))
+        {
+            spriteSelectAvatar3.SetActive(true);
+        }
+        else if (Input.GetButtonDown("Player3-Dash"))
+        {
+            spriteSelectAvatar3.SetActive(true);
         }
     }
 
@@ -224,6 +249,14 @@ public class SelectAvatarDefinitive : MonoBehaviour {
                 spriteSelectAvatar4.transform.position = new Vector3(spriteSelectAvatar4.transform.position.x, spriteSelectAvatar4.transform.position.y + Distance, spriteSelectAvatar4.transform.position.z);
             }
             spriteSelectAvatar4.transform.position = new Vector3(spriteSelectAvatar4.transform.position.x, spriteSelectAvatar4.transform.position.y - Distance, spriteSelectAvatar4.transform.position.z);
+        }
+        else if (Input.GetButtonDown("Player4-Jump"))
+        {
+            spriteSelectAvatar4.SetActive(true);
+        }
+        else if (Input.GetButtonDown("Player4-Dash"))
+        {
+            spriteSelectAvatar4.SetActive(true);
         }
     }
 

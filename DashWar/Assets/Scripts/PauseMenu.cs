@@ -22,4 +22,16 @@ public class PauseMenu : MonoBehaviour {
         gameManager.Restart();
         Resume();
     }
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+    public void SelectorAvatarScreen()
+    {
+        SceneManager.LoadScene("SelectAvatars");
+    }
+    public void SelectorLevelScreen()
+    {
+        SceneManager.LoadScene("SelectLevel");
+    }
 }
