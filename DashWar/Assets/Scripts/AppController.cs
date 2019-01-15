@@ -111,6 +111,8 @@ public class AppController : MonoBehaviour {
         {
             timeCancelPlayer1 = auxTimeCancelPlayer1;
         }
+
+
         if(Input.GetKey(KeyCode.RightShift) && cancelSelectionAvatarController2)
         {
             if(timeCancelPlayer2 > 0)
@@ -132,7 +134,13 @@ public class AppController : MonoBehaviour {
                 DataLevel.InstanceDataLevel.SubtractPlayer();
             }
         }
-        if(Input.GetButton("Player3-Jump") && cancelSelectionAvatarController3)
+        if (!Input.GetKey(KeyCode.RightShift) && cancelSelectionAvatarController2)
+        {
+            timeCancelPlayer2 = auxTimeCancelPlayer2;
+        }
+
+
+        if (Input.GetButton("Player3-Jump") && cancelSelectionAvatarController3)
         {
             if(timeCancelPlayer3 > 0)
             {
@@ -153,7 +161,13 @@ public class AppController : MonoBehaviour {
                 DataLevel.InstanceDataLevel.SubtractPlayer();
             }
         }
-        if(Input.GetButton("Player4-Jump") && cancelSelectionAvatarController4)
+        if (!Input.GetButton("Player3-Jump") && cancelSelectionAvatarController3)
+        {
+            timeCancelPlayer3 = auxTimeCancelPlayer3;
+        }
+
+
+        if (Input.GetButton("Player4-Jump") && cancelSelectionAvatarController4)
         {
             if (timeCancelPlayer4 > 0)
             {
@@ -174,6 +188,11 @@ public class AppController : MonoBehaviour {
                 DataLevel.InstanceDataLevel.SubtractPlayer();
             }
         }
+        if(!Input.GetButton("Player4-Jump") && cancelSelectionAvatarController4)
+        {
+            timeCancelPlayer4 = auxTimeCancelPlayer4;
+        }
+
     }
     public void ActivateAvatarController()
     {
