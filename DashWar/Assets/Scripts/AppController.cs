@@ -40,14 +40,22 @@ public class AppController : MonoBehaviour {
     private AvatarController auxPlayer3;
     private AvatarController auxPlayer4;
     public bool InSelectAvatars;
-    private float auxTimeCancelPlayer1;
-    private float auxTimeCancelPlayer2;
-    private float auxTimeCancelPlayer3;
-    private float auxTimeCancelPlayer4;
-    private float timeCancelPlayer1;
-    private float timeCancelPlayer2;
-    private float timeCancelPlayer3;
-    private float timeCancelPlayer4;
+    [HideInInspector]
+    public float auxTimeCancelPlayer1;
+    [HideInInspector]
+    public float auxTimeCancelPlayer2;
+    [HideInInspector]
+    public float auxTimeCancelPlayer3;
+    [HideInInspector]
+    public float auxTimeCancelPlayer4;
+    [HideInInspector]
+    public float timeCancelPlayer1;
+    [HideInInspector]
+    public float timeCancelPlayer2;
+    [HideInInspector]
+    public float timeCancelPlayer3;
+    [HideInInspector]
+    public float timeCancelPlayer4;
 
     // Use this for initialization
     void Start() {

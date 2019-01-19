@@ -5,6 +5,9 @@ using UnityEngine;
 public class SelectorPlayer : MonoBehaviour {
 
     // Use this for initialization
+    
+    //numero del personaje elejido
+    public int numChosenAvatar;
     public int numPlayer;
     public SelectAvatarDefinitive selectAvatar;
     private bool Movement;
@@ -21,6 +24,11 @@ public class SelectorPlayer : MonoBehaviour {
     {
         Movement = true;
         spriteRenderer.enabled = false;
+        //numChosenAvatar = 0;
+    }
+    private void Update()
+    {
+        CheckSelector();
     }
     public void Selector(int numAvatar)
     {
@@ -40,6 +48,7 @@ public class SelectorPlayer : MonoBehaviour {
                     //selectCantPlayerDefinitive.SetSubstract(false);
                     app.activateAvatarController = true;
                     app.cancelSelectionAvatarController1 = true;
+                   
                 }
             }
             if (numPlayer == 2)
@@ -54,6 +63,7 @@ public class SelectorPlayer : MonoBehaviour {
                     //selectCantPlayerDefinitive.SetSubstract(false);
                     app.activateAvatarController = true;
                     app.cancelSelectionAvatarController2 = true;
+                    
                 }
             }
             if (numPlayer == 3)
@@ -71,6 +81,7 @@ public class SelectorPlayer : MonoBehaviour {
                     //selectCantPlayerDefinitive.SetSubstract(false);
                     app.activateAvatarController = true;
                     app.cancelSelectionAvatarController3 = true;
+                    
                 }
             }
             if (numPlayer == 4)
@@ -87,11 +98,27 @@ public class SelectorPlayer : MonoBehaviour {
                     //selectCantPlayerDefinitive.SetSubstract(false);
                     app.activateAvatarController = true;
                     app.cancelSelectionAvatarController4 = true;
+                    
+                    
                 }
             }
         }
     }
-    private void OnTriggerStay(Collider other)
+    public void CheckAvatarDrow()
+    {
+        if(numChosenAvatar <= avatarSprite.Count - 1 && numChosenAvatar >= 0)
+        {
+            spriteRenderer.sprite = avatarSprite[numChosenAvatar];
+        }
+    }
+    public void CheckSelector()
+    {
+        if(numChosenAvatar <= avatarSprite.Count - 1 && numChosenAvatar >= 0)
+        {
+            Selector(numChosenAvatar);
+        }
+    }
+    /*private void OnTriggerStay(Collider other)
     {
         switch (other.tag)
         {
@@ -117,7 +144,7 @@ public class SelectorPlayer : MonoBehaviour {
                 spriteRenderer.enabled = true;
                 break;
         }
-    }
+    }*/
     public void SetMovement(bool _movement)
     {
         Movement = _movement;

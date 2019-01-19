@@ -29,6 +29,7 @@ public class AvatarController : MonoBehaviour
     private void Start()
     {
         revive = true;
+        Debug.Log(notMove);
     }
     public void SetRevive(bool _revive)
     {
@@ -237,7 +238,6 @@ public class AvatarController : MonoBehaviour
             {
                 switch (this.State)
                 {
-
                     #region CoolingDown
                     case AvatarStates.CoolingDown:
                         {
@@ -408,6 +408,7 @@ public class AvatarController : MonoBehaviour
             //if (Input.GetButton(this.playerName + "Left"))
             if (Input.GetButton(this.playerName + "Left") || axisHor <= -this.AxisSensitive)
             {
+                Debug.Log("Left");
                 moveVector += Vector2.left * this.Speed * Time.deltaTime;
 
                 this.animator.SetBool("Moving", true);
@@ -416,6 +417,7 @@ public class AvatarController : MonoBehaviour
             //else if (Input.GetButton(this.playerName + "Right"))
             else if (Input.GetButton(this.playerName + "Right") || axisHor >= this.AxisSensitive)
             {
+                Debug.Log("Right");
                 moveVector += Vector2.right * this.Speed * Time.deltaTime;
 
                 this.animator.SetBool("Moving", true);

@@ -7,6 +7,7 @@ public class DataLevel : MonoBehaviour {
     // Use this for initialization
     [HideInInspector]
     public bool pause;
+    public AppController app;
     public static DataLevel InstanceDataLevel;
     public List<AvatarController> avatarsControllers;
     private int numberPlayers;
@@ -23,10 +24,42 @@ public class DataLevel : MonoBehaviour {
         if (InstanceDataLevel == null)
         {
             InstanceDataLevel = this;
+            Debug.Log("ME INSTANCIE");
         }
         else if (InstanceDataLevel != null)
         {
-            InstanceDataLevel.gameObject.SetActive(false);
+            Debug.Log("YA EXISTIA");
+            //InstanceDataLevel.gameObject.SetActive(false);
+            //gameObject.SetActive(false);
+            /**/
+            Destroy(InstanceDataLevel.gameObject);
+            InstanceDataLevel = this;
+            InstanceDataLevel.SetPlayer1(0);
+            InstanceDataLevel.SetPlayer2(0);
+            InstanceDataLevel.SetPlayer3(0);
+            InstanceDataLevel.SetPlayer4(0);
+            InstanceDataLevel.SetWiningScore(0);
+            InstanceDataLevel.SetGameMode(0);
+            InstanceDataLevel.SetNumberPlayer(0);
+            InstanceDataLevel.pause = false;
+            if (app != null)
+            {
+                app.timeCancelPlayer1 = 0;
+                app.timeCancelPlayer2 = 0;
+                app.timeCancelPlayer3 = 0;
+                app.timeCancelPlayer4 = 0;
+            }
+            for (int i = 0; i < InstanceDataLevel.avatarsControllers.Count; i++)
+            {
+                InstanceDataLevel.avatarsControllers[i].SetNotMove(false);
+                InstanceDataLevel.avatarsControllers[i].SetRevive(true);
+                InstanceDataLevel.avatarsControllers[i].SetDeath(false);
+                InstanceDataLevel.avatarsControllers[i].SetScore(0);
+            }
+            if (app != null)
+            {
+                app.CancelSelectionAvatarControler();
+            }
         }
         //numberPlayers = 1;
     }

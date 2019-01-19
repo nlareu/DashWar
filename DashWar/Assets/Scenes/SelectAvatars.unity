@@ -558,6 +558,11 @@ Prefab:
       propertyPath: numPlayer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114578247216019260, guid: 8539cfec2d427a94da4235ed2084fa12,
+        type: 2}
+      propertyPath: numChosenAvatar
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 61056299384742156, guid: 8539cfec2d427a94da4235ed2084fa12, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 8539cfec2d427a94da4235ed2084fa12, type: 2}
@@ -973,6 +978,11 @@ Prefab:
         type: 2}
       propertyPath: selectCantPlayerDefinitive
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114253798362734778, guid: 1f1fdf9b8c2ccf5499993e2a0ee4bd5f,
+        type: 2}
+      propertyPath: numChosenAvatar
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 61933452917770754, guid: 1f1fdf9b8c2ccf5499993e2a0ee4bd5f, type: 2}
@@ -1416,6 +1426,11 @@ Prefab:
       propertyPath: numPlayer
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114578247216019260, guid: 8539cfec2d427a94da4235ed2084fa12,
+        type: 2}
+      propertyPath: numChosenAvatar
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 61056299384742156, guid: 8539cfec2d427a94da4235ed2084fa12, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 8539cfec2d427a94da4235ed2084fa12, type: 2}
@@ -1514,6 +1529,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114814588752079546, guid: 457283766b5f3a54bae35a00b748fa05,
+        type: 2}
+      propertyPath: app
+      value: 
+      objectReference: {fileID: 994046592}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 457283766b5f3a54bae35a00b748fa05, type: 2}
   m_IsPrefabAsset: 0
@@ -2579,10 +2599,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31a5753ffad889c4ead8655fc4d50096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteSelectAvatar1: {fileID: 181681890}
-  spriteSelectAvatar2: {fileID: 1634459787}
-  spriteSelectAvatar3: {fileID: 117951270}
-  spriteSelectAvatar4: {fileID: 324714883}
+  rows: 10
+  numberBox: 
+  spriteSelectAvatar1: {fileID: 181681892}
+  spriteSelectAvatar2: {fileID: 1634459789}
+  spriteSelectAvatar3: {fileID: 117951273}
+  spriteSelectAvatar4: {fileID: 324714886}
   upLimit: {fileID: 705062222}
   downLimit: {fileID: 975710125}
   leftLimit: {fileID: 1574152955}
@@ -4356,7 +4378,7 @@ Prefab:
     - target: {fileID: 224893036310740958, guid: eedadc5d08f126641a75b916ac5a7f62,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 21.41
+      value: 19.4
       objectReference: {fileID: 0}
     - target: {fileID: 224893036310740958, guid: eedadc5d08f126641a75b916ac5a7f62,
         type: 2}
@@ -5443,7 +5465,7 @@ Prefab:
     - target: {fileID: 224893036310740958, guid: eedadc5d08f126641a75b916ac5a7f62,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -21.41
+      value: -19.4
       objectReference: {fileID: 0}
     - target: {fileID: 224893036310740958, guid: eedadc5d08f126641a75b916ac5a7f62,
         type: 2}

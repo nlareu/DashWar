@@ -24,14 +24,32 @@ public class PauseMenu : MonoBehaviour {
     }
     public void MainMenu()
     {
+        if(DataLevel.InstanceDataLevel != null)
+        {
+            
+            //DataLevel.InstanceDataLevel = null;
+            Destroy(DataLevel.InstanceDataLevel.gameObject);
+        }
         SceneManager.LoadScene("Menu");
     }
     public void SelectorAvatarScreen()
     {
+        if (DataLevel.InstanceDataLevel != null)
+        {
+            
+            //DataLevel.InstanceDataLevel = null;
+            Destroy(DataLevel.InstanceDataLevel.gameObject);
+        }
         SceneManager.LoadScene("SelectAvatars");
     }
     public void SelectorLevelScreen()
     {
+        if (DataLevel.InstanceDataLevel != null)
+        {
+           
+            //DataLevel.InstanceDataLevel = null;
+            Destroy(DataLevel.InstanceDataLevel.gameObject);
+        }
         SceneManager.LoadScene("SelectLevel");
     }
 }
