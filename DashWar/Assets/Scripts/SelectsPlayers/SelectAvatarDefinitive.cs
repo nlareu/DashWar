@@ -29,10 +29,17 @@ public class SelectAvatarDefinitive : MonoBehaviour {
     private void Start()
     {
         //spriteSelectAvatar1.CheckAvatarDrow();
-        spriteSelectAvatar1.spriteRenderer.enabled = true;
-        spriteSelectAvatar1.numChosenAvatar = 0;
+        if (spriteSelectAvatar1 != null)
+        {
+            if(spriteSelectAvatar1.spriteRenderer != null)
+            spriteSelectAvatar1.spriteRenderer.enabled = true;
+            spriteSelectAvatar1.numChosenAvatar = 0;
+        }
+        if(spriteSelectAvatar2 != null)
         spriteSelectAvatar2.numChosenAvatar = 1;
+        if (spriteSelectAvatar3 != null)
         spriteSelectAvatar3.numChosenAvatar = 2;
+        if(spriteSelectAvatar4 != null)
         spriteSelectAvatar4.numChosenAvatar = 3;
         Movement1 = true;
         Movement2 = true;
@@ -40,8 +47,11 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         Movement4 = true;
         //DESCOMENTAR EN CASO QUE SE PIDA QUE TAMBIEN TENGAS QUE MOVER EL CONTROLADOR DEL CURSOR 1 PARA ACTIVARLO.
         //spriteSelectAvatar1.SetActive(false);
+        if(spriteSelectAvatar2 != null)
         spriteSelectAvatar2.gameObject.SetActive(false);
+        if(spriteSelectAvatar3 != null)
         spriteSelectAvatar3.gameObject.SetActive(false);
+        if(spriteSelectAvatar4 != null)
         spriteSelectAvatar4.gameObject.SetActive(false);
     }
     void Update () {
@@ -55,10 +65,12 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.D))
         {
             spriteSelectAvatar1.gameObject.SetActive(true);
+            if(spriteSelectAvatar1.spriteRenderer != null)
             spriteSelectAvatar1.spriteRenderer.enabled = true;
             if (spriteSelectAvatar1.transform.position.x < rightLimit.position.x - Distance)
             {
                 spriteSelectAvatar1.numChosenAvatar++;
+                spriteSelectAvatar1.numChosenLevel++;
                 spriteSelectAvatar1.CheckAvatarDrow();
                 
             }
@@ -72,10 +84,12 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.A))
         {
             spriteSelectAvatar1.gameObject.SetActive(true);
+            if(spriteSelectAvatar1.spriteRenderer != null)
             spriteSelectAvatar1.spriteRenderer.enabled = true;
             if (spriteSelectAvatar1.transform.position.x > leftLimit.position.x + Distance)
             {
                 spriteSelectAvatar1.numChosenAvatar--;
+                spriteSelectAvatar1.numChosenLevel--;
                 spriteSelectAvatar1.CheckAvatarDrow();
             }
             //Debug.Log(spriteSelectAvatar1.numChosenAvatar);
@@ -88,10 +102,12 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.W))
         {
             spriteSelectAvatar1.gameObject.SetActive(true);
+            if (spriteSelectAvatar1.spriteRenderer != null)
             spriteSelectAvatar1.spriteRenderer.enabled = true;
             if (spriteSelectAvatar1.transform.position.y < upLimit.position.y - Distance)
             {
                 spriteSelectAvatar1.numChosenAvatar = spriteSelectAvatar1.numChosenAvatar + rows;
+                spriteSelectAvatar1.numChosenLevel = spriteSelectAvatar1.numChosenLevel + rows;
                 spriteSelectAvatar1.CheckAvatarDrow();
             }
             //Debug.Log(spriteSelectAvatar1.numChosenAvatar);
@@ -104,10 +120,12 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.S))
         {
             spriteSelectAvatar1.gameObject.SetActive(true);
+            if (spriteSelectAvatar1.spriteRenderer != null)
             spriteSelectAvatar1.spriteRenderer.enabled = true;
             if (spriteSelectAvatar1.transform.position.y > downLimit.position.y +Distance)
             {
                 spriteSelectAvatar1.numChosenAvatar = spriteSelectAvatar1.numChosenAvatar - rows;
+                spriteSelectAvatar1.numChosenLevel = spriteSelectAvatar1.numChosenLevel - rows;
                 spriteSelectAvatar1.CheckAvatarDrow();
             }
             //Debug.Log(spriteSelectAvatar1.numChosenAvatar);

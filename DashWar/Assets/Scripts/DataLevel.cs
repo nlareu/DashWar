@@ -24,7 +24,6 @@ public class DataLevel : MonoBehaviour {
         if (InstanceDataLevel == null)
         {
             InstanceDataLevel = this;
-            Debug.Log("ME INSTANCIE");
         }
         else if (InstanceDataLevel != null)
         {

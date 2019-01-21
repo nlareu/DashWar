@@ -1,13 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SelectorPlayer : MonoBehaviour {
 
     // Use this for initialization
-    
+
     //numero del personaje elejido
+    public Sprite transparent;
+    public SpriteRenderer background;
+    public bool screenSelectLevel;
+    public bool screenSelectAvatar;
     public int numChosenAvatar;
+    public int numChosenLevel;
     public int numPlayer;
     public SelectAvatarDefinitive selectAvatar;
     private bool Movement;
@@ -16,6 +22,7 @@ public class SelectorPlayer : MonoBehaviour {
     //Aqui poner los Sprites idle de todos los avatars
     //(IMPORTANTE QUE SE AGREGUEN ORDENADAMENTE TIENEN QUE ESTAR EN EL MISMO ORDEN QUE LOS PREFABS DE AVATARS)
     public List<Sprite> avatarSprite;
+    public List<Sprite> levels;
     public SpriteRenderer spriteRenderer;
     public AppController app;
     public SelectCantPlayerDefinitive selectCantPlayerDefinitive;
@@ -23,12 +30,22 @@ public class SelectorPlayer : MonoBehaviour {
     private void Start()
     {
         Movement = true;
-        spriteRenderer.enabled = false;
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.enabled = false;
+        }
         //numChosenAvatar = 0;
     }
     private void Update()
     {
-        CheckSelector();
+        if (screenSelectAvatar)
+        {
+            CheckSelector();
+        }
+        if (screenSelectLevel)
+        {
+            CheckSelectorLevel();
+        }
     }
     public void Selector(int numAvatar)
     {
@@ -108,14 +125,49 @@ public class SelectorPlayer : MonoBehaviour {
     {
         if(numChosenAvatar <= avatarSprite.Count - 1 && numChosenAvatar >= 0)
         {
-            spriteRenderer.sprite = avatarSprite[numChosenAvatar];
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.sprite = avatarSprite[numChosenAvatar];
+            }
         }
     }
+    
     public void CheckSelector()
     {
         if(numChosenAvatar <= avatarSprite.Count - 1 && numChosenAvatar >= 0)
         {
             Selector(numChosenAvatar);
+        }
+    }
+    public void CheckSelectorLevel()
+    {
+        if (numChosenLevel <= levels.Count - 1 && numChosenLevel >= 0)
+        {
+            SelectorLevel();
+            if (background != null)
+            {
+                background.sprite = levels[numChosenLevel];
+            }
+        }
+        else
+        {
+            background.sprite = transparent;
+        }
+    }
+    public void SelectorLevel()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            // LISTADO DE NIVELES (por cada nuevo nivel que se agregue al juego agregarle un CASE al switch).
+            switch(numChosenLevel)
+            {
+                case 0:
+                    SceneManager.LoadScene("Lvl01-Level-01");
+                   break;
+                case 1:
+                    SceneManager.LoadScene("Lvl02-Level-02-Snow");
+                    break;
+            }
         }
     }
     /*private void OnTriggerStay(Collider other)
