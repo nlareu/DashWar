@@ -8,6 +8,7 @@ public class SelectorPlayer : MonoBehaviour {
     // Use this for initialization
 
     //numero del personaje elejido
+    public GameObject spriteAvatar;
     public Sprite transparent;
     public SpriteRenderer background;
     public bool screenSelectLevel;
@@ -57,6 +58,7 @@ public class SelectorPlayer : MonoBehaviour {
             {
                 if (Input.GetKeyDown(KeyCode.LeftShift))
                 {
+                    spriteAvatar.SetActive(false);
                     //El numAvatar que se setea en el SetPlayer representa el avatar que tendra ese jugador.
                     DataLevel.InstanceDataLevel.SetPlayer1(numAvatar);
                     Movement = false;
@@ -72,6 +74,7 @@ public class SelectorPlayer : MonoBehaviour {
             {
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
+                    spriteAvatar.SetActive(false);
                     //El numAvatar que se setea en el SetPlayer representa el avatar que tendra ese jugador.
                     DataLevel.InstanceDataLevel.SetPlayer2(numAvatar);
                     Movement = false;
@@ -90,6 +93,7 @@ public class SelectorPlayer : MonoBehaviour {
                 //Cambiar la G por la condicion correspondiente del JOSTICK(El boton de dash del jostick)
                 if (Input.GetButtonDown("Player3-Dash") || axisButtonXJostick1 > 0)
                 {
+                    spriteAvatar.SetActive(false);
                     //El numAvatar que se setea en el SetPlayer representa el avatar que tendra ese jugador.
                     DataLevel.InstanceDataLevel.SetPlayer3(numAvatar);
                     Movement = false;
@@ -107,6 +111,7 @@ public class SelectorPlayer : MonoBehaviour {
                 //Cambiar la G por la condicion correspondiente del JOSTICK
                 if (Input.GetButtonDown("Player4-Dash") || axisButtonXJostick2 > 0)
                 {
+                    spriteAvatar.SetActive(false);
                     //El numAvatar que se setea en el SetPlayer representa el avatar que tendra ese jugador.
                     DataLevel.InstanceDataLevel.SetPlayer4(numAvatar);
                     Movement = false;

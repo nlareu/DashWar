@@ -64,6 +64,8 @@ public class SelectAvatarDefinitive : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.D))
         {
+            if(spriteSelectAvatar1.spriteAvatar != null)
+                spriteSelectAvatar1.spriteAvatar.SetActive(true);
             spriteSelectAvatar1.gameObject.SetActive(true);
             if(spriteSelectAvatar1.spriteRenderer != null)
             spriteSelectAvatar1.spriteRenderer.enabled = true;
@@ -83,6 +85,8 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
+            if (spriteSelectAvatar1.spriteAvatar != null)
+                spriteSelectAvatar1.spriteAvatar.SetActive(true);
             spriteSelectAvatar1.gameObject.SetActive(true);
             if(spriteSelectAvatar1.spriteRenderer != null)
             spriteSelectAvatar1.spriteRenderer.enabled = true;
@@ -101,6 +105,8 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
+            if (spriteSelectAvatar1.spriteAvatar != null)
+                spriteSelectAvatar1.spriteAvatar.SetActive(true);
             spriteSelectAvatar1.gameObject.SetActive(true);
             if (spriteSelectAvatar1.spriteRenderer != null)
             spriteSelectAvatar1.spriteRenderer.enabled = true;
@@ -119,6 +125,8 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
+            if (spriteSelectAvatar1.spriteAvatar != null)
+                spriteSelectAvatar1.spriteAvatar.SetActive(true);
             spriteSelectAvatar1.gameObject.SetActive(true);
             if (spriteSelectAvatar1.spriteRenderer != null)
             spriteSelectAvatar1.spriteRenderer.enabled = true;
@@ -137,10 +145,14 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         }
         else if (Input.GetButtonDown("Player1-Jump"))
         {
+            if (spriteSelectAvatar1.spriteAvatar != null)
+                spriteSelectAvatar1.spriteAvatar.SetActive(true);
             spriteSelectAvatar1.gameObject.SetActive(true);
         }
         else if (Input.GetButtonDown("Player1-Dash"))
         {
+            if (spriteSelectAvatar1.spriteAvatar != null)
+                spriteSelectAvatar1.spriteAvatar.SetActive(true);
             spriteSelectAvatar1.gameObject.SetActive(true);
         }
     }
@@ -150,6 +162,8 @@ public class SelectAvatarDefinitive : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
+            if (spriteSelectAvatar2.spriteAvatar != null)
+                spriteSelectAvatar2.spriteAvatar.SetActive(true);
             spriteSelectAvatar2.gameObject.SetActive(true);
             spriteSelectAvatar2.spriteRenderer.enabled = true;
             if (spriteSelectAvatar2.transform.position.x < rightLimit.position.x - Distance)
@@ -169,6 +183,8 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
+            if (spriteSelectAvatar2.spriteAvatar != null)
+                spriteSelectAvatar2.spriteAvatar.SetActive(true);
             spriteSelectAvatar2.gameObject.SetActive(true);
             spriteSelectAvatar2.spriteRenderer.enabled = true;
             if (spriteSelectAvatar2.transform.position.x > leftLimit.position.x + Distance)
@@ -187,6 +203,8 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         }
         else if(Input.GetKeyDown(KeyCode.UpArrow))
         {
+            if (spriteSelectAvatar2.spriteAvatar != null)
+                spriteSelectAvatar2.spriteAvatar.SetActive(true);
             spriteSelectAvatar2.gameObject.SetActive(true);
             spriteSelectAvatar2.spriteRenderer.enabled = true;
             if (spriteSelectAvatar2.transform.position.y < upLimit.position.y - Distance)
@@ -204,6 +222,8 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
+            if (spriteSelectAvatar2.spriteAvatar != null)
+                spriteSelectAvatar2.spriteAvatar.SetActive(true);
             spriteSelectAvatar2.gameObject.SetActive(true);
             spriteSelectAvatar2.spriteRenderer.enabled = true;
             if (spriteSelectAvatar2.transform.position.y > downLimit.position.y + Distance)
@@ -222,10 +242,14 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         }
         else if (Input.GetButtonDown("Player2-Jump"))
         {
+            if (spriteSelectAvatar2.spriteAvatar != null)
+                spriteSelectAvatar2.spriteAvatar.SetActive(true);
             spriteSelectAvatar2.gameObject.SetActive(true);
         }
         else if (Input.GetButtonDown("Player2-Dash"))
         {
+            if (spriteSelectAvatar2.spriteAvatar != null)
+                spriteSelectAvatar2.spriteAvatar.SetActive(true);
             spriteSelectAvatar2.gameObject.SetActive(true);
         }
 
@@ -242,6 +266,8 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         float axisDownJostick1 = Input.GetAxis("Player3-Down");
         if (Input.GetButtonDown("Player3-LeftStick-Horizontal") && axisHorizontalJostick1 > 0 || Input.GetButtonDown("Player3-Right") && axisRightJostick1 > 0)
         {
+            if (spriteSelectAvatar3.spriteAvatar != null)
+                spriteSelectAvatar3.spriteAvatar.SetActive(true);
             spriteSelectAvatar3.gameObject.SetActive(true);
 
             while (spriteSelectAvatar3.transform.position.x >= rightLimit.position.x - Distance)
@@ -252,6 +278,8 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         }
         else if (Input.GetButtonDown("Player3-LeftStick-Horizontal") && axisHorizontalJostick1 < 0 || Input.GetButtonDown("Player3-Left") && axisLeftJostick1 > 0)
         {
+            if (spriteSelectAvatar3.spriteAvatar != null)
+                spriteSelectAvatar3.spriteAvatar.SetActive(true);
             spriteSelectAvatar3.gameObject.SetActive(true);
 
             while (spriteSelectAvatar3.transform.position.x < leftLimit.position.x + Distance)
@@ -262,6 +290,8 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         }
         else if (Input.GetButtonDown("Player3-LeftStick-Vertical") && axisVerticalJostick1 > 0 || Input.GetButtonDown("Player3-Up") && axisUpJostick1 > 0)
         {
+            if (spriteSelectAvatar3.spriteAvatar != null)
+                spriteSelectAvatar3.spriteAvatar.SetActive(true);
             spriteSelectAvatar3.gameObject.SetActive(true);
 
             while (spriteSelectAvatar3.transform.position.y >= upLimit.position.y - Distance)
@@ -272,6 +302,8 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         }
         else if (Input.GetButtonDown("Player3-LeftStick-Vertical") && axisVerticalJostick1 < 0 || Input.GetButtonDown("Player3-Down") && axisDownJostick1 > 0)
         {
+            if (spriteSelectAvatar3.spriteAvatar != null)
+                spriteSelectAvatar3.spriteAvatar.SetActive(true);
             spriteSelectAvatar3.gameObject.SetActive(true);
 
             while (spriteSelectAvatar3.transform.position.y < downLimit.position.y + Distance)
@@ -282,10 +314,14 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         }
         else if (Input.GetButtonDown("Player3-Jump"))
         {
+            if (spriteSelectAvatar3.spriteAvatar != null)
+                spriteSelectAvatar3.spriteAvatar.SetActive(true);
             spriteSelectAvatar3.gameObject.SetActive(true);
         }
         else if (Input.GetButtonDown("Player3-Dash"))
         {
+            if (spriteSelectAvatar3.spriteAvatar != null)
+                spriteSelectAvatar3.spriteAvatar.SetActive(true);
             spriteSelectAvatar3.gameObject.SetActive(true);
         }
     }
@@ -303,6 +339,8 @@ public class SelectAvatarDefinitive : MonoBehaviour {
 
         if (Input.GetButtonDown("Player4-LeftStick-Horizontal") && axisHorizontalJostick2 > 0 || Input.GetButtonDown("Player4-Right") && axisRightJostick2 > 0)
         {
+            if (spriteSelectAvatar4.spriteAvatar != null)
+                spriteSelectAvatar4.spriteAvatar.SetActive(true);
             spriteSelectAvatar4.gameObject.SetActive(true);
 
             while (spriteSelectAvatar4.transform.position.x >= rightLimit.position.x - Distance)
@@ -313,6 +351,8 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         }
         else if (Input.GetButtonDown("Player4-LeftStick-Horizontal") && axisHorizontalJostick2 < 0 || Input.GetButtonDown("Player4-Left") && axisRightJostick2 > 0)
         {
+            if (spriteSelectAvatar4.spriteAvatar != null)
+                spriteSelectAvatar4.spriteAvatar.SetActive(true);
             spriteSelectAvatar4.gameObject.SetActive(true);
 
             while (spriteSelectAvatar4.transform.position.x < leftLimit.position.x + Distance)
@@ -323,6 +363,8 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         }
         else if (Input.GetButtonDown("Player4-LeftStick-Vertical") && axisVerticalJostick2 > 0 || Input.GetButtonDown("Player4-Up") && axisUpJostick2 > 0)
         {
+            if (spriteSelectAvatar4.spriteAvatar != null)
+                spriteSelectAvatar4.spriteAvatar.SetActive(true);
             spriteSelectAvatar4.gameObject.SetActive(true);
 
             while (spriteSelectAvatar4.transform.position.y >= upLimit.position.y - Distance)
@@ -333,6 +375,8 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         }
         else if (Input.GetButtonDown("Player4-LeftStick-Vertical") && axisVerticalJostick2 < 0 || Input.GetButtonDown("Player4-Down") && axisDownJostick2 > 0)
         {
+            if (spriteSelectAvatar4.spriteAvatar != null)
+                spriteSelectAvatar4.spriteAvatar.SetActive(true);
             spriteSelectAvatar4.gameObject.SetActive(true);
 
             while (spriteSelectAvatar4.transform.position.y < downLimit.position.y + Distance)
@@ -343,10 +387,14 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         }
         else if (Input.GetButtonDown("Player4-Jump"))
         {
+            if (spriteSelectAvatar4.spriteAvatar != null)
+                spriteSelectAvatar4.spriteAvatar.SetActive(true);
             spriteSelectAvatar4.gameObject.SetActive(true);
         }
         else if (Input.GetButtonDown("Player4-Dash"))
         {
+            if (spriteSelectAvatar4.spriteAvatar != null)
+                spriteSelectAvatar4.spriteAvatar.SetActive(true);
             spriteSelectAvatar4.gameObject.SetActive(true);
         }
     }
