@@ -401,19 +401,19 @@ public class SelectAvatarDefinitive : MonoBehaviour {
 
     public void CheckControlsPlayer()
     {
-        if (Movement1)
+        if (Movement1 && spriteSelectAvatar1 != null)
         {
             ControlPlayer1();
         }
-        if (Movement2)
+        if (Movement2 && spriteSelectAvatar2 != null)
         {
             ControlPlayer2();
         }
-        if (Movement3)
+        if (Movement3 && spriteSelectAvatar3 != null)
         {
             ControlPlayer3();
         }
-        if (Movement4)
+        if (Movement4 && spriteSelectAvatar4 != null)
         {
             ControlPlayer4();
         }
