@@ -2968,6 +2968,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114358120830949884, guid: 8515a4c39ea6d8247afc9e48ce4410c6,
         type: 2}
+      propertyPath: spriteAvatar
+      value: 
+      objectReference: {fileID: 1914766736}
+    - target: {fileID: 114358120830949884, guid: 8515a4c39ea6d8247afc9e48ce4410c6,
+        type: 2}
       propertyPath: selectAvatar
       value: 
       objectReference: {fileID: 882494694}
@@ -2981,16 +2986,6 @@ Prefab:
       propertyPath: app
       value: 
       objectReference: {fileID: 994046592}
-    - target: {fileID: 114358120830949884, guid: 8515a4c39ea6d8247afc9e48ce4410c6,
-        type: 2}
-      propertyPath: screenSelectAvatar
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114358120830949884, guid: 8515a4c39ea6d8247afc9e48ce4410c6,
-        type: 2}
-      propertyPath: spriteAvatar
-      value: 
-      objectReference: {fileID: 1914766736}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8515a4c39ea6d8247afc9e48ce4410c6, type: 2}
   m_IsPrefabAsset: 0

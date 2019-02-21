@@ -27,19 +27,26 @@ public class AppController : MonoBehaviour {
     public List<AvatarController> players = new List<AvatarController>();
     private List<AvatarController> playersDead = new List<AvatarController>();
     public SelectAvatarDefinitive selectAvatarDefinitive;
+    
+    [Header("Player Selectors")]
     public SelectorPlayer selectorPlayer1;
     public SelectorPlayer selectorPlayer2;
     public SelectorPlayer selectorPlayer3;
     public SelectorPlayer selectorPlayer4;
+
+    [Header("Player Sprites")]
     public GameObject SpritePlayer1;
     public GameObject SpritePlayer2;
     public GameObject SpritePlayer3;
     public GameObject SpritePlayer4;
+
+    public bool InSelectAvatars;
+
     private AvatarController auxPlayer1;
     private AvatarController auxPlayer2;
     private AvatarController auxPlayer3;
     private AvatarController auxPlayer4;
-    public bool InSelectAvatars;
+    
     [HideInInspector]
     public float auxTimeCancelPlayer1;
     [HideInInspector]

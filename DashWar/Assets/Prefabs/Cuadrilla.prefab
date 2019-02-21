@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 4652982197666046}
   - component: {fileID: 212916284979929098}
   - component: {fileID: 61954266267607594}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Limite Superior
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -469,8 +469,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1459624461545926}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -1.0199999, y: -0.36599994, z: 0.087890625}
-  m_LocalScale: {x: 1, y: 3.6000016, z: 1}
+  m_LocalPosition: {x: -0.9469, y: -0.366, z: 0.087890625}
+  m_LocalScale: {x: 1, y: 3.7, z: 1}
   m_Children: []
   m_Father: {fileID: 4448862946439560}
   m_RootOrder: 2
@@ -806,7 +806,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86b27698049819442a99a69f41e85f3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteAvatar: {fileID: 0}
+  transparent: {fileID: 0}
+  background: {fileID: 0}
+  screenSelectLevel: 0
+  screenSelectAvatar: 1
   numChosenAvatar: 0
+  numChosenLevel: 0
   numPlayer: 1
   selectAvatar: {fileID: 0}
   avatarSprite:
@@ -814,6 +820,7 @@ MonoBehaviour:
   - {fileID: 21300008, guid: 2b0283c7a87675449b7e004a9a21d25c, type: 3}
   - {fileID: 21300014, guid: 2b0283c7a87675449b7e004a9a21d25c, type: 3}
   - {fileID: 21300020, guid: 2b0283c7a87675449b7e004a9a21d25c, type: 3}
+  levels: []
   spriteRenderer: {fileID: 0}
   app: {fileID: 0}
   selectCantPlayerDefinitive: {fileID: 0}

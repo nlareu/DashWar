@@ -7,74 +7,118 @@ using UnityEngine.UI;
 
 public class AvatarController : MonoBehaviour
 {
-    public string textScore;
-    public float debugvar = 10f;
     public AppController AppController;
+    public Animator animator;
+    public int PlayerNumber;
+    public string textScore;
+    //public float debugvar = 10f; // Esta variable no se usaba en ninguna parte así que la saco
+
+    [Header("Movement Support")]
     public float AxisSensitive = 0.7f;
     public float DashBurnMaxTime = 0.5f;
     public float DashCooldownMaxTime = 1.0f;
     public float DashSpeed = 17.0f;
     public float HitForce = 500.0F;
-    public bool IsJumping = false;
-    public float JumpHeight = 250.0f;
-    public int PlayerNumber;
     public float Speed = 6.0F;
+    public float StunnedMaxTime = 1.5f;
+    
+    [Header("Jump Support")]
+    public Transform groundCheckStart;
+    public Transform groundCheckEnd;
+    [HideInInspector]
+    public bool isJumping = false;
+    public float JumpHeight = 250.0f;
+    private bool grounded = true;
+    private bool onTopOfOtherAvatar = false;
+    private bool onTopOfEnvironment = false;
+
+    // Private Variables
     protected AvatarStates state = AvatarStates.Normal;
-    public Animator animator;
+    private bool notMove;
     private float score;
+
     private bool death = false;
     private bool verifiedDeath = false;
-    private bool notMove;
     private bool revive;
+
+    /// <summary>
+    /// Use this for initialization.
+    /// </summary>
+    protected virtual void Awake()
+    {
+        this.animator = GetComponent<Animator>();
+        this.dashMoveLine = GetComponent<LineRenderer>();
+        this.spriteRendered = GetComponent<SpriteRenderer>();
+        this.tag = Tags.PLAYER;
+
+        this.boxCollider = GetComponent<BoxCollider2D>();
+        this.rigidBody = GetComponent<Rigidbody2D>();
+    }
+
+    /// <summary>
+    /// Use this for initialization
+    /// </summary>
     private void Start()
     {
         revive = true;
     }
+
     public void SetRevive(bool _revive)
     {
         revive = _revive;
     }
+
     public bool GetRevive()
     {
         return revive;
     }
+
     private void OnDisable()
     {
         death = true;
-        
+
     }
+
     public void SetVerifiedDeath(bool _verifiedDeath)
     {
         verifiedDeath = _verifiedDeath;
     }
+
     public bool GetVerifiedDeath()
     {
         return verifiedDeath;
     }
+
     public void SetDeath(bool _deadth)
     {
         death = _deadth;
     }
+
     public bool GetDeath()
     {
         return death;
     }
+
     public void SetScore(float _score)
     {
         score = _score;
     }
+
     public float GetScore()
     {
         return score;
     }
+
     public void AddScore(float _score)
     {
         score = score + _score;
     }
+
     public void SubstractScore(float _score)
     {
         score = score - _score;
     }
+
     public AvatarStates State
     {
         get
@@ -116,6 +160,7 @@ public class AvatarController : MonoBehaviour
                             break;
                         }
                     #endregion
+
                     #region Normal
                     case AvatarStates.Normal:
                         {
@@ -137,6 +182,7 @@ public class AvatarController : MonoBehaviour
                             break;
                         }
                     #endregion
+
                     #region CoolingDown
                     case AvatarStates.CoolingDown:
                         {
@@ -155,6 +201,7 @@ public class AvatarController : MonoBehaviour
                             break;
                         }
                     #endregion
+
                     #region Stunned
                     case AvatarStates.Stunned:
                         {
@@ -180,10 +227,8 @@ public class AvatarController : MonoBehaviour
             }
         }
     }
-    public float StunnedMaxTime = 1.5f;
 
     public event EventHandler Died;
-
 
     internal BoxCollider2D boxCollider;
     internal Vector2 currentDirection
@@ -212,6 +257,7 @@ public class AvatarController : MonoBehaviour
     {
         get { return "Player" + this.PlayerNumber + "-"; }
     }
+
     protected internal Vector2 previousDirection = Vector2.zero;
     protected internal Vector2 previousPosition = Vector2.zero;
     protected internal AvatarStates previousState;
@@ -219,16 +265,9 @@ public class AvatarController : MonoBehaviour
     protected internal Rigidbody2D rigidBody;
     protected float stunningTime;
 
-    protected virtual void Awake()
-    {
-        this.animator = GetComponent<Animator>();
-        this.boxCollider = GetComponent<BoxCollider2D>();
-        this.dashMoveLine = GetComponent<LineRenderer>();
-        this.rigidBody = GetComponent<Rigidbody2D>();
-        this.spriteRendered = GetComponent<SpriteRenderer>();
-        this.tag = Tags.PLAYER;
-    }
-
+    /// <summary>
+    /// Executes the main logic. Runs once per frame.
+    /// </summary>
     protected virtual void Update()
     {
         if (DataLevel.InstanceDataLevel != null)
@@ -255,6 +294,7 @@ public class AvatarController : MonoBehaviour
                             break;
                         }
                     #endregion
+
                     #region Dash
                     case AvatarStates.Dash:
                         {
@@ -294,6 +334,7 @@ public class AvatarController : MonoBehaviour
                             break;
                         }
                     #endregion
+
                     #region Normal
                     case AvatarStates.Normal:
                         {
@@ -315,6 +356,7 @@ public class AvatarController : MonoBehaviour
                             break;
                         }
                     #endregion
+
                     #region Stunned
                     case AvatarStates.Stunned:
                         {
@@ -396,6 +438,10 @@ public class AvatarController : MonoBehaviour
             this.transform.Translate(moveVector);
         }
     }
+
+    /// <summary>
+    /// Checks for player input to move the avatar
+    /// </summary>
     private void CheckAvatarMove()
     {
         if (!notMove)
@@ -426,17 +472,27 @@ public class AvatarController : MonoBehaviour
                 //this.animator.SetFloat("MoveX", 0.5f);
             }
 
-            if (Input.GetButton(this.playerName + "Jump") && this.IsJumping == false)
+            // Making the player Jump (I don't know how to use layer masks today, sorry for that)
+            grounded = Physics2D.Linecast(groundCheckStart.position, groundCheckEnd.position,
+                                          1 << LayerMask.NameToLayer("Ground"));
+            onTopOfOtherAvatar = Physics2D.Linecast(groundCheckStart.position, groundCheckEnd.position,
+                                          1 << LayerMask.NameToLayer("Avatar"));
+            onTopOfEnvironment = Physics2D.Linecast(groundCheckStart.position, groundCheckEnd.position,
+                                          1 << LayerMask.NameToLayer("Environment"));
+
+            //Debug.Log("Grounded: " + grounded);
+
+            if (Input.GetButton(this.playerName + "Jump") && (grounded || onTopOfOtherAvatar || onTopOfEnvironment))
             {
+                this.isJumping = true;
                 //this.rigidBody.AddForce(Vector2.up * this.JumpHeight);
                 this.rigidBody.velocity = new Vector2(this.rigidBody.velocity.x, Vector2.up.y * this.JumpHeight);
-
-                this.IsJumping = true;
             }
 
             this.transform.Translate(moveVector);
         }
     }
+
     public void Kill()
     {
         this.gameObject.SetActive(false);
@@ -447,16 +503,21 @@ public class AvatarController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col)
     {
         CollisionsManager.ResolveCollision(this.gameObject, col.gameObject, col);
+
+        //Debug.Log("Player has collided with: " + col.collider.name);
     }
+
     private void OnDied()
     {
         if (this.Died != null)
             this.Died(this, new EventArgs());
     }
+
     public void SetNotMove(bool _notMove)
     {
         notMove = _notMove;
     }
+
     public bool GetNotMove()
     {
         return notMove;

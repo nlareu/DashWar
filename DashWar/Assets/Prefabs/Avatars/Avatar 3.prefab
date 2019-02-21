@@ -11,6 +11,21 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1355196011229330}
   m_IsPrefabAsset: 1
+--- !u!1 &1163909515099486
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4719690038348250}
+  m_Layer: 9
+  m_Name: Ground Check 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1355196011229330
 GameObject:
   m_ObjectHideFlags: 0
@@ -25,13 +40,41 @@ GameObject:
   - component: {fileID: 61540138948241778}
   - component: {fileID: 95931216590086692}
   - component: {fileID: 120770179148888656}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Avatar 3
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1 &1843382140064792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4262159558045436}
+  m_Layer: 9
+  m_Name: Ground Check 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4262159558045436
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1843382140064792}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.1, y: -0.55, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4588769229028546}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4588769229028546
 Transform:
   m_ObjectHideFlags: 1
@@ -39,11 +82,26 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1355196011229330}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -30.697563, y: -1.7973984, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
-  m_Children: []
+  m_Children:
+  - {fileID: 4262159558045436}
+  - {fileID: 4719690038348250}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4719690038348250
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1163909515099486}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.1, y: -0.55, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4588769229028546}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50460681406514132
 Rigidbody2D:
@@ -119,21 +177,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d89e286fdecb5f4cbf2ac08cd7eedf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textScore: 
-  debugvar: 10
   AppController: {fileID: 114510956772429718, guid: 79148bcd2f0e308478a12b4ea3352dfa,
     type: 2}
+  animator: {fileID: 95931216590086692}
+  PlayerNumber: 0
+  textScore: 
   AxisSensitive: 0.7
   DashBurnMaxTime: 0.5
   DashCooldownMaxTime: 1
   DashSpeed: 17
   HitForce: 500
-  IsJumping: 0
-  JumpHeight: 8
-  PlayerNumber: 0
   Speed: 4
-  animator: {fileID: 95931216590086692}
   StunnedMaxTime: 1.5
+  groundCheckStart: {fileID: 4262159558045436}
+  groundCheckEnd: {fileID: 4719690038348250}
+  isJumping: 0
+  JumpHeight: 8
 --- !u!120 &120770179148888656
 LineRenderer:
   m_ObjectHideFlags: 1
