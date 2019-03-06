@@ -31,6 +31,8 @@ public class AvatarController : MonoBehaviour
     private bool grounded = true;
     private bool onTopOfOtherAvatar = false;
     private bool onTopOfEnvironment = false;
+    [SerializeField]
+    private LayerMask whatIsGround;
 
     // Private Variables
     protected AvatarStates state = AvatarStates.Normal;
@@ -104,6 +106,10 @@ public class AvatarController : MonoBehaviour
         score = _score;
     }
 
+    /// <summary>
+    /// Returns the current score of the player.
+    /// </summary>
+    /// <returns>The current score.</returns>
     public float GetScore()
     {
         return score;
@@ -472,17 +478,20 @@ public class AvatarController : MonoBehaviour
                 //this.animator.SetFloat("MoveX", 0.5f);
             }
 
-            // Making the player Jump (I don't know how to use layer masks today, sorry for that)
+            // Making the player Jump
+            /*
             grounded = Physics2D.Linecast(groundCheckStart.position, groundCheckEnd.position,
                                           1 << LayerMask.NameToLayer("Ground"));
             onTopOfOtherAvatar = Physics2D.Linecast(groundCheckStart.position, groundCheckEnd.position,
                                           1 << LayerMask.NameToLayer("Avatar"));
             onTopOfEnvironment = Physics2D.Linecast(groundCheckStart.position, groundCheckEnd.position,
                                           1 << LayerMask.NameToLayer("Environment"));
+            */
+            grounded = Physics2D.Linecast(groundCheckStart.position, groundCheckEnd.position, whatIsGround);
 
             //Debug.Log("Grounded: " + grounded);
 
-            if (Input.GetButton(this.playerName + "Jump") && (grounded || onTopOfOtherAvatar || onTopOfEnvironment))
+            if (Input.GetButton(this.playerName + "Jump") && grounded)
             {
                 this.isJumping = true;
                 //this.rigidBody.AddForce(Vector2.up * this.JumpHeight);

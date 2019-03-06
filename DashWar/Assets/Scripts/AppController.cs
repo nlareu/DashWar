@@ -65,12 +65,14 @@ public class AppController : MonoBehaviour {
     public float timeCancelPlayer4;
 
     // Use this for initialization
-    void Start() {
+    void Start()
+    {
         //tiempo en el que hay que mantener apretado para cancelar la selecion.
         auxTimeCancelPlayer1 = 1.5f;
         auxTimeCancelPlayer2 = 1.5f;
         auxTimeCancelPlayer3 = 1.5f;
         auxTimeCancelPlayer4 = 1.5f;
+
         timeCancelPlayer1 = auxTimeCancelPlayer1;
         timeCancelPlayer2 = auxTimeCancelPlayer2;
         timeCancelPlayer3 = auxTimeCancelPlayer3;
@@ -80,9 +82,12 @@ public class AppController : MonoBehaviour {
         {
             StartAppController();
         }
+
         activateAvatarController = false;
         cancelSelectionAvatarController1 = false;
     }
+
+    // Update runs once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
@@ -99,6 +104,7 @@ public class AppController : MonoBehaviour {
             RestartRound();
         }
     }
+
     public void CancelSelectionAvatarControler()
     {    
         if (Input.GetKey(KeyCode.Space) && cancelSelectionAvatarController1)
@@ -209,6 +215,7 @@ public class AppController : MonoBehaviour {
         }
 
     }
+
     public void ActivateAvatarController()
     {
         float axisHorPlayer3 = Input.GetAxis("Player3-LeftStick-Horizontal");
@@ -261,6 +268,7 @@ public class AppController : MonoBehaviour {
             activateAvatarController = false;
         }
     }
+
     public void InstanciarJugador1(bool activate)
     {
         if (DataLevel.InstanceDataLevel != null)
@@ -268,10 +276,12 @@ public class AppController : MonoBehaviour {
             AvatarController player;
             player = Instantiate(DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer1()], this.RespawnPositions[0].transform.position, Quaternion.identity);
             auxPlayer1 = player;
+
             player.AppController = this;
             player.PlayerNumber = 1;
             players.Add(player);
             player.Died += this.Player_Died;
+
             if (gameManager != null)
             {
                 gameManager.Avatars.Add(player);
@@ -285,6 +295,7 @@ public class AppController : MonoBehaviour {
                 player.gameObject.SetActive(true);
                 SpritePlayer1.SetActive(false);
             }
+
             DataLevel.InstanceDataLevel.AddPlayer();
         }
     }
@@ -294,10 +305,12 @@ public class AppController : MonoBehaviour {
         AvatarController player;
         player = Instantiate(DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer2()], this.RespawnPositions[1].transform.position, Quaternion.identity);
         auxPlayer2 = player;
+
         player.AppController = this;
         player.PlayerNumber = 2;
         players.Add(player);
         player.Died += this.Player_Died;
+
         if (gameManager != null)
         {
             gameManager.Avatars.Add(player);
@@ -311,6 +324,7 @@ public class AppController : MonoBehaviour {
             player.gameObject.SetActive(true);
             SpritePlayer2.SetActive(false);
         }
+
         DataLevel.InstanceDataLevel.AddPlayer();
     }
 
@@ -319,10 +333,12 @@ public class AppController : MonoBehaviour {
         AvatarController player;
         player = Instantiate(DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer3()], this.RespawnPositions[2].transform.position, Quaternion.identity);
         auxPlayer3 = player;
+
         player.AppController = this;
         player.PlayerNumber = 3;
         player.Died += this.Player_Died;
         DataLevel.InstanceDataLevel.AddPlayer();
+
         if (gameManager != null)
         {
             gameManager.Avatars.Add(player);
@@ -343,9 +359,11 @@ public class AppController : MonoBehaviour {
         AvatarController player;
         player = Instantiate(DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayer4()], this.RespawnPositions[3].transform.position, Quaternion.identity);
         auxPlayer4 = player;
+
         player.AppController = this;
         player.PlayerNumber = 4;
         player.Died += this.Player_Died;
+
         if (gameManager != null)
         {
             gameManager.Avatars.Add(player);
@@ -359,6 +377,7 @@ public class AppController : MonoBehaviour {
             player.gameObject.SetActive(true);
             SpritePlayer4.SetActive(false);
         }
+
         DataLevel.InstanceDataLevel.AddPlayer();
     }
 
@@ -441,22 +460,25 @@ public class AppController : MonoBehaviour {
             gameManager.auxCountAvatars = gameManager.countAvatars;
         }
     }
-        // Update is called once per frame
+
     public int AddPlayer(AvatarController avatar)
     {
         this.players.Add(avatar);
 
         return this.players.Count;
     }
+
     private bool CheckRoundEnded()
     {
         return (this.players.Count - this.playersDead.Count <= 1);
     }
+
     public List<AvatarController> GetPlayers()
     {
         //Return a copy to prevent reference and not desired changes on the list.
         return new List<AvatarController>(this.players);
     }
+
     public void RestartParty()
     {
         if (!SpecialRestart)
@@ -493,6 +515,7 @@ public class AppController : MonoBehaviour {
             }
         }
     }
+
     public void RestartRound()
     {
         if (!SpecialRestart)
@@ -529,8 +552,7 @@ public class AppController : MonoBehaviour {
             }
         }
     }
-
-
+    
     private void Player_Died(object sender, EventArgs e)
     {
         AvatarController avatar = (AvatarController)sender;
