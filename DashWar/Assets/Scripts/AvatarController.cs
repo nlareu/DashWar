@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class AvatarController : MonoBehaviour
 {
+    #region Fields
+
     public AppController AppController;
     public Animator animator;
     public int PlayerNumber;
@@ -29,8 +31,6 @@ public class AvatarController : MonoBehaviour
     public bool isJumping = false;
     public float JumpHeight = 250.0f;
     private bool grounded = true;
-    private bool onTopOfOtherAvatar = false;
-    private bool onTopOfEnvironment = false;
     [SerializeField]
     private LayerMask whatIsGround;
 
@@ -38,93 +38,42 @@ public class AvatarController : MonoBehaviour
     protected AvatarStates state = AvatarStates.Normal;
     private bool notMove;
     private float score;
+    private int positionInLeaderboard;
 
     private bool death = false;
     private bool verifiedDeath = false;
     private bool revive;
 
-    /// <summary>
-    /// Use this for initialization.
-    /// </summary>
-    protected virtual void Awake()
-    {
-        this.animator = GetComponent<Animator>();
-        this.dashMoveLine = GetComponent<LineRenderer>();
-        this.spriteRendered = GetComponent<SpriteRenderer>();
-        this.tag = Tags.PLAYER;
+    // Some other Values
+    protected internal Vector2 previousDirection = Vector2.zero;
+    protected internal Vector2 previousPosition = Vector2.zero;
+    protected internal AvatarStates previousState;
+    protected SpriteRenderer spriteRendered;
+    protected internal Rigidbody2D rigidBody;
+    protected float stunningTime;
 
-        this.boxCollider = GetComponent<BoxCollider2D>();
-        this.rigidBody = GetComponent<Rigidbody2D>();
-    }
+    #endregion
+
+    #region Properties
 
     /// <summary>
-    /// Use this for initialization
+    /// Gets and sets the position of the avatar in the leaderboard.
     /// </summary>
-    private void Start()
+    public int PositionInLeaderboard
     {
-        revive = true;
-    }
-
-    public void SetRevive(bool _revive)
-    {
-        revive = _revive;
-    }
-
-    public bool GetRevive()
-    {
-        return revive;
-    }
-
-    private void OnDisable()
-    {
-        death = true;
-
-    }
-
-    public void SetVerifiedDeath(bool _verifiedDeath)
-    {
-        verifiedDeath = _verifiedDeath;
-    }
-
-    public bool GetVerifiedDeath()
-    {
-        return verifiedDeath;
-    }
-
-    public void SetDeath(bool _deadth)
-    {
-        death = _deadth;
-    }
-
-    public bool GetDeath()
-    {
-        return death;
-    }
-
-    public void SetScore(float _score)
-    {
-        score = _score;
+        get
+        {
+            return positionInLeaderboard;
+        }
+        set
+        {
+            positionInLeaderboard = value;
+        }
     }
 
     /// <summary>
-    /// Returns the current score of the player.
+    /// Gets and sets the state of the Avatar.
     /// </summary>
-    /// <returns>The current score.</returns>
-    public float GetScore()
-    {
-        return score;
-    }
-
-    public void AddScore(float _score)
-    {
-        score = score + _score;
-    }
-
-    public void SubstractScore(float _score)
-    {
-        score = score - _score;
-    }
-
     public AvatarStates State
     {
         get
@@ -234,6 +183,90 @@ public class AvatarController : MonoBehaviour
         }
     }
 
+    #endregion
+
+    /// <summary>
+    /// Use this for initialization.
+    /// </summary>
+    protected virtual void Awake()
+    {
+        this.animator = GetComponent<Animator>();
+        this.dashMoveLine = GetComponent<LineRenderer>();
+        this.spriteRendered = GetComponent<SpriteRenderer>();
+        this.tag = Tags.PLAYER;
+
+        this.boxCollider = GetComponent<BoxCollider2D>();
+        this.rigidBody = GetComponent<Rigidbody2D>();
+    }
+
+    /// <summary>
+    /// Use this for initialization
+    /// </summary>
+    private void Start()
+    {
+        revive = true;
+    }
+
+    public void SetRevive(bool _revive)
+    {
+        revive = _revive;
+    }
+
+    public bool GetRevive()
+    {
+        return revive;
+    }
+
+    private void OnDisable()
+    {
+        death = true;
+
+    }
+
+    public void SetVerifiedDeath(bool _verifiedDeath)
+    {
+        verifiedDeath = _verifiedDeath;
+    }
+
+    public bool GetVerifiedDeath()
+    {
+        return verifiedDeath;
+    }
+
+    public void SetDeath(bool _deadth)
+    {
+        death = _deadth;
+    }
+
+    public bool GetDeath()
+    {
+        return death;
+    }
+
+    public void SetScore(float _score)
+    {
+        score = _score;
+    }
+
+    /// <summary>
+    /// Returns the current score of the player.
+    /// </summary>
+    /// <returns>The current score.</returns>
+    public float GetScore()
+    {
+        return score;
+    }
+
+    public void AddScore(float _score)
+    {
+        score = score + _score;
+    }
+
+    public void SubstractScore(float _score)
+    {
+        score = score - _score;
+    }    
+
     public event EventHandler Died;
 
     internal BoxCollider2D boxCollider;
@@ -262,14 +295,7 @@ public class AvatarController : MonoBehaviour
     protected string playerName
     {
         get { return "Player" + this.PlayerNumber + "-"; }
-    }
-
-    protected internal Vector2 previousDirection = Vector2.zero;
-    protected internal Vector2 previousPosition = Vector2.zero;
-    protected internal AvatarStates previousState;
-    protected SpriteRenderer spriteRendered;
-    protected internal Rigidbody2D rigidBody;
-    protected float stunningTime;
+    }    
 
     /// <summary>
     /// Executes the main logic. Runs once per frame.
@@ -377,7 +403,7 @@ public class AvatarController : MonoBehaviour
 
                             break;
                         }
-                        #endregion
+                    #endregion
                 }
             }
         }
@@ -479,14 +505,6 @@ public class AvatarController : MonoBehaviour
             }
 
             // Making the player Jump
-            /*
-            grounded = Physics2D.Linecast(groundCheckStart.position, groundCheckEnd.position,
-                                          1 << LayerMask.NameToLayer("Ground"));
-            onTopOfOtherAvatar = Physics2D.Linecast(groundCheckStart.position, groundCheckEnd.position,
-                                          1 << LayerMask.NameToLayer("Avatar"));
-            onTopOfEnvironment = Physics2D.Linecast(groundCheckStart.position, groundCheckEnd.position,
-                                          1 << LayerMask.NameToLayer("Environment"));
-            */
             grounded = Physics2D.Linecast(groundCheckStart.position, groundCheckEnd.position, whatIsGround);
 
             //Debug.Log("Grounded: " + grounded);

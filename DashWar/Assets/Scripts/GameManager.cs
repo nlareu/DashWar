@@ -21,7 +21,10 @@ public class GameManager : MonoBehaviour
     public Camera cam;
     private Vector3 auxCamPosition;
 
-    private List<AvatarController> leaderboard;
+    private List<AvatarController> leaderboard = new List<AvatarController>();
+
+    [Header("Tabla de Posiciones")]
+    public GameObject[] leaderBoardPositions;
 
     // Use this for initialization.
     void Start ()
@@ -34,10 +37,19 @@ public class GameManager : MonoBehaviour
         }
 
         winningScore = DataLevel.InstanceDataLevel.GetWiningScore();
+
         auxCamPosition.x = cam.transform.position.x;
         auxCamPosition.y = cam.transform.position.y;
         auxCamPosition.z = cam.transform.position.z;
-        
+
+        // Inicializando la tabla de posiciones
+        for (int i = 0; i < Avatars.Count; i++)
+        {
+            //leaderboard.Insert(i, Avatars[i]);
+            leaderboard.Add(Avatars[i]);           
+        }
+
+        //Debug.Log("Tabla recién creada en Start: " + leaderboard.Count);
 	}
 
     // Update is called once per frame
@@ -48,7 +60,7 @@ public class GameManager : MonoBehaviour
         {
             case 1:
                 //Modo de supervivencia.
-                Debug.Log("Estamos en modo de supervivencia");
+                //Debug.Log("Estamos en modo de supervivencia");
                 CheckPause(); // Posición Original de esta llamada
                 CheckDead();
                 CheckWinGameModeSorvival();
@@ -75,7 +87,7 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Checks if the player has paused the game.
+    /// Checks if the player has paused the game and pauses it.
     /// </summary>
     public void CheckPause()
     {
@@ -90,76 +102,80 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0;
             camvasPause.SetActive(true);
 
-            /*
-            // Preparando la tabla de posiciones
-            float higherScore = 0f;
-            float lowerScore = 0f;
+            GenerateLeaderBoard();
+        }
+    }
 
-            // Calculando la tabla de posiciones 1er intento
-            for (int i = 0; i < Avatars.Count; i++)
+    /// <summary>
+    /// Generates the leaderboard.
+    /// </summary>
+    public void GenerateLeaderBoard()
+    {
+        // Preparando y determinando la tabla de posiciones 3er intento
+        //leaderboard.Clear(); // Esta linea causaba un error más adelante
+
+        for (int i = 0; i < Avatars.Count; i++)
+        {
+            // Preparando los valores para ser modificados
+            AvatarController currentAvatar = Avatars[i];
+            float currentScore = Avatars[i].GetScore();
+            currentAvatar.PositionInLeaderboard = 0;
+
+            // Compara el score de cada Avatar con los de los demás
+            for (int k = 0; k < Avatars.Count; k++)
             {
-                float currentScore = Avatars[i].GetScore();
-                Debug.Log("Player " + i + " score is: " + currentScore);
+                if (i != k)
+                {
+                    float scoreToCompare = Avatars[k].GetScore();
 
-                if (currentScore > higherScore)
-                {
-                    // Determinando el primer lugar
-                    higherScore = currentScore;
-                    leaderboard.Insert(0, Avatars[i]);
-                }
-                else
-                {
-                    // Determinando los demás lugares
-                    for (int k = 0; k < leaderboard.Count; k++)
+                    // Si es menor que el otro se atrasa en la tabla de posiciones
+                    if (currentScore < scoreToCompare)
                     {
-                        if (currentScore > leaderboard[i].GetScore())
-                        {
-                            
-                        }
+                        currentAvatar.PositionInLeaderboard += 1;
                     }
                 }
             }
-            */
+        }
 
-            // Preparando la tabla de posiciones
-            /*
-            float highScore = Avatars[0].GetScore();
-            leaderboard.RemoveAll();
+        // Acomodando cada Avatar en su respectiva posición en la tabla
+        for (int i = 0; i < Avatars.Count; i++)
+        {
+            //leaderboard.Insert(Avatars[i].PositionInLeaderboard, Avatars[i]);
+            int thePosition = Avatars[i].PositionInLeaderboard;
+            //Debug.Log("Jugador " + Avatars[i] + " en posición " + Avatars[i].PositionInLeaderboard);
+            //leaderboard[thePosition] = Avatars[i];
+            leaderboard.RemoveAt(thePosition);
+            leaderboard.Insert(thePosition, Avatars[i]);
+        }
+
+        // Verificando si ningún Jugador ha anotado para evitar el bug en el que un mismo Avatar aparecía
+        // en la Leaderboard 2 veces la primera vez que se pausa la partida
+        int totalZeroes = 0;
+
+        for (int i = 0; i < Avatars.Count; i++)
+        {
+            if (Avatars[i].GetScore() <= 0)
+            {
+                totalZeroes += 1;
+            }
+        }
+
+        if (totalZeroes == Avatars.Count)
+        {
+            //Debug.Log("Nadie ha anotado");
             leaderboard.Clear();
-            leaderboard.Insert(0, Avatars[0]);
 
-            // Determinando la tabla de posiciones 2do intento
             for (int i = 0; i < Avatars.Count; i++)
             {
-                AvatarController currentAvatar = Avatars[i];
-                float currentScore = Avatars[i].GetScore();
-
-                // Comparando el score de cada jugador con el de los demás
-                for (int k = 0; k < Avatars.Count; k++)
-                {
-                    if (i != k)
-                    {
-                        float scoreToCompare = Avatars[k].GetScore();
-
-                        // Si sobrepasa el score, adelanta en la tabla, de lo contrario se queda atrás
-                        if (scoreToCompare > currentScore)
-                        {
-                            leaderboard.Insert(i, Avatars[k]);
-                        }
-                        else
-                        {
-                            leaderboard.Insert(i + 1, Avatars[k]);
-                        }
-                    }
-                }
+                leaderboard.Add(Avatars[i]);
             }
+        }
 
-            // Mostrando la tabla de posiciones (Falta por hacer)
-            for (int i = 0; i < leaderboard.Count; i++)
-            {
-                Debug.Log("Jugador " + leaderboard[i].name + " tiene de score " + leaderboard[i].GetScore());
-            }
-            */
+        // Mostrando la tabla de posiciones
+        for (int i = 0; i < leaderboard.Count; i++)
+        {
+            Debug.Log("Jugador " + leaderboard[i].name + " tiene de score " + leaderboard[i].GetScore() +
+                " y está en la posición " + leaderboard[i].PositionInLeaderboard);
         }
     }
 
