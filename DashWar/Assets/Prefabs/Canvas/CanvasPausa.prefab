@@ -53,13 +53,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224516781764047408}
+  - component: {fileID: 114377174537935620}
   m_Layer: 5
-  m_Name: Espacio Izquierdo
+  m_Name: "Posici\xF3n 4"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1126869415482734
 GameObject:
   m_ObjectHideFlags: 1
@@ -342,13 +343,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224870873362878866}
+  - component: {fileID: 114682028409157014}
   m_Layer: 5
-  m_Name: Espacio CentroIzq
+  m_Name: "Posici\xF3n 3"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1754080730637334
 GameObject:
   m_ObjectHideFlags: 1
@@ -460,13 +462,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224346638303133332}
+  - component: {fileID: 114858042320702786}
   m_Layer: 5
-  m_Name: Espacio Derecho
+  m_Name: "Posici\xF3n 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1953988807756646
 GameObject:
   m_ObjectHideFlags: 1
@@ -511,13 +514,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224907868694495582}
+  - component: {fileID: 114674380742710960}
   m_Layer: 5
-  m_Name: Espacio CentroDer
+  m_Name: "Posici\xF3n 2"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1989333816913204
 GameObject:
   m_ObjectHideFlags: 1
@@ -1123,6 +1127,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114377174537935620
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1121154157297582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b66d761da33701a44a9f1c8b22cf7194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPosScore: {fileID: 114384977890560778}
+  playerAnimation: {fileID: 1503211827348000}
 --- !u!114 &114384977890560778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1301,6 +1318,19 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Jugador Y: Score'
+--- !u!114 &114674380742710960
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1983880085932214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b66d761da33701a44a9f1c8b22cf7194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPosScore: {fileID: 114196021103521436}
+  playerAnimation: {fileID: 1504487825789962}
 --- !u!114 &114682010626436204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1334,6 +1364,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: PAUSA
+--- !u!114 &114682028409157014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1714285339322040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b66d761da33701a44a9f1c8b22cf7194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPosScore: {fileID: 114505138942541462}
+  playerAnimation: {fileID: 1953988807756646}
 --- !u!114 &114728078973843258
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1473,6 +1516,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114858042320702786
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1907241293591488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b66d761da33701a44a9f1c8b22cf7194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPosScore: {fileID: 114090722428503990}
+  playerAnimation: {fileID: 1498604182603236}
 --- !u!114 &114878413309477170
 MonoBehaviour:
   m_ObjectHideFlags: 1

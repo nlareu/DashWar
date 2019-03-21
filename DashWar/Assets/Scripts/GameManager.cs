@@ -172,10 +172,18 @@ public class GameManager : MonoBehaviour
         }
 
         // Mostrando la tabla de posiciones
+        /*
         for (int i = 0; i < leaderboard.Count; i++)
         {
             Debug.Log("Jugador " + leaderboard[i].name + " tiene de score " + leaderboard[i].GetScore() +
                 " y está en la posición " + leaderboard[i].PositionInLeaderboard);
+        }
+        */
+        for (int i = 0; i < leaderboard.Count; i++)
+        {
+            leaderBoardPositions[i].gameObject.SetActive(true);
+            LeaderboardPosUI positionVal = leaderBoardPositions[i].GetComponent<LeaderboardPosUI>();
+            positionVal.playerPosScore.text = "Jugador " + leaderboard[i].PlayerNumber + ": " + leaderboard[i].GetScore();
         }
     }
 
