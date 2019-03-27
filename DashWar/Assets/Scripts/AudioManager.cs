@@ -22,6 +22,13 @@ public class AudioManager : MonoBehaviour {
         }
         set
         {
+            // Only start playing again if it's a different track
+            if (value == mainSource.clip)
+            {
+                //Debug.Log("La música es la misma, continuará reproduciéndose la misma pista");
+                return;
+            }
+
             mainSource.Stop();
             mainSource.clip = value;
             mainSource.Play();
