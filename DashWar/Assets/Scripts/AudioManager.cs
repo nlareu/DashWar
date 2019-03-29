@@ -5,7 +5,10 @@ public class AudioManager : MonoBehaviour {
     #region Fields
 
     public static AudioManager instance;
+    [SerializeField]
     private AudioSource mainSource;
+    [SerializeField]
+    private AudioSource specialEffectsSource;
 
     #endregion
 
@@ -56,8 +59,18 @@ public class AudioManager : MonoBehaviour {
 
         DontDestroyOnLoad(gameObject);
 
-        mainSource = GetComponent<AudioSource>();
+        //mainSource = GetComponent<AudioSource>();
 	}
+
+    /// <summary>
+    /// Plays the given audio clip.
+    /// </summary>
+    /// <param name="sfxClip">The special effects audio clip to play.</param>
+    public void PlaySpecialEffect(AudioClip sfxClip)
+    {
+        specialEffectsSource.clip = sfxClip;
+        specialEffectsSource.Play();
+    }
 
     #endregion
 }
