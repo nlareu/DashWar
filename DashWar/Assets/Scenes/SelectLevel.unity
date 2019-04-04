@@ -297,6 +297,16 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: b1653eb1d5684194eb225eace348b196,
         type: 3}
+    - target: {fileID: 114358120830949884, guid: 8515a4c39ea6d8247afc9e48ce4410c6,
+        type: 2}
+      propertyPath: screenSelectAvatar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114358120830949884, guid: 8515a4c39ea6d8247afc9e48ce4410c6,
+        type: 2}
+      propertyPath: selectionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ca27771c6a3c7184095dbcb112c1fa2d, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8515a4c39ea6d8247afc9e48ce4410c6, type: 2}
   m_IsPrefabAsset: 0

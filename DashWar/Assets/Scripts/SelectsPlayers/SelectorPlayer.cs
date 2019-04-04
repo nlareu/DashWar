@@ -5,38 +5,64 @@ using UnityEngine.SceneManagement;
 
 public class SelectorPlayer : MonoBehaviour {
 
-    // Use this for initialization
+    #region Fields
 
-    //numero del personaje elejido
-    public GameObject spriteAvatar;
-    public Sprite transparent;
-    public SpriteRenderer background;
+    [Header("Modalidad")]
     public bool screenSelectLevel;
     public bool screenSelectAvatar;
-    public int numChosenAvatar;
-    public int numChosenLevel;
+
+    [Header("General")]
+    public AppController app;
+
+    //numero del personaje elegido
+    public GameObject spriteAvatar;    
+    public int numChosenAvatar;    
     public int numPlayer;
     public SelectAvatarDefinitive selectAvatar;
+
+    //Aqui poner los Sprites idle de todos los avatars
+    //(IMPORTANTE QUE SE AGREGUEN ORDENADAMENTE TIENEN QUE ESTAR EN EL MISMO ORDEN QUE LOS PREFABS DE AVATARS)
+    public List<Sprite> avatarSprite;    
+    public SpriteRenderer spriteRenderer;    
+    public SelectCantPlayerDefinitive selectCantPlayerDefinitive;
+    protected bool activateCollision;
+
     private bool Movement;
     private bool activate;
     private bool select;
-    //Aqui poner los Sprites idle de todos los avatars
-    //(IMPORTANTE QUE SE AGREGUEN ORDENADAMENTE TIENEN QUE ESTAR EN EL MISMO ORDEN QUE LOS PREFABS DE AVATARS)
-    public List<Sprite> avatarSprite;
+
+    [Header("Niveles")]
+    public int numChosenLevel;
+    public Sprite transparent;
+    public SpriteRenderer background;
     public List<Sprite> levels;
-    public SpriteRenderer spriteRenderer;
-    public AppController app;
-    public SelectCantPlayerDefinitive selectCantPlayerDefinitive;
-    protected bool activateCollision;
+    public string level01Name = "Lvl01-Level-01";
+    public string level02Name = "Lvl02-Level-02-Snow";
+
+    [Header("Sonidos")]
+    public AudioClip selectionSound;
+
+    #endregion
+
+    #region Methods
+
+    /// <summary>
+    /// Use this for initialization.
+    /// </summary>
     private void Start()
     {
         Movement = true;
+
         if (spriteRenderer != null)
         {
             spriteRenderer.enabled = false;
         }
         //numChosenAvatar = 0;
     }
+
+    /// <summary>
+    /// Update runs once per frame, the main logic goes here.
+    /// </summary>
     private void Update()
     {
         if (screenSelectAvatar)
@@ -48,9 +74,12 @@ public class SelectorPlayer : MonoBehaviour {
             CheckSelectorLevel();
         }
     }
+
     public void Selector(int numAvatar)
     {
         //SI HAY LA CAPACIDAD DE JUGADORES ES MAYOR AGREGAR UN IF CON OTRO NUM PLAYER
+        // Observación (Por hacer): Para lo señalado en el comentario anterior, sería
+        // más eficiente el uso de un for loop que itere según el número de jugadores
         if (Movement)
         {
 
@@ -67,9 +96,12 @@ public class SelectorPlayer : MonoBehaviour {
                     //selectCantPlayerDefinitive.SetSubstract(false);
                     app.activateAvatarController = true;
                     app.cancelSelectionAvatarController1 = true;
-                   
+
+                    //Debug.Log("El jugador 1 se ha decidido, reproducir sonido");
+                    AudioManager.instance.PlaySpecialEffect(selectionSound);
                 }
             }
+
             if (numPlayer == 2)
             {
                 if (Input.GetKeyDown(KeyCode.Return))
@@ -83,9 +115,12 @@ public class SelectorPlayer : MonoBehaviour {
                     //selectCantPlayerDefinitive.SetSubstract(false);
                     app.activateAvatarController = true;
                     app.cancelSelectionAvatarController2 = true;
-                    
+
+                    //Debug.Log("Jugador 2 ya decdido");
+                    AudioManager.instance.PlaySpecialEffect(selectionSound);
                 }
             }
+
             if (numPlayer == 3)
             {
                 float axisButtonXJostick1 = Input.GetAxis("Player3-Dash");
@@ -102,9 +137,11 @@ public class SelectorPlayer : MonoBehaviour {
                     //selectCantPlayerDefinitive.SetSubstract(false);
                     app.activateAvatarController = true;
                     app.cancelSelectionAvatarController3 = true;
-                    
+
+                    AudioManager.instance.PlaySpecialEffect(selectionSound);
                 }
             }
+
             if (numPlayer == 4)
             {
                 float axisButtonXJostick2 = Input.GetAxis("Player4-Dash");
@@ -120,12 +157,13 @@ public class SelectorPlayer : MonoBehaviour {
                     //selectCantPlayerDefinitive.SetSubstract(false);
                     app.activateAvatarController = true;
                     app.cancelSelectionAvatarController4 = true;
-                    
-                    
+
+                    AudioManager.instance.PlaySpecialEffect(selectionSound);
                 }
             }
         }
     }
+
     public void CheckAvatarDrow()
     {
         if(numChosenAvatar <= avatarSprite.Count - 1 && numChosenAvatar >= 0)
@@ -144,6 +182,7 @@ public class SelectorPlayer : MonoBehaviour {
             Selector(numChosenAvatar);
         }
     }
+
     public void CheckSelectorLevel()
     {
         if (numChosenLevel <= levels.Count - 1 && numChosenLevel >= 0)
@@ -159,22 +198,30 @@ public class SelectorPlayer : MonoBehaviour {
             background.sprite = transparent;
         }
     }
+
+    /// <summary>
+    /// Loads the selected level.
+    /// </summary>
     public void SelectorLevel()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             // LISTADO DE NIVELES (por cada nuevo nivel que se agregue al juego agregarle un CASE al switch).
+            // Observación (Por hacer): No hardcodear los nombres de los niveles, usar variables en su lugar
             switch(numChosenLevel)
             {
                 case 0:
-                    SceneManager.LoadScene("Lvl01-Level-01");
-                   break;
+                    AudioManager.instance.PlaySpecialEffect(selectionSound);
+                    SceneManager.LoadScene(level01Name);
+                    break;
                 case 1:
-                    SceneManager.LoadScene("Lvl02-Level-02-Snow");
+                    AudioManager.instance.PlaySpecialEffect(selectionSound);
+                    SceneManager.LoadScene(level02Name);
                     break;
             }
         }
     }
+
     /*private void OnTriggerStay(Collider other)
     {
         switch (other.tag)
@@ -202,12 +249,27 @@ public class SelectorPlayer : MonoBehaviour {
                 break;
         }
     }*/
+    
+    // POR HACER: Debería considerarse colocar los dos métodos siguientes como una property, ya que
+    // están sirviendo tal cual como una property
+
+    /// <summary>
+    /// Sets the movement variable.
+    /// </summary>
+    /// <param name="_movement">The movement to set.</param>
     public void SetMovement(bool _movement)
     {
         Movement = _movement;
     }
+
+    /// <summary>
+    /// Gets the movement variable.
+    /// </summary>
+    /// <returns></returns>
     public bool GetMovement()
     {
         return Movement;
     }
+
+    #endregion
 }
