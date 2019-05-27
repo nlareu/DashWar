@@ -18,11 +18,11 @@ public class NameLevelController : MonoBehaviour {
     }
     public void CheckLevel()
     {
-        if(selectAvatarDefinitive.spriteSelectAvatar1.numChosenLevel <= NameLevels.Length - 1 && selectAvatarDefinitive.spriteSelectAvatar1.numChosenAvatar >= 0)
+        if(selectAvatarDefinitive.playerSelectorsDefinitive[0].numChosenLevel <= NameLevels.Length - 1 && selectAvatarDefinitive.playerSelectorsDefinitive[0].numChosenAvatar >= 0)
         {
-            if (NameLevels[selectAvatarDefinitive.spriteSelectAvatar1.numChosenLevel] != null)
+            if (NameLevels[selectAvatarDefinitive.playerSelectorsDefinitive[0].numChosenLevel] != null)
             {
-                textNameLevel.text = NameLevels[selectAvatarDefinitive.spriteSelectAvatar1.numChosenLevel];
+                textNameLevel.text = NameLevels[selectAvatarDefinitive.playerSelectorsDefinitive[0].numChosenLevel];
             }
         }
         else

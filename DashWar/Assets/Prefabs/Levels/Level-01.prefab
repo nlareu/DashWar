@@ -713,7 +713,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1833201791761944}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.9953833, y: -1.6810495, z: 0}
+  m_LocalPosition: {x: 4, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4497223141766690}
@@ -804,7 +804,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1183893466705574}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.394617, y: -1.33, z: 0.00006610751}
+  m_LocalPosition: {x: -9, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4497223141766690}
@@ -908,7 +908,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1547165196810188}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.4246168, y: 6.2, z: 0.00006610751}
+  m_LocalPosition: {x: -1.6, y: 6.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4497223141766690}
@@ -938,7 +938,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1823637826354540}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4038888912533246}
@@ -994,7 +994,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1845301380255508}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.7446167, y: 1.5700002, z: 0}
+  m_LocalPosition: {x: -1.6, y: 1.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4497223141766690}
@@ -2483,6 +2483,10 @@ MonoBehaviour:
   notInstanciateImmediately: 0
   players: []
   selectAvatarDefinitive: {fileID: 0}
+  roundWinnerText: {fileID: 0}
+  roundStartDelay: 1
+  nextRoundDelay: 1
+  startDashMessage: {fileID: 0}
   selectorPlayer1: {fileID: 0}
   selectorPlayer2: {fileID: 0}
   selectorPlayer3: {fileID: 0}
@@ -2665,6 +2669,11 @@ MonoBehaviour:
   countAvatars: 0
   auxCountAvatars: 0
   cam: {fileID: 0}
+  leaderBoardPositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114844282334070928
 MonoBehaviour:
   m_ObjectHideFlags: 1

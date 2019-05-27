@@ -29,6 +29,13 @@ public class GameManager : MonoBehaviour
     // Use this for initialization.
     void Start ()
     {
+        // Los avatares comienzan parados y solo se mueven al terminar la cuenta regresiva
+        for(int i = 0; i < Avatars.Count; i++)
+        {
+            //Avatars[i].GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            //Avatars[i].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+        }
+
         pause = false;
 
         for(int i = 0; i<textsScore.Length; i++)
@@ -63,7 +70,7 @@ public class GameManager : MonoBehaviour
                 //Debug.Log("Estamos en modo de supervivencia");
                 CheckPause(); // Posición Original de esta llamada
                 CheckDead();
-                CheckWinGameModeSorvival();
+                CheckWinGameModeSurvival();
                 CheckScore();
                 CheckLevelFinish();
                 break;
@@ -160,6 +167,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        // Si nadie ha anotado, mantener posiciones fijas
         if (totalZeroes == Avatars.Count)
         {
             //Debug.Log("Nadie ha anotado");
@@ -187,7 +195,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void CheckWinGameModeSorvival()
+    /// <summary>
+    /// Checks which player won the round and adds the respective score.
+    /// </summary>
+    public void CheckWinGameModeSurvival()
     {
         if(countAvatars == 1)
         { 
@@ -239,6 +250,36 @@ public class GameManager : MonoBehaviour
             Avatars[i].SetVerifiedDeath(false);
             textWiner.gameObject.SetActive(false);
             countAvatars = auxCountAvatars;
+        }
+    }
+
+    /// <summary>
+    /// Lets the Avatars start moving.
+    /// </summary>
+    public void AvatarsRoundStart()
+    {
+        //Debug.Log("Unfreeze the avatars for the round");
+
+        for(int i = 0; i < Avatars.Count; i++)
+        {
+            //Avatars[i].GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            //Avatars[i].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+            //Avatars[i].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+
+            Avatars[i].State = AvatarStates.Normal;
+        }
+    }
+
+    /// <summary>
+    /// Freezes all the players on their places.
+    /// </summary>
+    public void FreezeAvatars()
+    {
+        //Debug.Log("Freeze avatars at the beginning");
+
+        for (int i = 0; i < Avatars.Count; i++)
+        {
+            Avatars[i].State = AvatarStates.Still;
         }
     }
 }

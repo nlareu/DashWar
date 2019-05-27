@@ -35,7 +35,7 @@ public class AvatarController : MonoBehaviour
     private LayerMask whatIsGround;
 
     // Private Variables
-    protected AvatarStates state = AvatarStates.Normal;
+    [SerializeField] protected AvatarStates state = AvatarStates.Normal;
     private bool notMove;
     private float score;
     private int positionInLeaderboard;
@@ -177,7 +177,22 @@ public class AvatarController : MonoBehaviour
 
                             break;
                         }
-                        #endregion
+                    #endregion
+
+                    #region Still
+
+                    // Used when the player can't (or must NOT) move
+                    case AvatarStates.Still:
+                    {
+                            this.animator.SetBool("Moving", false);
+                            this.animator.SetFloat("MoveX", 0);
+                            this.animator.SetBool("DashMoving", false);
+                            this.animator.SetFloat("DashMoveX", 0);
+                            this.animator.SetFloat("DashMoveY", 0);
+
+                            break;
+                    }
+                    #endregion
                 }
             }
         }
@@ -204,6 +219,9 @@ public class AvatarController : MonoBehaviour
     /// </summary>
     private void Start()
     {
+        // The game begins with the avatar not moving
+        State = AvatarStates.Still;
+
         revive = true;
     }
 
@@ -220,7 +238,6 @@ public class AvatarController : MonoBehaviour
     private void OnDisable()
     {
         death = true;
-
     }
 
     public void SetVerifiedDeath(bool _verifiedDeath)
@@ -257,11 +274,19 @@ public class AvatarController : MonoBehaviour
         return score;
     }
 
+    /// <summary>
+    /// Adds points to the player's score. TODO: A property would be better here.
+    /// </summary>
+    /// <param name="_score">The points to add.</param>
     public void AddScore(float _score)
     {
         score = score + _score;
     }
 
+    /// <summary>
+    /// Substracts points from the player's score. TODO: A property would be better here.
+    /// </summary>
+    /// <param name="_score">The points to ssubstract.</param>
     public void SubstractScore(float _score)
     {
         score = score - _score;
@@ -403,6 +428,16 @@ public class AvatarController : MonoBehaviour
 
                             break;
                         }
+                    #endregion
+
+                    #region Still
+
+                    case AvatarStates.Still:
+                    {
+                            break;
+
+                    }
+                    
                     #endregion
                 }
             }

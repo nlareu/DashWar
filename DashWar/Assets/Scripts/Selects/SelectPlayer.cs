@@ -99,7 +99,7 @@ public class SelectPlayer : MonoBehaviour {
         {
             if(turn == 4 && DataLevel.InstanceDataLevel.GetNumberPlayer() >= 4)
             {
-                DataLevel.InstanceDataLevel.SetPlayer4(0);
+                DataLevel.InstanceDataLevel.SetPlayerByNumber(4, 0);
                 turn++;
                 TextCharacter1[0].SetActive(false);
                 TextCharacter1[1].SetActive(false);
@@ -108,7 +108,7 @@ public class SelectPlayer : MonoBehaviour {
             }
             if(turn == 3 && DataLevel.InstanceDataLevel.GetNumberPlayer() >= 3)
             {
-                DataLevel.InstanceDataLevel.SetPlayer3(0);
+                DataLevel.InstanceDataLevel.SetPlayerByNumber(3, 0);
                 turn++;
                 TextCharacter1[0].SetActive(false);
                 TextCharacter1[1].SetActive(false);
@@ -117,7 +117,7 @@ public class SelectPlayer : MonoBehaviour {
             }
             if(turn == 2 && DataLevel.InstanceDataLevel.GetNumberPlayer() >= 2)
             {
-                DataLevel.InstanceDataLevel.SetPlayer2(0);
+                DataLevel.InstanceDataLevel.SetPlayerByNumber(2, 0);
                 turn++;
                 TextCharacter1[0].SetActive(false);
                 TextCharacter1[1].SetActive(true);
@@ -126,7 +126,7 @@ public class SelectPlayer : MonoBehaviour {
             }
             if(turn == 1 && DataLevel.InstanceDataLevel.GetNumberPlayer() >= 1)
             {
-                DataLevel.InstanceDataLevel.SetPlayer1(0);
+                DataLevel.InstanceDataLevel.SetPlayerByNumber(1, 0);
                 turn++;
                 TextCharacter1[0].SetActive(true);
                 TextCharacter1[1].SetActive(false);
@@ -143,7 +143,7 @@ public class SelectPlayer : MonoBehaviour {
         {
             if (turn == 4 && DataLevel.InstanceDataLevel.GetNumberPlayer() >= 4)
             {
-                DataLevel.InstanceDataLevel.SetPlayer4(1);
+                DataLevel.InstanceDataLevel.SetPlayerByNumber(4, 1);
                 turn++;
                 TextCharacter2[0].SetActive(false);
                 TextCharacter2[1].SetActive(false);
@@ -152,7 +152,7 @@ public class SelectPlayer : MonoBehaviour {
             }
             if (turn == 3 && DataLevel.InstanceDataLevel.GetNumberPlayer() >= 3)
             {
-                DataLevel.InstanceDataLevel.SetPlayer3(1);
+                DataLevel.InstanceDataLevel.SetPlayerByNumber(3, 1);
                 turn++;
                 TextCharacter2[0].SetActive(false);
                 TextCharacter2[1].SetActive(false);
@@ -161,7 +161,7 @@ public class SelectPlayer : MonoBehaviour {
             }
             if (turn == 2 && DataLevel.InstanceDataLevel.GetNumberPlayer() >= 2)
             {
-                DataLevel.InstanceDataLevel.SetPlayer2(1);
+                DataLevel.InstanceDataLevel.SetPlayerByNumber(2, 1);
                 turn++;
                 TextCharacter2[0].SetActive(false);
                 TextCharacter2[1].SetActive(true);
@@ -170,7 +170,7 @@ public class SelectPlayer : MonoBehaviour {
             }
             if (turn == 1 && DataLevel.InstanceDataLevel.GetNumberPlayer() >= 1)
             {
-                DataLevel.InstanceDataLevel.SetPlayer1(1);
+                DataLevel.InstanceDataLevel.SetPlayerByNumber(1, 1);
                 turn++;
                 TextCharacter2[0].SetActive(true);
                 TextCharacter2[1].SetActive(false);
@@ -187,7 +187,7 @@ public class SelectPlayer : MonoBehaviour {
         {
             if (turn == 4 && DataLevel.InstanceDataLevel.GetNumberPlayer() >= 4)
             {
-                DataLevel.InstanceDataLevel.SetPlayer4(2);
+                DataLevel.InstanceDataLevel.SetPlayerByNumber(4, 2);
                 turn++;
                 TextCharacter3[0].SetActive(false);
                 TextCharacter3[1].SetActive(false);
@@ -197,7 +197,7 @@ public class SelectPlayer : MonoBehaviour {
             }
             if (turn == 3 && DataLevel.InstanceDataLevel.GetNumberPlayer() >= 3)
             {
-                DataLevel.InstanceDataLevel.SetPlayer3(2);
+                DataLevel.InstanceDataLevel.SetPlayerByNumber(3, 2);
                 turn++;
                 TextCharacter3[0].SetActive(false);
                 TextCharacter3[1].SetActive(false);
@@ -206,7 +206,7 @@ public class SelectPlayer : MonoBehaviour {
             }
             if (turn == 2 && DataLevel.InstanceDataLevel.GetNumberPlayer() >= 2)
             {
-                DataLevel.InstanceDataLevel.SetPlayer2(2);
+                DataLevel.InstanceDataLevel.SetPlayerByNumber(2, 2);
                 turn++;
                 TextCharacter3[0].SetActive(false);
                 TextCharacter3[1].SetActive(true);
@@ -215,7 +215,7 @@ public class SelectPlayer : MonoBehaviour {
             }
             if (turn == 1 && DataLevel.InstanceDataLevel.GetNumberPlayer() >= 1)
             {
-                DataLevel.InstanceDataLevel.SetPlayer1(2);
+                DataLevel.InstanceDataLevel.SetPlayerByNumber(1, 2);
                 turn++;
                 TextCharacter3[0].SetActive(true);
                 TextCharacter3[1].SetActive(false);
@@ -232,7 +232,7 @@ public class SelectPlayer : MonoBehaviour {
         {
             if (turn == 4 && DataLevel.InstanceDataLevel.GetNumberPlayer() >= 4)
             {
-                DataLevel.InstanceDataLevel.SetPlayer4(3);
+                DataLevel.InstanceDataLevel.SetPlayerByNumber(4, 3);
                 turn++;
                 TextCharacter4[0].SetActive(false);
                 TextCharacter4[1].SetActive(false);
@@ -241,7 +241,7 @@ public class SelectPlayer : MonoBehaviour {
             }
             if (turn == 3 && DataLevel.InstanceDataLevel.GetNumberPlayer() >= 3)
             {
-                DataLevel.InstanceDataLevel.SetPlayer3(3);
+                DataLevel.InstanceDataLevel.SetPlayerByNumber(3, 3);
                 turn++;
                 TextCharacter4[0].SetActive(false);
                 TextCharacter4[1].SetActive(false);
@@ -250,7 +250,7 @@ public class SelectPlayer : MonoBehaviour {
             }
             if (turn == 2 && DataLevel.InstanceDataLevel.GetNumberPlayer() >= 2)
             {
-                DataLevel.InstanceDataLevel.SetPlayer2(3);
+                DataLevel.InstanceDataLevel.SetPlayerByNumber(2, 3);
                 turn++;
                 TextCharacter4[0].SetActive(false);
                 TextCharacter4[1].SetActive(true);
@@ -259,7 +259,7 @@ public class SelectPlayer : MonoBehaviour {
             }
             if (turn == 1 && DataLevel.InstanceDataLevel.GetNumberPlayer() >= 1)
             {
-                DataLevel.InstanceDataLevel.SetPlayer1(3);
+                DataLevel.InstanceDataLevel.SetPlayerByNumber(1, 3);
                 turn++;
                 TextCharacter4[0].SetActive(true);
                 TextCharacter4[1].SetActive(false);

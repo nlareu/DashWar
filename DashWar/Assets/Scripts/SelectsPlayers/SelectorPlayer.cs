@@ -7,13 +7,12 @@ public class SelectorPlayer : MonoBehaviour {
 
     #region Fields
 
-    [Header("Modalidad")]
+    [Header("General")]
     public bool screenSelectLevel;
     public bool screenSelectAvatar;
-
-    [Header("General")]
     public AppController app;
 
+    [Header("Selección de Avatar")]
     //numero del personaje elegido
     public GameObject spriteAvatar;    
     public int numChosenAvatar;    
@@ -27,7 +26,7 @@ public class SelectorPlayer : MonoBehaviour {
     public SelectCantPlayerDefinitive selectCantPlayerDefinitive;
     protected bool activateCollision;
 
-    private bool Movement;
+    private bool movement;
     private bool activate;
     private bool select;
 
@@ -44,6 +43,25 @@ public class SelectorPlayer : MonoBehaviour {
 
     #endregion
 
+    #region Properties
+
+    /// <summary>
+    /// Activates/Deactivates the movement of the Selector.
+    /// </summary>
+    public bool Movement
+    {
+        get
+        {
+            return movement;
+        }
+        set
+        {
+            movement = value;
+        }
+    }
+
+    #endregion
+
     #region Methods
 
     /// <summary>
@@ -51,7 +69,7 @@ public class SelectorPlayer : MonoBehaviour {
     /// </summary>
     private void Start()
     {
-        Movement = true;
+        movement = true;
 
         if (spriteRenderer != null)
         {
@@ -69,7 +87,7 @@ public class SelectorPlayer : MonoBehaviour {
         {
             CheckSelector();
         }
-        if (screenSelectLevel)
+        else if (screenSelectLevel)
         {
             CheckSelectorLevel();
         }
@@ -80,7 +98,7 @@ public class SelectorPlayer : MonoBehaviour {
         //SI HAY LA CAPACIDAD DE JUGADORES ES MAYOR AGREGAR UN IF CON OTRO NUM PLAYER
         // Observación (Por hacer): Para lo señalado en el comentario anterior, sería
         // más eficiente el uso de un for loop que itere según el número de jugadores
-        if (Movement)
+        if (movement)
         {
 
             if (numPlayer == 1)
@@ -89,13 +107,13 @@ public class SelectorPlayer : MonoBehaviour {
                 {
                     spriteAvatar.SetActive(false);
                     //El numAvatar que se setea en el SetPlayer representa el avatar que tendra ese jugador.
-                    DataLevel.InstanceDataLevel.SetPlayer1(numAvatar);
-                    Movement = false;
-                    selectAvatar.SetMovement1(false);
-                    app.InstanciarJugador1(false);
+                    DataLevel.InstanceDataLevel.SetPlayerByNumber(1, numAvatar);
+                    movement = false;
+                    selectAvatar.SetMovement(1, false);
+                    app.InstanciarJugador(1, false);
                     //selectCantPlayerDefinitive.SetSubstract(false);
                     app.activateAvatarController = true;
-                    app.cancelSelectionAvatarController1 = true;
+                    app.cancelSelectionAvatarControllers[0] = true;
 
                     //Debug.Log("El jugador 1 se ha decidido, reproducir sonido");
                     AudioManager.instance.PlaySpecialEffect(selectionSound);
@@ -108,13 +126,13 @@ public class SelectorPlayer : MonoBehaviour {
                 {
                     spriteAvatar.SetActive(false);
                     //El numAvatar que se setea en el SetPlayer representa el avatar que tendra ese jugador.
-                    DataLevel.InstanceDataLevel.SetPlayer2(numAvatar);
-                    Movement = false;
-                    selectAvatar.SetMovement2(false);
-                    app.InstanciarJugador2(false);                
+                    DataLevel.InstanceDataLevel.SetPlayerByNumber(2, numAvatar);
+                    movement = false;
+                    selectAvatar.SetMovement(2, false);
+                    app.InstanciarJugador(2, false);
                     //selectCantPlayerDefinitive.SetSubstract(false);
                     app.activateAvatarController = true;
-                    app.cancelSelectionAvatarController2 = true;
+                    app.cancelSelectionAvatarControllers[1] = true;
 
                     //Debug.Log("Jugador 2 ya decdido");
                     AudioManager.instance.PlaySpecialEffect(selectionSound);
@@ -126,17 +144,17 @@ public class SelectorPlayer : MonoBehaviour {
                 float axisButtonXJostick1 = Input.GetAxis("Player3-Dash");
             
                 //Cambiar la G por la condicion correspondiente del JOSTICK(El boton de dash del jostick)
-                if (Input.GetButtonDown("Player3-Dash") || axisButtonXJostick1 > 0)
+                if (Input.GetButtonDown("Player3-Dash") || axisButtonXJostick1 > 0 /*|| Input.GetKeyDown(KeyCode.T)*/)
                 {
                     spriteAvatar.SetActive(false);
                     //El numAvatar que se setea en el SetPlayer representa el avatar que tendra ese jugador.
-                    DataLevel.InstanceDataLevel.SetPlayer3(numAvatar);
-                    Movement = false;
-                    selectAvatar.SetMovement3(false);
-                    app.InstanciarJugador3(false);
+                    DataLevel.InstanceDataLevel.SetPlayerByNumber(3, numAvatar);
+                    movement = false;
+                    selectAvatar.SetMovement(3, false);
+                    app.InstanciarJugador(3, false);
                     //selectCantPlayerDefinitive.SetSubstract(false);
                     app.activateAvatarController = true;
-                    app.cancelSelectionAvatarController3 = true;
+                    app.cancelSelectionAvatarControllers[2] = true;
 
                     AudioManager.instance.PlaySpecialEffect(selectionSound);
                 }
@@ -146,17 +164,17 @@ public class SelectorPlayer : MonoBehaviour {
             {
                 float axisButtonXJostick2 = Input.GetAxis("Player4-Dash");
                 //Cambiar la G por la condicion correspondiente del JOSTICK
-                if (Input.GetButtonDown("Player4-Dash") || axisButtonXJostick2 > 0)
+                if (Input.GetButtonDown("Player4-Dash") || axisButtonXJostick2 > 0 /*|| Input.GetKeyDown(KeyCode.Y)*/)
                 {
                     spriteAvatar.SetActive(false);
                     //El numAvatar que se setea en el SetPlayer representa el avatar que tendra ese jugador.
-                    DataLevel.InstanceDataLevel.SetPlayer4(numAvatar);
-                    Movement = false;
-                    selectAvatar.SetMovement4(false);
-                    app.InstanciarJugador4(false);
+                    DataLevel.InstanceDataLevel.SetPlayerByNumber(4, numAvatar);
+                    movement = false;
+                    selectAvatar.SetMovement(4, false);
+                    app.InstanciarJugador(4, false);
                     //selectCantPlayerDefinitive.SetSubstract(false);
                     app.activateAvatarController = true;
-                    app.cancelSelectionAvatarController4 = true;
+                    app.cancelSelectionAvatarControllers[3] = true;
 
                     AudioManager.instance.PlaySpecialEffect(selectionSound);
                 }
@@ -248,28 +266,7 @@ public class SelectorPlayer : MonoBehaviour {
                 spriteRenderer.enabled = true;
                 break;
         }
-    }*/
-    
-    // POR HACER: Debería considerarse colocar los dos métodos siguientes como una property, ya que
-    // están sirviendo tal cual como una property
-
-    /// <summary>
-    /// Sets the movement variable.
-    /// </summary>
-    /// <param name="_movement">The movement to set.</param>
-    public void SetMovement(bool _movement)
-    {
-        Movement = _movement;
-    }
-
-    /// <summary>
-    /// Gets the movement variable.
-    /// </summary>
-    /// <returns></returns>
-    public bool GetMovement()
-    {
-        return Movement;
-    }
+    }*/    
 
     #endregion
 }

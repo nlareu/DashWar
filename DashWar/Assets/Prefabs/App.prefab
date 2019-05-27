@@ -53,9 +53,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerSource: {fileID: 114808293114151986, guid: 2541fc2fe831804419718cf5e62069dd,
     type: 2}
+  SpecialRestart: 1
+  activateAvatarController: 0
+  cancelSelectionAvatarController1: 0
+  cancelSelectionAvatarController2: 0
+  cancelSelectionAvatarController3: 0
+  cancelSelectionAvatarController4: 0
   PlayersCount: 2
   RespawnPositions:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  gameManager: {fileID: 0}
+  notInstanciateImmediately: 1
+  players: []
+  selectAvatarDefinitive: {fileID: 0}
+  roundWinnerText: {fileID: 0}
+  roundStartDelay: 1
+  nextRoundDelay: 1
+  startDashMessage: {fileID: 0}
+  playerSelectors:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  SpritePlayer1: {fileID: 0}
+  SpritePlayer2: {fileID: 0}
+  SpritePlayer3: {fileID: 0}
+  SpritePlayer4: {fileID: 0}
+  InSelectAvatars: 1
+  auxTimeCancelPlayer1: 0
+  auxTimeCancelPlayer2: 0
+  auxTimeCancelPlayer3: 0
+  auxTimeCancelPlayer4: 0
+  timeCancelPlayer1: 0
+  timeCancelPlayer2: 0
+  timeCancelPlayer3: 0
+  timeCancelPlayer4: 0

@@ -354,10 +354,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rows: 10
   numberBox: 
-  spriteSelectAvatar1: {fileID: 55735559}
-  spriteSelectAvatar2: {fileID: 0}
-  spriteSelectAvatar3: {fileID: 0}
-  spriteSelectAvatar4: {fileID: 0}
+  playerSelectorsDefinitive:
+  - {fileID: 55735559}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   upLimit: {fileID: 55735558}
   downLimit: {fileID: 55735557}
   leftLimit: {fileID: 55735556}
