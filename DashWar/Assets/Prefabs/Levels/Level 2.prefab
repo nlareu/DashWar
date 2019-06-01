@@ -918,7 +918,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!60 &60001938577407594
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -1488,6 +1488,7 @@ MonoBehaviour:
   countAvatars: 0
   auxCountAvatars: 0
   cam: {fileID: 0}
+  leaderBoardPositions: []
 --- !u!114 &114064011391160820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1643,10 +1644,7 @@ MonoBehaviour:
   PlayerSource: {fileID: 0}
   SpecialRestart: 0
   activateAvatarController: 0
-  cancelSelectionAvatarController1: 0
-  cancelSelectionAvatarController2: 0
-  cancelSelectionAvatarController3: 0
-  cancelSelectionAvatarController4: 0
+  cancelSelectionAvatarControllers: 00000000
   PlayersCount: 4
   RespawnPositions:
   - {fileID: 1292877171187114}
@@ -1657,23 +1655,23 @@ MonoBehaviour:
   notInstanciateImmediately: 0
   players: []
   selectAvatarDefinitive: {fileID: 0}
-  selectorPlayer1: {fileID: 0}
-  selectorPlayer2: {fileID: 0}
-  selectorPlayer3: {fileID: 0}
-  selectorPlayer4: {fileID: 0}
-  SpritePlayer1: {fileID: 0}
-  SpritePlayer2: {fileID: 0}
-  SpritePlayer3: {fileID: 0}
-  SpritePlayer4: {fileID: 0}
+  roundWinnerText: {fileID: 0}
+  roundStartDelay: 1
+  nextRoundDelay: 1
+  startDashMessage: {fileID: 0}
+  playerSelectors: []
+  playerSprites: []
   InSelectAvatars: 0
-  auxTimeCancelPlayer1: 0
-  auxTimeCancelPlayer2: 0
-  auxTimeCancelPlayer3: 0
-  auxTimeCancelPlayer4: 0
-  timeCancelPlayer1: 0
-  timeCancelPlayer2: 0
-  timeCancelPlayer3: 0
-  timeCancelPlayer4: 0
+  auxTimeCancelPlayer:
+  - 0
+  - 0
+  - 0
+  - 0
+  timeCancelPlayer:
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!114 &114579100501393226
 MonoBehaviour:
   m_ObjectHideFlags: 1

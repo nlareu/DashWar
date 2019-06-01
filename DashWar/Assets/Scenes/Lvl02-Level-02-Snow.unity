@@ -733,6 +733,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114576847522432612, guid: 65b254dade377a548b83c4a52f76aa17,
+        type: 2}
+      propertyPath: roundWinnerText
+      value: 
+      objectReference: {fileID: 212266044}
+    - target: {fileID: 114576847522432612, guid: 65b254dade377a548b83c4a52f76aa17,
+        type: 2}
+      propertyPath: startDashMessage
+      value: 
+      objectReference: {fileID: 1522278735}
     - target: {fileID: 114063319390391472, guid: 65b254dade377a548b83c4a52f76aa17,
         type: 2}
       propertyPath: camvasPause
@@ -768,16 +778,6 @@ Prefab:
       propertyPath: cam
       value: 
       objectReference: {fileID: 2069011525}
-    - target: {fileID: 114576847522432612, guid: 65b254dade377a548b83c4a52f76aa17,
-        type: 2}
-      propertyPath: roundWinnerText
-      value: 
-      objectReference: {fileID: 212266044}
-    - target: {fileID: 114576847522432612, guid: 65b254dade377a548b83c4a52f76aa17,
-        type: 2}
-      propertyPath: startDashMessage
-      value: 
-      objectReference: {fileID: 1522278735}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65b254dade377a548b83c4a52f76aa17, type: 2}
   m_IsPrefabAsset: 0

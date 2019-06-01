@@ -198,6 +198,14 @@ public class AvatarController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Gets the name of the player.
+    /// </summary>
+    protected string playerName
+    {
+        get { return "Player" + this.PlayerNumber + "-"; }
+    }
+
     #endregion
 
     /// <summary>
@@ -313,14 +321,11 @@ public class AvatarController : MonoBehaviour
             ); ;
         }
     }
+
     internal Vector2 ejectionVelocity = Vector2.zero;
     protected float dashActivedTime;
     protected float dashCooldownTime;
-    protected LineRenderer dashMoveLine;
-    protected string playerName
-    {
-        get { return "Player" + this.PlayerNumber + "-"; }
-    }    
+    protected LineRenderer dashMoveLine;    
 
     /// <summary>
     /// Executes the main logic. Runs once per frame.
