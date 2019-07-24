@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class AvatarController : MonoBehaviour
 {
     #region Fields
-
     public AppController AppController;
     public Animator animator;
     public int PlayerNumber;
@@ -213,6 +212,7 @@ public class AvatarController : MonoBehaviour
     /// </summary>
     protected virtual void Awake()
     {
+
         this.animator = GetComponent<Animator>();
         this.dashMoveLine = GetComponent<LineRenderer>();
         this.spriteRendered = GetComponent<SpriteRenderer>();
@@ -220,6 +220,7 @@ public class AvatarController : MonoBehaviour
 
         this.boxCollider = GetComponent<BoxCollider2D>();
         this.rigidBody = GetComponent<Rigidbody2D>();
+        
     }
 
     /// <summary>
@@ -229,7 +230,6 @@ public class AvatarController : MonoBehaviour
     {
         // The game begins with the avatar not moving
         State = AvatarStates.Still;
-
         revive = true;
     }
 
