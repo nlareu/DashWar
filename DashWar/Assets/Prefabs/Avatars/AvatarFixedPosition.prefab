@@ -128,12 +128,16 @@ MonoBehaviour:
   DashCooldownMaxTime: 1
   DashSpeed: 17
   HitForce: 500
-  Speed: 6
+  Speed: 40
   StunnedMaxTime: 1.5
   groundCheckStart: {fileID: 0}
   groundCheckEnd: {fileID: 0}
   isJumping: 0
   JumpHeight: 250
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  state: 1
   FixedState: 0
   CurrentDirectionX: 1
   CurrentDirectionY: 0

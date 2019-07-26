@@ -183,11 +183,11 @@ MonoBehaviour:
   PlayerNumber: 0
   textScore: 
   AxisSensitive: 0.7
-  DashBurnMaxTime: 0.5
-  DashCooldownMaxTime: 1
-  DashSpeed: 17
-  HitForce: 500
-  Speed: 4
+  DashBurnMaxTime: 0.2
+  DashCooldownMaxTime: 1.5
+  DashSpeed: 30
+  HitForce: 700
+  Speed: 8
   StunnedMaxTime: 1.5
   groundCheckStart: {fileID: 4262159558045436}
   groundCheckEnd: {fileID: 4719690038348250}
