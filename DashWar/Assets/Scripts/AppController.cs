@@ -208,6 +208,8 @@ public class AppController : MonoBehaviour {
         }
     }
 
+    // Nota DC 04072019: Se debería considerar eliminar este método ya que no se usa en ningún lado, solamente
+    // aparece comentado en Update en este mismo script
     public void ActivateAvatarController()
     {
         float axisHorPlayer3 = Input.GetAxis("Player3-LeftStick-Horizontal");
@@ -416,8 +418,9 @@ public class AppController : MonoBehaviour {
     /// </summary>
     public void RestartRound()
     {
-        Debug.Log("The round will restart now.");
+        //Debug.Log("The round will restart now.");
         startDashMessage.SetActive(true);
+        
         //gameManager.FreezeAvatars();
         Invoke("StartNextRound", nextRoundDelay);
 

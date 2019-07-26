@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 212708632741613980}
   - component: {fileID: 61901028418686558}
   m_Layer: 0
-  m_Name: ScreenLimit 3
+  m_Name: ScreenLimit 3 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1046,8 +1046,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1626992586118040}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.625, y: 8.2193, z: 0}
-  m_LocalScale: {x: 38, y: 1, z: 1}
+  m_LocalPosition: {x: -2.625, y: 8.5943, z: 0}
+  m_LocalScale: {x: 38, y: 1.75, z: 1}
   m_Children: []
   m_Father: {fileID: 4888600749165788}
   m_RootOrder: 28
@@ -1059,8 +1059,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1250124035030918}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.184, y: -5.3807, z: 0}
-  m_LocalScale: {x: 1, y: 26.2, z: 1}
+  m_LocalPosition: {x: 15.559, y: -5.3807, z: 0}
+  m_LocalScale: {x: 1.75, y: 26.2, z: 1}
   m_Children: []
   m_Father: {fileID: 4888600749165788}
   m_RootOrder: 26
@@ -1140,8 +1140,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1189703878888528}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.45, y: -5.3807, z: 0}
-  m_LocalScale: {x: 1, y: 26.199999, z: 1}
+  m_LocalPosition: {x: -20.918, y: -5.3807, z: 0}
+  m_LocalScale: {x: 1.75, y: 26.199999, z: 1}
   m_Children: []
   m_Father: {fileID: 4888600749165788}
   m_RootOrder: 27
@@ -2469,10 +2469,7 @@ MonoBehaviour:
     type: 2}
   SpecialRestart: 0
   activateAvatarController: 0
-  cancelSelectionAvatarController1: 0
-  cancelSelectionAvatarController2: 0
-  cancelSelectionAvatarController3: 0
-  cancelSelectionAvatarController4: 0
+  cancelSelectionAvatarControllers: 00000000
   PlayersCount: 2
   RespawnPositions:
   - {fileID: 1833201791761944}
@@ -2487,23 +2484,19 @@ MonoBehaviour:
   roundStartDelay: 1
   nextRoundDelay: 1
   startDashMessage: {fileID: 0}
-  selectorPlayer1: {fileID: 0}
-  selectorPlayer2: {fileID: 0}
-  selectorPlayer3: {fileID: 0}
-  selectorPlayer4: {fileID: 0}
-  SpritePlayer1: {fileID: 0}
-  SpritePlayer2: {fileID: 0}
-  SpritePlayer3: {fileID: 0}
-  SpritePlayer4: {fileID: 0}
+  playerSelectors: []
+  playerSprites: []
   InSelectAvatars: 0
-  auxTimeCancelPlayer1: 0
-  auxTimeCancelPlayer2: 0
-  auxTimeCancelPlayer3: 0
-  auxTimeCancelPlayer4: 0
-  timeCancelPlayer1: 0
-  timeCancelPlayer2: 0
-  timeCancelPlayer3: 0
-  timeCancelPlayer4: 0
+  auxTimeCancelPlayer:
+  - 0
+  - 0
+  - 0
+  - 0
+  timeCancelPlayer:
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!114 &114349491411415272
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -21,16 +21,7 @@ public class SelectAvatarDefinitive : MonoBehaviour {
     // Use this for initialization
     private void Start()
     {
-        /*
-        // NOTA DC: Probando la sangría en el código, tuve corregir la sangría faltante en muchos de estos chequeos,
-        // hecho así solo toma en cuenta la primera línea
-        if (playerSelectorsDefinitive[1] == null)
-        Debug.Log("Niños, recuerden colocarle sangría al código");
-        Debug.Log("Prueba 2");
-        */
-
         // Chequeando referencias
-        //playerSelectorsDefinitive[0].CheckAvatarDrow();
         if (playerSelectorsDefinitive[0] != null)
         {
             if(playerSelectorsDefinitive[0].spriteRenderer != null)
@@ -66,190 +57,6 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         CheckControlsPlayer();
     }
 
-    public void ControlPlayer1()
-    {
-        // Moviendo el selector del jugador hacia la derecha
-        if (Input.GetButtonDown("Player1-Right"))
-        {
-            if (playerSelectorsDefinitive[0].spriteAvatar != null)
-                playerSelectorsDefinitive[0].spriteAvatar.SetActive(true);
-
-            playerSelectorsDefinitive[0].gameObject.SetActive(true);
-            if (playerSelectorsDefinitive[0].spriteRenderer != null)
-                playerSelectorsDefinitive[0].spriteRenderer.enabled = true;
-
-            if (playerSelectorsDefinitive[0].transform.position.x < rightLimit.position.x - Distance)
-            {
-                playerSelectorsDefinitive[0].numChosenAvatar++;
-                playerSelectorsDefinitive[0].numChosenLevel++;
-                playerSelectorsDefinitive[0].CheckAvatarDrow();                
-            }
-            //Debug.Log(playerSelectorsDefinitive[0].numChosenAvatar);
-            while (playerSelectorsDefinitive[0].transform.position.x >= rightLimit.position.x - Distance)
-            {
-                playerSelectorsDefinitive[0].transform.position = new Vector3(playerSelectorsDefinitive[0].transform.position.x - Distance, playerSelectorsDefinitive[0].transform.position.y, playerSelectorsDefinitive[0].transform.position.z);
-            }
-
-            playerSelectorsDefinitive[0].transform.position = new Vector3(playerSelectorsDefinitive[0].transform.position.x + Distance, playerSelectorsDefinitive[0].transform.position.y, playerSelectorsDefinitive[0].transform.position.z);
-        }
-        
-        // Moviendo el selector del jugador hacia la izquierda
-        else if (Input.GetButtonDown("Player1-Left"))
-        {
-            if (playerSelectorsDefinitive[0].spriteAvatar != null)
-                playerSelectorsDefinitive[0].spriteAvatar.SetActive(true);
-
-            playerSelectorsDefinitive[0].gameObject.SetActive(true);
-            if (playerSelectorsDefinitive[0].spriteRenderer != null)
-                playerSelectorsDefinitive[0].spriteRenderer.enabled = true;
-
-            if (playerSelectorsDefinitive[0].transform.position.x > leftLimit.position.x + Distance)
-            {
-                playerSelectorsDefinitive[0].numChosenAvatar--;
-                playerSelectorsDefinitive[0].numChosenLevel--;
-                playerSelectorsDefinitive[0].CheckAvatarDrow();
-            }
-            //Debug.Log(playerSelectorsDefinitive[0].numChosenAvatar);
-            while (playerSelectorsDefinitive[0].transform.position.x < leftLimit.position.x + Distance)
-            {
-                playerSelectorsDefinitive[0].transform.position = new Vector3(playerSelectorsDefinitive[0].transform.position.x + Distance, playerSelectorsDefinitive[0].transform.position.y, playerSelectorsDefinitive[0].transform.position.z);
-            }
-
-            playerSelectorsDefinitive[0].transform.position = new Vector3(playerSelectorsDefinitive[0].transform.position.x - Distance, playerSelectorsDefinitive[0].transform.position.y, playerSelectorsDefinitive[0].transform.position.z);
-        }
-        
-        // Moviendo el selector del jugador hacia arriba
-        else if (Input.GetButtonDown("Player1-Up"))
-        {
-            if (playerSelectorsDefinitive[0].spriteAvatar != null)
-                playerSelectorsDefinitive[0].spriteAvatar.SetActive(true);
-
-            playerSelectorsDefinitive[0].gameObject.SetActive(true);
-            if (playerSelectorsDefinitive[0].spriteRenderer != null)
-                playerSelectorsDefinitive[0].spriteRenderer.enabled = true;
-
-            if (playerSelectorsDefinitive[0].transform.position.y < upLimit.position.y - Distance)
-            {
-                playerSelectorsDefinitive[0].numChosenAvatar = playerSelectorsDefinitive[0].numChosenAvatar + rows;
-                playerSelectorsDefinitive[0].numChosenLevel = playerSelectorsDefinitive[0].numChosenLevel + rows;
-                playerSelectorsDefinitive[0].CheckAvatarDrow();
-            }
-            //Debug.Log(playerSelectorsDefinitive[0].numChosenAvatar);
-            while (playerSelectorsDefinitive[0].transform.position.y >= upLimit.position.y - Distance)
-            {
-                playerSelectorsDefinitive[0].transform.position = new Vector3(playerSelectorsDefinitive[0].transform.position.x, playerSelectorsDefinitive[0].transform.position.y - Distance, playerSelectorsDefinitive[0].transform.position.z);
-            }
-
-            playerSelectorsDefinitive[0].transform.position = new Vector3(playerSelectorsDefinitive[0].transform.position.x, playerSelectorsDefinitive[0].transform.position.y + Distance, playerSelectorsDefinitive[0].transform.position.z);
-        }
-        
-        // Moviendo el selector del jugador hacia abajo
-        else if (Input.GetButtonDown("Player1-Down"))
-        {
-            if (playerSelectorsDefinitive[0].spriteAvatar != null)
-                playerSelectorsDefinitive[0].spriteAvatar.SetActive(true);
-
-            playerSelectorsDefinitive[0].gameObject.SetActive(true);
-            if (playerSelectorsDefinitive[0].spriteRenderer != null)
-                playerSelectorsDefinitive[0].spriteRenderer.enabled = true;
-
-            if (playerSelectorsDefinitive[0].transform.position.y > downLimit.position.y +Distance)
-            {
-                playerSelectorsDefinitive[0].numChosenAvatar = playerSelectorsDefinitive[0].numChosenAvatar - rows;
-                playerSelectorsDefinitive[0].numChosenLevel = playerSelectorsDefinitive[0].numChosenLevel - rows;
-                playerSelectorsDefinitive[0].CheckAvatarDrow();
-            }
-            //Debug.Log(playerSelectorsDefinitive[0].numChosenAvatar);
-            while (playerSelectorsDefinitive[0].transform.position.y < downLimit.position.y + Distance)
-            {
-                playerSelectorsDefinitive[0].transform.position = new Vector3(playerSelectorsDefinitive[0].transform.position.x, playerSelectorsDefinitive[0].transform.position.y + Distance, playerSelectorsDefinitive[0].transform.position.z);
-            }
-
-            playerSelectorsDefinitive[0].transform.position = new Vector3(playerSelectorsDefinitive[0].transform.position.x, playerSelectorsDefinitive[0].transform.position.y - Distance, playerSelectorsDefinitive[0].transform.position.z);
-        }
-
-        // Seleccionando al Avatar
-        if (Input.GetButtonDown("Player1-Jump") || Input.GetButtonDown("Player1-Dash"))
-        {
-            if (playerSelectorsDefinitive[0].spriteAvatar != null)
-                playerSelectorsDefinitive[0].spriteAvatar.SetActive(true);
-
-            playerSelectorsDefinitive[0].gameObject.SetActive(true);
-        }
-    }
-
-    public void ControlPlayer3()
-    {
-        //JOSTICK
-        float axisHorizontalJostick1 = Input.GetAxis("Player3-LeftStick-Horizontal");
-        float axisVerticalJostick1 = Input.GetAxis("Player3-LeftStick-Vertical");
-        float axisLeftJostick1 = Input.GetAxis("Player3-Left");
-        float axisRightJostick1 = Input.GetAxis("Player3-Right");
-        float axisUpJostick1 = Input.GetAxis("Player3-Up");
-        float axisDownJostick1 = Input.GetAxis("Player3-Down");
-
-        if (Input.GetButtonDown("Player3-LeftStick-Horizontal") && axisHorizontalJostick1 > 0 || Input.GetButtonDown("Player3-Right")/* && axisRightJostick1 > 0*/)
-        {
-            if (playerSelectorsDefinitive[2].spriteAvatar != null)
-                playerSelectorsDefinitive[2].spriteAvatar.SetActive(true);
-            playerSelectorsDefinitive[2].gameObject.SetActive(true);
-
-            while (playerSelectorsDefinitive[2].transform.position.x >= rightLimit.position.x - Distance)
-            {
-                playerSelectorsDefinitive[2].transform.position = new Vector3(playerSelectorsDefinitive[2].transform.position.x - Distance, playerSelectorsDefinitive[2].transform.position.y, playerSelectorsDefinitive[2].transform.position.z);
-            }
-            playerSelectorsDefinitive[2].transform.position = new Vector3(playerSelectorsDefinitive[2].transform.position.x + Distance, playerSelectorsDefinitive[2].transform.position.y, playerSelectorsDefinitive[2].transform.position.z);
-        }
-        else if (Input.GetButtonDown("Player3-LeftStick-Horizontal") && axisHorizontalJostick1 < 0 || Input.GetButtonDown("Player3-Left")/* && axisLeftJostick1 > 0*/)
-        {
-            if (playerSelectorsDefinitive[2].spriteAvatar != null)
-                playerSelectorsDefinitive[2].spriteAvatar.SetActive(true);
-            playerSelectorsDefinitive[2].gameObject.SetActive(true);
-
-            while (playerSelectorsDefinitive[2].transform.position.x < leftLimit.position.x + Distance)
-            {
-                playerSelectorsDefinitive[2].transform.position = new Vector3(playerSelectorsDefinitive[2].transform.position.x + Distance, playerSelectorsDefinitive[2].transform.position.y, playerSelectorsDefinitive[2].transform.position.z);
-            }
-            playerSelectorsDefinitive[2].transform.position = new Vector3(playerSelectorsDefinitive[2].transform.position.x - Distance, playerSelectorsDefinitive[2].transform.position.y, playerSelectorsDefinitive[2].transform.position.z);
-        }
-        else if (Input.GetButtonDown("Player3-LeftStick-Vertical") && axisVerticalJostick1 > 0 || Input.GetButtonDown("Player3-Up") && axisUpJostick1 > 0)
-        {
-            if (playerSelectorsDefinitive[2].spriteAvatar != null)
-                playerSelectorsDefinitive[2].spriteAvatar.SetActive(true);
-            playerSelectorsDefinitive[2].gameObject.SetActive(true);
-
-            while (playerSelectorsDefinitive[2].transform.position.y >= upLimit.position.y - Distance)
-            {
-                playerSelectorsDefinitive[2].transform.position = new Vector3(playerSelectorsDefinitive[2].transform.position.x, playerSelectorsDefinitive[2].transform.position.y - Distance, playerSelectorsDefinitive[2].transform.position.z);
-            }
-            playerSelectorsDefinitive[2].transform.position = new Vector3(playerSelectorsDefinitive[2].transform.position.x, playerSelectorsDefinitive[2].transform.position.y + Distance, playerSelectorsDefinitive[2].transform.position.z);
-        }
-        else if (Input.GetButtonDown("Player3-LeftStick-Vertical") && axisVerticalJostick1 < 0 || Input.GetButtonDown("Player3-Down") && axisDownJostick1 > 0)
-        {
-            if (playerSelectorsDefinitive[2].spriteAvatar != null)
-                playerSelectorsDefinitive[2].spriteAvatar.SetActive(true);
-            playerSelectorsDefinitive[2].gameObject.SetActive(true);
-
-            while (playerSelectorsDefinitive[2].transform.position.y < downLimit.position.y + Distance)
-            {
-                playerSelectorsDefinitive[2].transform.position = new Vector3(playerSelectorsDefinitive[2].transform.position.x, playerSelectorsDefinitive[2].transform.position.y + Distance, playerSelectorsDefinitive[2].transform.position.z);
-            }
-            playerSelectorsDefinitive[2].transform.position = new Vector3(playerSelectorsDefinitive[2].transform.position.x, playerSelectorsDefinitive[2].transform.position.y - Distance, playerSelectorsDefinitive[2].transform.position.z);
-        }
-        else if (Input.GetButtonDown("Player3-Jump"))
-        {
-            if (playerSelectorsDefinitive[2].spriteAvatar != null)
-                playerSelectorsDefinitive[2].spriteAvatar.SetActive(true);
-            playerSelectorsDefinitive[2].gameObject.SetActive(true);
-        }
-        else if (Input.GetButtonDown("Player3-Dash"))
-        {
-            if (playerSelectorsDefinitive[2].spriteAvatar != null)
-                playerSelectorsDefinitive[2].spriteAvatar.SetActive(true);
-            playerSelectorsDefinitive[2].gameObject.SetActive(true);
-        }
-    }
-
     /// <summary>
     /// Controls the Selector of the given player.
     /// </summary>
@@ -259,19 +66,27 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         // El nombre de la variable es tan corto para facilitar su uso en las listas de abajo
         int _pn = _playerNumber - 1;
 
+        // Keyboard/Joystick Input
+        float horizontalAxis = Input.GetAxisRaw("Player" + _playerNumber + "-Horizontal");
+        float verticalAxis = Input.GetAxisRaw("Player" + _playerNumber + "-Vertical");
+
         // Moviendo el selector del jugador hacia la derecha
-        if (Input.GetButtonDown("Player" + _playerNumber + "-Right"))
+        if ((Input.GetButtonDown("Player" + _playerNumber + "-Horizontal") && horizontalAxis > 0))
         {
             if (playerSelectorsDefinitive[_pn].spriteAvatar != null)
                 playerSelectorsDefinitive[_pn].spriteAvatar.SetActive(true);
 
             playerSelectorsDefinitive[_pn].gameObject.SetActive(true);
-            playerSelectorsDefinitive[_pn].spriteRenderer.enabled = true;
+            if (playerSelectorsDefinitive[_pn].spriteRenderer != null)
+                playerSelectorsDefinitive[_pn].spriteRenderer.enabled = true;
 
             if (playerSelectorsDefinitive[_pn].transform.position.x < rightLimit.position.x - Distance)
             {
                 playerSelectorsDefinitive[_pn].numChosenAvatar++;
                 playerSelectorsDefinitive[_pn].CheckAvatarDrow();
+
+                if (_pn == 0)                
+                    playerSelectorsDefinitive[0].numChosenLevel++;              
             }
 
             while (playerSelectorsDefinitive[_pn].transform.position.x >= rightLimit.position.x - Distance)
@@ -283,18 +98,22 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         }
 
         // Moviendo el selector del jugador hacia la izquierda
-        else if (Input.GetButtonDown("Player" + _playerNumber + "-Left"))
+        else if ((Input.GetButtonDown("Player" + _playerNumber + "-Horizontal") && horizontalAxis < 0))
         {
             if (playerSelectorsDefinitive[_pn].spriteAvatar != null)
                 playerSelectorsDefinitive[_pn].spriteAvatar.SetActive(true);
 
             playerSelectorsDefinitive[_pn].gameObject.SetActive(true);
-            playerSelectorsDefinitive[_pn].spriteRenderer.enabled = true;
+            if (playerSelectorsDefinitive[_pn].spriteRenderer != null)
+                playerSelectorsDefinitive[_pn].spriteRenderer.enabled = true;
 
             if (playerSelectorsDefinitive[_pn].transform.position.x > leftLimit.position.x + Distance)
             {
                 playerSelectorsDefinitive[_pn].numChosenAvatar--;
                 playerSelectorsDefinitive[_pn].CheckAvatarDrow();
+
+                if(_pn == 0)
+                    playerSelectorsDefinitive[0].numChosenLevel--;
             }
 
             while (playerSelectorsDefinitive[_pn].transform.position.x < leftLimit.position.x + Distance)
@@ -306,18 +125,22 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         }
 
         // Moviendo el selector del jugador hacia arriba
-        else if (Input.GetButtonDown("Player" + _playerNumber + "-Up"))
+        else if ((Input.GetButtonDown("Player" + _playerNumber + "-Vertical") && verticalAxis > 0))
         {
             if (playerSelectorsDefinitive[_pn].spriteAvatar != null)
                 playerSelectorsDefinitive[_pn].spriteAvatar.SetActive(true);
 
             playerSelectorsDefinitive[_pn].gameObject.SetActive(true);
-            playerSelectorsDefinitive[_pn].spriteRenderer.enabled = true;
+            if (playerSelectorsDefinitive[_pn].spriteRenderer != null)
+                playerSelectorsDefinitive[_pn].spriteRenderer.enabled = true;
 
             if (playerSelectorsDefinitive[_pn].transform.position.y < upLimit.position.y - Distance)
             {
                 playerSelectorsDefinitive[_pn].numChosenAvatar = playerSelectorsDefinitive[_pn].numChosenAvatar + rows;
                 playerSelectorsDefinitive[_pn].CheckAvatarDrow();
+
+                if(_pn == 0)
+                    playerSelectorsDefinitive[0].numChosenLevel = playerSelectorsDefinitive[0].numChosenLevel + rows;
             }
 
             while (playerSelectorsDefinitive[_pn].transform.position.y >= upLimit.position.y - Distance)
@@ -329,18 +152,22 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         }
         
         // Moviendo el selector del jugador hacia abajo
-        else if (Input.GetButtonDown("Player" + _playerNumber + "-Down"))
+        else if ((Input.GetButtonDown("Player" + _playerNumber + "-Vertical") && verticalAxis < 0))
         {
             if (playerSelectorsDefinitive[_pn].spriteAvatar != null)
                 playerSelectorsDefinitive[_pn].spriteAvatar.SetActive(true);
 
             playerSelectorsDefinitive[_pn].gameObject.SetActive(true);
-            playerSelectorsDefinitive[_pn].spriteRenderer.enabled = true;
+            if (playerSelectorsDefinitive[_pn].spriteRenderer != null)
+                playerSelectorsDefinitive[_pn].spriteRenderer.enabled = true;
 
             if (playerSelectorsDefinitive[_pn].transform.position.y > downLimit.position.y + Distance)
             {
                 playerSelectorsDefinitive[_pn].numChosenAvatar = playerSelectorsDefinitive[_pn].numChosenAvatar - rows;
                 playerSelectorsDefinitive[_pn].CheckAvatarDrow();
+
+                if(_pn == 0)
+                    playerSelectorsDefinitive[0].numChosenLevel = playerSelectorsDefinitive[0].numChosenLevel - rows;
             }
 
             while (playerSelectorsDefinitive[_pn].transform.position.y < downLimit.position.y + Distance)
@@ -361,29 +188,18 @@ public class SelectAvatarDefinitive : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Lets the selectors of the players to be controlled.
+    /// </summary>
     public void CheckControlsPlayer()
     {
-        if (playersMovement[0] && playerSelectorsDefinitive[0] != null)
+        for (int i = 0; i < GameConstants.MAX_NUMBER_OF_PLAYERS; i++)
         {
-            ControlPlayer1();
+            if (playersMovement[i] && playerSelectorsDefinitive[i] != null)
+            {
+                ControlPlayer(i + 1);
+            }
         }
-        if (playersMovement[1] && playerSelectorsDefinitive[1] != null)
-        {
-            ControlPlayer(2);
-        }
-        if (playersMovement[2] && playerSelectorsDefinitive[2] != null)
-        {
-            ControlPlayer(3);
-        }
-        if (playersMovement[3] && playerSelectorsDefinitive[3] != null)
-        {
-            ControlPlayer(4);
-        }
-        //Agregar mas ifs y mas boleanos de movements a medida que se vayan agregando jugadores
-        //el boleano que corresponda a cada jugador es seteado en la clase SelectorPlayer.cs
-        //por cada boleano movement nuevo hacer un set y un get ademas de fijarse como setearlo en la clase SelectorPlayer.cs tomando en cuenta el patron
-        //ya escrito.
-        // NOTA DC: El comentario anterior está por quedar obsoleto ya que estoy pasando todo a listas y no variables individuales
     }
 
     /// <summary>

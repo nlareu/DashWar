@@ -45,12 +45,19 @@ public class AvatarController : MonoBehaviour
     private bool revive;
 
     // Some other Values
-    protected internal Vector2 previousDirection = Vector2.zero;
-    protected internal Vector2 previousPosition = Vector2.zero;
-    protected internal AvatarStates previousState;
     protected SpriteRenderer spriteRendered;
+    internal BoxCollider2D boxCollider;
     protected internal Rigidbody2D rigidBody;
-    protected float stunningTime;
+    protected internal AvatarStates previousState;
+    public event EventHandler Died;
+
+    protected internal Vector2 previousDirection = Vector2.zero;
+    protected internal Vector2 previousPosition = Vector2.zero;    
+    protected float stunningTime;    
+    internal Vector2 ejectionVelocity = Vector2.zero;
+    protected float dashActivedTime;
+    protected float dashCooldownTime;
+    protected LineRenderer dashMoveLine;
 
     #endregion
 
@@ -298,11 +305,8 @@ public class AvatarController : MonoBehaviour
     public void SubstractScore(float _score)
     {
         score = score - _score;
-    }    
-
-    public event EventHandler Died;
-
-    internal BoxCollider2D boxCollider;
+    }
+    
     internal Vector2 currentDirection
     {
         get
@@ -320,12 +324,7 @@ public class AvatarController : MonoBehaviour
                                 : 0
             ); ;
         }
-    }
-
-    internal Vector2 ejectionVelocity = Vector2.zero;
-    protected float dashActivedTime;
-    protected float dashCooldownTime;
-    protected LineRenderer dashMoveLine;    
+    }    
 
     /// <summary>
     /// Executes the main logic. Runs once per frame.
@@ -402,10 +401,14 @@ public class AvatarController : MonoBehaviour
                         {
                             if (Input.GetButton(this.playerName + "Dash") &&
                                  (
-                                    (Input.GetButton(this.playerName + "Right") || Input.GetButton(this.playerName + "Left")) ||
-                                    (Input.GetAxis(this.playerName + "Horizontal") <= -this.AxisSensitive || Input.GetAxis(this.playerName + "Horizontal") >= this.AxisSensitive) ||
-                                    (Input.GetButton(this.playerName + "Up") || Input.GetButton(this.playerName + "Down")) ||
-                                    (Input.GetAxis(this.playerName + "Vertical") <= -this.AxisSensitive || Input.GetAxis(this.playerName + "Vertical") >= this.AxisSensitive)
+                                    // Con los Input.GetButton la detección es inmediata, se puede estar parado presionando el dash y luego
+                                    // darle a moverse y funciona, con los Input.GetAxis de la manera están puestos si intentamos lo mismo
+                                    // no funciona, hay que moverse un poquito para que salga el Dash. Ahora, mientras el avatar se está 
+                                    // moviendo no hay problemas
+                                    //(Input.GetButton(this.playerName + "Right") || Input.GetButton(this.playerName + "Left")) ||
+                                    (Input.GetAxisRaw(this.playerName + "Horizontal") <= -this.AxisSensitive || Input.GetAxisRaw(this.playerName + "Horizontal") >= this.AxisSensitive) ||
+                                    //(Input.GetButton(this.playerName + "Up") || Input.GetButton(this.playerName + "Down")) ||
+                                    (Input.GetAxisRaw(this.playerName + "Vertical") <= -this.AxisSensitive || Input.GetAxisRaw(this.playerName + "Vertical") >= this.AxisSensitive)
                                   )
                                 )
                             {
@@ -464,13 +467,13 @@ public class AvatarController : MonoBehaviour
         if (!notMove)
         {
             Vector2 moveVector = new Vector2();
-            float axisHor = Input.GetAxis(this.playerName + "Horizontal");
-            float axisVer = Input.GetAxis(this.playerName + "Vertical");
+            float axisHor = Input.GetAxisRaw(this.playerName + "Horizontal");
+            float axisVer = Input.GetAxisRaw(this.playerName + "Vertical");
 
-            if ((Input.GetButton(this.playerName + "Left") || axisHor <= -this.AxisSensitive)
-                || (Input.GetButton(this.playerName + "Right") || axisHor >= this.AxisSensitive))
+            if ((/*Input.GetButton(this.playerName + "Left") ||*/ axisHor <= -this.AxisSensitive)
+                || (/*Input.GetButton(this.playerName + "Right") ||*/ axisHor >= this.AxisSensitive))
             {
-                if (Input.GetButton(this.playerName + "Left") || axisHor <= -this.AxisSensitive)
+                if (/*Input.GetButton(this.playerName + "Left") ||*/ axisHor <= -this.AxisSensitive)
                 {
                     moveVector += Vector2.left * this.DashSpeed * Time.deltaTime;
 
@@ -478,7 +481,7 @@ public class AvatarController : MonoBehaviour
                     this.animator.SetFloat("DashMoveX", -1.5f);
                     this.animator.SetFloat("DashMoveY", 0);
                 }
-                else if (Input.GetButton(this.playerName + "Right") || axisHor >= this.AxisSensitive)
+                else if (/*Input.GetButton(this.playerName + "Right") ||*/ axisHor >= this.AxisSensitive)
                 {
                     moveVector += Vector2.right * this.DashSpeed * Time.deltaTime;
 
@@ -489,7 +492,7 @@ public class AvatarController : MonoBehaviour
             }
             else
             {
-                if (Input.GetButton(this.playerName + "Up") || axisVer >= this.AxisSensitive)
+                if (/*Input.GetButton(this.playerName + "Up") ||*/ axisVer >= this.AxisSensitive)
                 {
                     moveVector += Vector2.up * this.DashSpeed * Time.deltaTime;
 
@@ -497,7 +500,7 @@ public class AvatarController : MonoBehaviour
                     //this.animator.SetFloat("DashMoveX", 0);
                     //this.animator.SetFloat("DashMoveY", 1.5f);
                 }
-                else if (Input.GetButton(this.playerName + "Down") || axisVer <= -this.AxisSensitive)
+                else if (/*Input.GetButton(this.playerName + "Down") ||*/ axisVer <= -this.AxisSensitive)
                 {
                     moveVector += Vector2.down * this.DashSpeed * Time.deltaTime;
 
@@ -519,11 +522,11 @@ public class AvatarController : MonoBehaviour
         if (!notMove)
         {
             Vector2 moveVector = new Vector2();
-            float axisHor = Input.GetAxis(this.playerName + "Horizontal");
+            float axisHor = Input.GetAxisRaw(this.playerName + "Horizontal");
             //float axisVer = Input.GetAxis(this.playerName + "Vertical");
 
             //if (Input.GetButton(this.playerName + "Left"))
-            if (Input.GetButton(this.playerName + "Left") || axisHor <= -this.AxisSensitive)
+            if (/*Input.GetButton(this.playerName + "Left") ||*/ axisHor <= -this.AxisSensitive)
             {
                 moveVector += Vector2.left * this.Speed * Time.deltaTime;
 
@@ -531,7 +534,7 @@ public class AvatarController : MonoBehaviour
                 this.animator.SetFloat("MoveX", -1.5f);
             }
             //else if (Input.GetButton(this.playerName + "Right"))
-            else if (Input.GetButton(this.playerName + "Right") || axisHor >= this.AxisSensitive)
+            else if (/*Input.GetButton(this.playerName + "Right") ||*/ axisHor >= this.AxisSensitive)
             {
                 moveVector += Vector2.right * this.Speed * Time.deltaTime;
 

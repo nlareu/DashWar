@@ -196,6 +196,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1792
+  state: 1
 --- !u!120 &120583897685507782
 LineRenderer:
   m_ObjectHideFlags: 1

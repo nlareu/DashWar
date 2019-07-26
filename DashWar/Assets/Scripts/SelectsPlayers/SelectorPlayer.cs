@@ -103,7 +103,7 @@ public class SelectorPlayer : MonoBehaviour {
 
             if (numPlayer == 1)
             {
-                if (Input.GetKeyDown(KeyCode.LeftShift))
+                if (Input.GetButtonDown("Player1-Dash"))
                 {
                     spriteAvatar.SetActive(false);
                     //El numAvatar que se setea en el SetPlayer representa el avatar que tendra ese jugador.
@@ -122,7 +122,7 @@ public class SelectorPlayer : MonoBehaviour {
 
             if (numPlayer == 2)
             {
-                if (Input.GetKeyDown(KeyCode.Return))
+                if (Input.GetButtonDown("Player2-Dash"))
                 {
                     spriteAvatar.SetActive(false);
                     //El numAvatar que se setea en el SetPlayer representa el avatar que tendra ese jugador.
