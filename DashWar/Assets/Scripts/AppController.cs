@@ -16,7 +16,7 @@ public class AppController : MonoBehaviour {
     public List<GameObject> RespawnPositions = new List<GameObject>();
     public GameManager gameManager;
     public bool notInstanciateImmediately;
-    [HideInInspector] public List<AvatarController> players = new List<AvatarController>();
+    private List<AvatarController> players = new List<AvatarController>();
     private List<AvatarController> playersDead = new List<AvatarController>();
     public SelectAvatarDefinitive selectAvatarDefinitive;
 
@@ -283,7 +283,7 @@ public class AppController : MonoBehaviour {
         
         // Creando al jugador y almacenando la referencia
         AvatarController player;
-        player = Instantiate(DataLevel.InstanceDataLevel.avatarsControllers[DataLevel.InstanceDataLevel.GetPlayerByNumber(_playerNumber)],
+        player = Instantiate(DataLevel.InstanceDataLevel.avatarsControllers[_playerNumber - 1],
             this.RespawnPositions[_playerNumber - 1].transform.position, Quaternion.identity);        
         auxPlayers[_playerNumber - 1] = player;
 
@@ -478,7 +478,7 @@ public class AppController : MonoBehaviour {
 
             for (int i = 0; i < gameManager.Avatars.Count; i++)
             {
-                if (gameManager.Avatars[i].GetDeath() == false)
+                if (gameManager.Avatars[i].Death == false)
                 {
                     winnerNumber = gameManager.Avatars[i].PlayerNumber;
                     roundWinnerText.text = "¡Jugador/a " + winnerNumber + " ha ganado la ronda!";

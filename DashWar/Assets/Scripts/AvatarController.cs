@@ -8,33 +8,38 @@ using UnityEngine.UI;
 public class AvatarController : MonoBehaviour
 {
     #region Fields
+
     public AppController AppController;
     public Animator animator;
     public int PlayerNumber;
     public string textScore;
-    //public float debugvar = 10f; // Esta variable no se usaba en ninguna parte así que la saco
+    [SerializeField] protected AvatarStates state = AvatarStates.Normal;
 
     [Header("Movement Support")]
-    public float AxisSensitive = 0.7f;
+    public float AxisSensitive = 0.7f;    
+    public float Speed = 6.0F;
+    public float StunnedMaxTime = 1.5f;
+    public float JumpHeight = 250.0f;
+    [Tooltip("Mass of the Rigidbody2D - (0.0001, 1000000)")] [Range(0.0001f, 1000000f)] public float bodyMass;
+    [Tooltip("How much the air will drag the Rigidbody2D - (0, 1000000)")] [Range(0f, 1000000f)] public float airResistance;
+    [Tooltip("How much gravity affects the Rigidbody2D - (-1000000, 1000000)")][Range(-1000000f, 1000000f)] public float gravityEffect;
+
+    [Header("Dash Support")]
     public float DashBurnMaxTime = 0.5f;
     public float DashCooldownMaxTime = 1.0f;
     public float DashSpeed = 17.0f;
     public float HitForce = 500.0F;
-    public float Speed = 6.0F;
-    public float StunnedMaxTime = 1.5f;
-    
+
     [Header("Jump Support")]
     public Transform groundCheckStart;
     public Transform groundCheckEnd;
     [HideInInspector]
     public bool isJumping = false;
-    public float JumpHeight = 250.0f;
     private bool grounded = true;
     [SerializeField]
     private LayerMask whatIsGround;
 
     // Private Variables
-    [SerializeField] protected AvatarStates state = AvatarStates.Normal;
     private bool notMove;
     private float score;
     private int positionInLeaderboard;
@@ -57,6 +62,9 @@ public class AvatarController : MonoBehaviour
     protected float dashActivedTime;
     protected float dashCooldownTime;
     protected LineRenderer dashMoveLine;
+
+    [Header("Testing")]
+    [Tooltip("Set true when the avatar is used in the TestingScene.")] public bool testingScene = false;
 
     #endregion
 
@@ -127,7 +135,7 @@ public class AvatarController : MonoBehaviour
                         {
                             this.spriteRendered.color = Color.white;
 
-                            this.rigidBody.gravityScale = 1f;
+                            this.rigidBody.gravityScale = gravityEffect;
 
                             //Enable again collision with other avatars, except with those that are stunned.
                             this.AppController
@@ -155,7 +163,7 @@ public class AvatarController : MonoBehaviour
 
                             this.spriteRendered.color = Color.green;
 
-                            this.rigidBody.gravityScale = 1f;
+                            this.rigidBody.gravityScale = gravityEffect;
 
                             this.dashCooldownTime = 0f;
 
@@ -212,22 +220,31 @@ public class AvatarController : MonoBehaviour
         get { return "Player" + this.PlayerNumber + "-"; }
     }
 
+    /// <summary>
+    /// Indicates if the player is dead or not.
+    /// </summary>
+    public bool Death
+    {
+        get { return death; }
+        set { death = value; }
+    }
+
     #endregion
+
+    #region Methods
 
     /// <summary>
     /// Use this for initialization.
     /// </summary>
     protected virtual void Awake()
     {
-
         this.animator = GetComponent<Animator>();
         this.dashMoveLine = GetComponent<LineRenderer>();
         this.spriteRendered = GetComponent<SpriteRenderer>();
         this.tag = Tags.PLAYER;
 
         this.boxCollider = GetComponent<BoxCollider2D>();
-        this.rigidBody = GetComponent<Rigidbody2D>();
-        
+        this.rigidBody = GetComponent<Rigidbody2D>();        
     }
 
     /// <summary>
@@ -236,8 +253,15 @@ public class AvatarController : MonoBehaviour
     private void Start()
     {
         // The game begins with the avatar not moving
-        State = AvatarStates.Still;
+        if(!testingScene)
+        {
+            State = AvatarStates.Still;
+        }
         revive = true;
+
+        rigidBody.mass = bodyMass;
+        rigidBody.drag = airResistance;
+        rigidBody.gravityScale = gravityEffect;
     }
 
     public void SetRevive(bool _revive)
@@ -265,6 +289,7 @@ public class AvatarController : MonoBehaviour
         return verifiedDeath;
     }
 
+    /*
     public void SetDeath(bool _deadth)
     {
         death = _deadth;
@@ -274,6 +299,7 @@ public class AvatarController : MonoBehaviour
     {
         return death;
     }
+    */
 
     public void SetScore(float _score)
     {
@@ -359,23 +385,16 @@ public class AvatarController : MonoBehaviour
                     #region Dash
                     case AvatarStates.Dash:
                         {
-                            if (Input.GetButton(this.playerName + "Dash") == false)
-                            {
-                                this.State = AvatarStates.CoolingDown;
-                                break;
-                            }
-
                             this.dashActivedTime += Time.deltaTime;
 
-                            if (this.dashActivedTime > this.DashBurnMaxTime)
+                            if (Input.GetButton(this.playerName + "Dash") == false || 
+                                this.dashActivedTime > this.DashBurnMaxTime)
                             {
                                 this.State = AvatarStates.CoolingDown;
                                 break;
                             }
 
-
                             this.CheckAvatarDashMove();
-
 
                             //If move direction changed, add new position to hiper move line.
                             if ((this.previousState == AvatarStates.Dash)
@@ -443,7 +462,6 @@ public class AvatarController : MonoBehaviour
                     case AvatarStates.Still:
                     {
                             break;
-
                     }
                     
                     #endregion
@@ -470,10 +488,9 @@ public class AvatarController : MonoBehaviour
             float axisHor = Input.GetAxisRaw(this.playerName + "Horizontal");
             float axisVer = Input.GetAxisRaw(this.playerName + "Vertical");
 
-            if ((/*Input.GetButton(this.playerName + "Left") ||*/ axisHor <= -this.AxisSensitive)
-                || (/*Input.GetButton(this.playerName + "Right") ||*/ axisHor >= this.AxisSensitive))
+            if (axisHor <= -this.AxisSensitive || axisHor >= this.AxisSensitive)
             {
-                if (/*Input.GetButton(this.playerName + "Left") ||*/ axisHor <= -this.AxisSensitive)
+                if (axisHor <= -this.AxisSensitive)
                 {
                     moveVector += Vector2.left * this.DashSpeed * Time.deltaTime;
 
@@ -481,7 +498,7 @@ public class AvatarController : MonoBehaviour
                     this.animator.SetFloat("DashMoveX", -1.5f);
                     this.animator.SetFloat("DashMoveY", 0);
                 }
-                else if (/*Input.GetButton(this.playerName + "Right") ||*/ axisHor >= this.AxisSensitive)
+                else if (axisHor >= this.AxisSensitive)
                 {
                     moveVector += Vector2.right * this.DashSpeed * Time.deltaTime;
 
@@ -492,7 +509,7 @@ public class AvatarController : MonoBehaviour
             }
             else
             {
-                if (/*Input.GetButton(this.playerName + "Up") ||*/ axisVer >= this.AxisSensitive)
+                if (axisVer >= this.AxisSensitive)
                 {
                     moveVector += Vector2.up * this.DashSpeed * Time.deltaTime;
 
@@ -500,7 +517,7 @@ public class AvatarController : MonoBehaviour
                     //this.animator.SetFloat("DashMoveX", 0);
                     //this.animator.SetFloat("DashMoveY", 1.5f);
                 }
-                else if (/*Input.GetButton(this.playerName + "Down") ||*/ axisVer <= -this.AxisSensitive)
+                else if (axisVer <= -this.AxisSensitive)
                 {
                     moveVector += Vector2.down * this.DashSpeed * Time.deltaTime;
 
@@ -525,7 +542,6 @@ public class AvatarController : MonoBehaviour
             float axisHor = Input.GetAxisRaw(this.playerName + "Horizontal");
             //float axisVer = Input.GetAxis(this.playerName + "Vertical");
 
-            //if (Input.GetButton(this.playerName + "Left"))
             if (/*Input.GetButton(this.playerName + "Left") ||*/ axisHor <= -this.AxisSensitive)
             {
                 moveVector += Vector2.left * this.Speed * Time.deltaTime;
@@ -533,7 +549,6 @@ public class AvatarController : MonoBehaviour
                 this.animator.SetBool("Moving", true);
                 this.animator.SetFloat("MoveX", -1.5f);
             }
-            //else if (Input.GetButton(this.playerName + "Right"))
             else if (/*Input.GetButton(this.playerName + "Right") ||*/ axisHor >= this.AxisSensitive)
             {
                 moveVector += Vector2.right * this.Speed * Time.deltaTime;
@@ -592,4 +607,6 @@ public class AvatarController : MonoBehaviour
     {
         return notMove;
     }
+
+    #endregion
 }

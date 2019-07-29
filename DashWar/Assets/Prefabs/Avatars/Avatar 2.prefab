@@ -182,21 +182,25 @@ MonoBehaviour:
   animator: {fileID: 95504206585395124}
   PlayerNumber: 0
   textScore: 
+  state: 1
   AxisSensitive: 0.7
+  Speed: 8
+  StunnedMaxTime: 1.5
+  JumpHeight: 8
+  bodyMass: 1
+  windResistance: 0
+  gravityEffect: 1
   DashBurnMaxTime: 0.5
   DashCooldownMaxTime: 1.5
   DashSpeed: 30
   HitForce: 700
-  Speed: 8
-  StunnedMaxTime: 1.5
   groundCheckStart: {fileID: 4507307035597724}
   groundCheckEnd: {fileID: 4673822204430588}
   isJumping: 0
-  JumpHeight: 8
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1792
-  state: 1
+  testingScene: 0
 --- !u!120 &120366313493396392
 LineRenderer:
   m_ObjectHideFlags: 1

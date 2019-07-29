@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
     {
         for(int i = 0; i< Avatars.Count; i++)
         {
-            if(Avatars[i].GetDeath() == true && Avatars[i].GetVerifiedDeath() == false)
+            if(Avatars[i].Death && Avatars[i].GetVerifiedDeath() == false)
             {
                 countAvatars--;
                 Avatars[i].SetVerifiedDeath(true);
@@ -204,7 +204,7 @@ public class GameManager : MonoBehaviour
         { 
             for(int i = 0; i<Avatars.Count; i++)
             {
-                if(Avatars[i].GetDeath() == false)
+                if(Avatars[i].Death == false)
                 {
                     Avatars[i].AddScore(1);
                 }
@@ -246,7 +246,7 @@ public class GameManager : MonoBehaviour
         for(int i = 0; i < Avatars.Count; i++)
         {
             cam.gameObject.transform.position = auxCamPosition;
-            Avatars[i].SetDeath(false);
+            Avatars[i].Death = false;
             Avatars[i].SetVerifiedDeath(false);
             textWiner.gameObject.SetActive(false);
             countAvatars = auxCountAvatars;

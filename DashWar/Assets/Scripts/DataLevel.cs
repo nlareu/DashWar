@@ -61,7 +61,7 @@ public class DataLevel : MonoBehaviour {
             {
                 InstanceDataLevel.avatarsControllers[i].SetNotMove(false);
                 InstanceDataLevel.avatarsControllers[i].SetRevive(true);
-                InstanceDataLevel.avatarsControllers[i].SetDeath(false);
+                InstanceDataLevel.avatarsControllers[i].Death = false;
                 InstanceDataLevel.avatarsControllers[i].SetScore(0);
             }
 

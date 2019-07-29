@@ -173,7 +173,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1329589118947302}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76167fde4854588499cd31957d349997, type: 3}
   m_Name: 
@@ -195,21 +195,25 @@ MonoBehaviour:
   animator: {fileID: 95504206585395124}
   PlayerNumber: 0
   textScore: 
+  state: 1
   AxisSensitive: 0.7
+  Speed: 8
+  StunnedMaxTime: 1.5
+  JumpHeight: 8
+  bodyMass: 1
+  windResistance: 0
+  gravityEffect: 1
   DashBurnMaxTime: 0.2
   DashCooldownMaxTime: 1.5
   DashSpeed: 30
   HitForce: 700
-  Speed: 8
-  StunnedMaxTime: 1.5
   groundCheckStart: {fileID: 4673747288104666}
   groundCheckEnd: {fileID: 4136679321935758}
   isJumping: 0
-  JumpHeight: 8
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1792
-  state: 1
+  testingScene: 0
 --- !u!120 &120366313493396392
 LineRenderer:
   m_ObjectHideFlags: 1
