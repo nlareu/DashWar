@@ -184,16 +184,16 @@ MonoBehaviour:
   textScore: 
   state: 1
   AxisSensitive: 0.7
-  Speed: 8
+  Speed: 4
   StunnedMaxTime: 1.5
   JumpHeight: 8
   bodyMass: 1
-  windResistance: 0
+  airResistance: 0
   gravityEffect: 1
   DashBurnMaxTime: 0.5
-  DashCooldownMaxTime: 1.5
-  DashSpeed: 30
-  HitForce: 700
+  DashCooldownMaxTime: 1
+  DashSpeed: 17
+  HitForce: 500
   groundCheckStart: {fileID: 4507307035597724}
   groundCheckEnd: {fileID: 4673822204430588}
   isJumping: 0

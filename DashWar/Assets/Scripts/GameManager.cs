@@ -29,6 +29,9 @@ public class GameManager : MonoBehaviour
     // Use this for initialization.
     void Start ()
     {
+        // Reseteando el tiempo al comenzar la ronda
+        Time.timeScale = 1f;
+
         // Los avatares comienzan parados y solo se mueven al terminar la cuenta regresiva
         for(int i = 0; i < Avatars.Count; i++)
         {
@@ -103,7 +106,7 @@ public class GameManager : MonoBehaviour
         {
             if (DataLevel.InstanceDataLevel != null)
             {
-                DataLevel.InstanceDataLevel.pause = true;
+                DataLevel.InstanceDataLevel.Pause = true;
             }
 
             Time.timeScale = 0;

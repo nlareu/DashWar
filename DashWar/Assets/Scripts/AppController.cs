@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class AppController : MonoBehaviour {
 
+    #region Fields
+
     public AvatarController PlayerSource;
     public bool SpecialRestart;
     [HideInInspector] public bool activateAvatarController;
@@ -36,6 +38,25 @@ public class AppController : MonoBehaviour {
     private AvatarController[] auxPlayers = new AvatarController[GameConstants.MAX_NUMBER_OF_PLAYERS]; // Ref a los jugadores
     [HideInInspector] public float[] auxTimeCancelPlayer = new float[GameConstants.MAX_NUMBER_OF_PLAYERS];
     [HideInInspector] public float[] timeCancelPlayer = new float[GameConstants.MAX_NUMBER_OF_PLAYERS];
+
+    #endregion
+
+    #region Properties
+
+    /// <summary>
+    /// Gets the number of players currently selected.
+    /// </summary>
+    public int NumberOfPlayers
+    {
+        get
+        {
+            return players.Count;
+        }
+    }
+
+    #endregion
+
+    #region Methods
 
     // Use this for initialization
     void Start()
@@ -73,7 +94,7 @@ public class AppController : MonoBehaviour {
             CancelSelectionAvatarControler();
             // Deberíamos ir pensando en eliminar esta línea o cambiarla, no tiene sentido revisar esto
             // en cada Update
-            RestartRound();
+            //RestartRound();
         }
     }
 
@@ -499,4 +520,6 @@ public class AppController : MonoBehaviour {
         startDashMessage.SetActive(false);
         gameManager.AvatarsRoundStart();
     }
+
+    #endregion
 }

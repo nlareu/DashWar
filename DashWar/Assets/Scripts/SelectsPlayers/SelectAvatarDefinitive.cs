@@ -43,8 +43,8 @@ public class SelectAvatarDefinitive : MonoBehaviour {
 
         //DESCOMENTAR EN CASO QUE SE PIDA QUE TAMBIEN TENGAS QUE MOVER EL CONTROLADOR DEL CURSOR 1 PARA ACTIVARLO.
         //playerSelectorsDefinitive[0].SetActive(false);
-        if(playerSelectorsDefinitive[1] != null)
-            playerSelectorsDefinitive[1].gameObject.SetActive(false);
+        //if(playerSelectorsDefinitive[1] != null)
+            //playerSelectorsDefinitive[1].gameObject.SetActive(false);
         if(playerSelectorsDefinitive[2] != null)
             playerSelectorsDefinitive[2].gameObject.SetActive(false);
         if(playerSelectorsDefinitive[3] != null)

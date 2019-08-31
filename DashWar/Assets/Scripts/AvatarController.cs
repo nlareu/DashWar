@@ -29,6 +29,9 @@ public class AvatarController : MonoBehaviour
     public float DashCooldownMaxTime = 1.0f;
     public float DashSpeed = 17.0f;
     public float HitForce = 500.0F;
+    //public GameObject dashDebugPoint;
+    //[SerializeField] private bool checkDash = false;
+    [SerializeField] private LayerMask dashMask;
 
     [Header("Jump Support")]
     public Transform groundCheckStart;
@@ -359,7 +362,7 @@ public class AvatarController : MonoBehaviour
     {
         if (DataLevel.InstanceDataLevel != null)
         {
-            if (!DataLevel.InstanceDataLevel.pause)
+            if (!DataLevel.InstanceDataLevel.Pause)
             {
                 switch (this.State)
                 {
@@ -527,7 +530,28 @@ public class AvatarController : MonoBehaviour
                 }
             }
 
+            // Moviendo al avatar con el Dash
+            Vector3 oldPosition = transform.position;
+            //Debug.Log("Old Position: " + oldPosition);
+
             this.transform.Translate(moveVector);
+
+            Vector3 newPosition = transform.position;
+            //Debug.Log("New Position: " + newPosition);
+
+            // Verificando si el Dash atraviesa otro objeto
+            RaycastHit2D dashThrough;
+
+            dashThrough = Physics2D.Linecast(oldPosition, newPosition, dashMask);
+
+            if (dashThrough)
+            {
+                //Debug.Log("The Player " + PlayerNumber + " just went through: " + dashThrough.transform.name);
+                //Instantiate(dashDebugPoint, dashThrough.point, Quaternion.identity);
+                //this.State = AvatarStates.CoolingDown;
+                //this.transform.Translate(dashThrough.point);
+                this.transform.position = dashThrough.point;
+            }
         }
     }
 

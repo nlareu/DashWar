@@ -25,7 +25,7 @@ public class PauseMenu : MonoBehaviour
 
         if (DataLevel.InstanceDataLevel != null)
         {
-            DataLevel.InstanceDataLevel.pause = false;
+            DataLevel.InstanceDataLevel.Pause = false;
         }
     }
 
@@ -73,10 +73,12 @@ public class PauseMenu : MonoBehaviour
     public void SelectorLevelScreen()
     {
         if (DataLevel.InstanceDataLevel != null)
-        {           
-            //DataLevel.InstanceDataLevel = null;
-            Destroy(DataLevel.InstanceDataLevel.gameObject);
+        {
+            DataLevel.InstanceDataLevel.Pause = false;
         }
+
+        app.RestartParty();
+        gameManager.Restart();
 
         SceneManager.LoadScene(levelSelection);
     }

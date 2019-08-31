@@ -1161,26 +1161,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114245644537974322, guid: a9b5a3bbefa6e8b418c06d8749b28e34,
-        type: 2}
-      propertyPath: gravityEffect
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114245644537974322, guid: a9b5a3bbefa6e8b418c06d8749b28e34,
-        type: 2}
-      propertyPath: bodyMass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114245644537974322, guid: a9b5a3bbefa6e8b418c06d8749b28e34,
-        type: 2}
-      propertyPath: windResistance
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114245644537974322, guid: a9b5a3bbefa6e8b418c06d8749b28e34,
-        type: 2}
-      propertyPath: airResistance
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9b5a3bbefa6e8b418c06d8749b28e34, type: 2}
   m_IsPrefabAsset: 0

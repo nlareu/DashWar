@@ -122,7 +122,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &61342156791734758
 BoxCollider2D:
@@ -197,16 +197,22 @@ MonoBehaviour:
   textScore: 
   state: 1
   AxisSensitive: 0.7
-  Speed: 8
+  Speed: 4
   StunnedMaxTime: 1.5
   JumpHeight: 8
   bodyMass: 1
-  windResistance: 0
+  airResistance: 0
   gravityEffect: 1
-  DashBurnMaxTime: 0.2
-  DashCooldownMaxTime: 1.5
-  DashSpeed: 30
-  HitForce: 700
+  DashBurnMaxTime: 0.5
+  DashCooldownMaxTime: 1
+  DashSpeed: 17
+  HitForce: 500
+  dashDebugPoint: {fileID: 1110062464308742, guid: 5c393bf0684b66e4db3a0064d834fc35,
+    type: 2}
+  checkDash: 0
+  dashMask:
+    serializedVersion: 2
+    m_Bits: 256
   groundCheckStart: {fileID: 4173181640529970}
   groundCheckEnd: {fileID: 4592994729841698}
   isJumping: 0

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class DataLevel : MonoBehaviour {
 
+    #region Fields
+
     // Use this for initialization
-    [HideInInspector] public bool pause;
+    private bool pause;
     public AppController app;
     public static DataLevel InstanceDataLevel;
     public List<AvatarController> avatarsControllers;
@@ -13,9 +15,31 @@ public class DataLevel : MonoBehaviour {
     private int gameMode;
 
     //los players representan a cada jugador segun el valor que tengan sera el personaje que eligieron.
-    // Actualización 20190516: Ahora serán una lista
     private int[] playerNumber = new int[GameConstants.MAX_NUMBER_OF_PLAYERS];
     private int winingScore;
+
+    #endregion
+
+    #region Properties
+
+    /// <summary>
+    /// Gets and sets the Pause state of the game.
+    /// </summary>
+    public bool Pause
+    {
+        get
+        {
+            return pause;
+        }
+        set
+        {
+            pause = value;
+        }
+    }
+
+    #endregion
+
+    #region Methods
 
     /// <summary>
     /// Use this for initialization.
@@ -136,4 +160,6 @@ public class DataLevel : MonoBehaviour {
     {
         return winingScore;
     }
+
+    #endregion
 }
